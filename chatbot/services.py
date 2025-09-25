@@ -7,7 +7,7 @@ class GeminiService:
         api_key = os.getenv('GEMINI_API_KEY')
         print(f"API Key found: {'Yes' if api_key else 'No'}")
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
     
     def format_to_table(self, response_text):
         """Convert AI response to HTML table format"""
