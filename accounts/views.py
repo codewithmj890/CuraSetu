@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm, ProfileUpdateForm
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Logout successful!')
+    return redirect('accounts:login')
 
 def register_view(request):
     if request.method == 'POST':

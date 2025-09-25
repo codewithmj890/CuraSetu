@@ -6,7 +6,7 @@
 <div class="chat-container">
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="p-3 border-bottom">
+        <div class="p-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">CuraSetu</h5>
                 <div class="dropdown">
@@ -22,7 +22,7 @@
         </div>
         
         <div class="p-3">
-            <a href="{% url 'chatbot:new_thread' %}" class="btn btn-primary w-100 mb-3">
+            <a href="{% url 'chatbot:new_thread' %}" class="btn btn-primary w-100">
                 <i class="fas fa-plus me-2"></i>New Chat
             </a>
         </div>
@@ -62,7 +62,7 @@
                         {{ message.user_message }}
                     </div>
                     <div class="message bot">
-                        {{ message.bot_response|linebreaks }}
+                        {{ message.bot_response|safe }}
                     </div>
                 {% endfor %}
             {% else %}
@@ -141,7 +141,7 @@ document.getElementById('chatForm').addEventListener('submit', async function(e)
             // Add bot response
             const botMessage = document.createElement('div');
             botMessage.className = 'message bot';
-            botMessage.innerHTML = data.bot_response.replace(/\n/g, '<br>');
+            botMessage.innerHTML = data.bot_response;
             chatMessages.appendChild(botMessage);
             
             // Redirect to thread if new thread was created
