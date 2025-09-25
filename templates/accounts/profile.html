@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - CuraSetu{% endblock %}
+
+{% block content %}
+<div class="profile-container glass-effect">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>My Profile</h2>
+        <a href="{% url 'chatbot:chat' %}" class="btn btn-outline-light">
+            <i class="fas fa-arrow-left me-2"></i>Back to Chat
+        </a>
+    </div>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <div class="row">
+        <div class="col-md-4 text-center mb-4">
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture mb-3">
+            {% else %}
+                <div class="profile-picture mb-3 d-flex align-items-center justify-content-center bg-secondary">
+                    <i class="fas fa-user fa-3x"></i>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                    {{ form.username }}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                    {{ form.email }}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="{{ form.profile_picture.id_for_label }}" class="form-label">Profile Picture</label>
+                    {{ form.profile_picture }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="mt-4 pt-4 border-top">
+        <a href="{% url 'accounts:logout' %}" class="btn btn-outline-danger">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+        </a>
+    </div>
+</div>
+{% endblock %}

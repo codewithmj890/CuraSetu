@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat - CuraSetu{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="p-3 border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">CuraSetu</h5>
+                <div class="dropdown">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-3">
+            <a href="{% url 'chatbot:new_thread' %}" class="btn btn-primary w-100 mb-3">
+                <i class="fas fa-plus me-2"></i>New Chat
+            </a>
+        </div>
+        
+        <div class="flex-grow-1 overflow-auto">
+            {% for thread in threads %}
+                <div class="thread-item {% if thread == active_thread %}active{% endif %}" 
+                     onclick="location.href='{% url 'chatbot:thread' thread.id %}'">
+                    <div class="fw-bold">{{ thread.title|truncatechars:30 }}</div>
+                    <small class="text-muted">{{ thread.updated_at|timesince }} ago</small>
+                </div>
+            {% empty %}
+                <div class="text-center text-muted p-3">
+                    <i class="fas fa-comments fa-2x mb-2"></i>
+                    <p>No conversations yet</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Main Chat Area -->
+    <div class="chat-main">
+        <div class="chat-header">
+            <h6 class="mb-0">
+                {% if active_thread %}
+                    {{ active_thread.title }}
+                {% else %}
+                    Welcome to CuraSetu
+                {% endif %}
+            </h6>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            {% if active_thread %}
+                {% for message in messages %}
+                    <div class="message user">
+                        {{ message.user_message }}
+                    </div>
+                    <div class="message bot">
+                        {{ message.bot_response|linebreaks }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center text-muted mt-5">
+                    <i class="fas fa-stethoscope fa-3x mb-3"></i>
+                    <h4>Welcome to CuraSetu</h4>
+                    <p>Your AI healthcare assistant for minor ailments and traditional remedies.</p>
+                    <p>Start a new conversation to get personalized health advice.</p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="chat-input">
+            <form id="chatForm" class="d-flex gap-2">
+                {% csrf_token %}
+                <input type="text" id="messageInput" class="form-control" 
+                       placeholder="Describe your symptoms..." required>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('chatForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const messageInput = document.getElementById('messageInput');
+    const message = messageInput.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message to chat
+    const chatMessages = document.getElementById('chatMessages');
+    const userMessage = document.createElement('div');
+    userMessage.className = 'message user';
+    userMessage.textContent = message;
+    chatMessages.appendChild(userMessage);
+    
+    // Clear input
+    messageInput.value = '';
+    
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Show typing indicator
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'message bot';
+    typingIndicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing your symptoms...';
+    chatMessages.appendChild(typingIndicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    try {
+        const response = await fetch('{% url "chatbot:send_message" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            body: JSON.stringify({
+                message: message,
+                thread_id: {% if active_thread %}{{ active_thread.id }}{% else %}null{% endif %}
+            })
+        });
+        
+        const data = await response.json();
+        
+        // Remove typing indicator
+        typingIndicator.remove();
+        
+        if (data.success) {
+            // Add bot response
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
+            botMessage.innerHTML = data.bot_response.replace(/\n/g, '<br>');
+            chatMessages.appendChild(botMessage);
+            
+            // Redirect to thread if new thread was created
+            if (!{% if active_thread %}{{ active_thread.id }}{% else %}null{% endif %} && data.thread_id) {
+                window.location.href = `/chat/thread/${data.thread_id}/`;
+            }
+        } else {
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'message bot';
+            errorMessage.textContent = 'Sorry, there was an error processing your request.';
+            chatMessages.appendChild(errorMessage);
+        }
+        
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    } catch (error) {
+        typingIndicator.remove();
+        console.error('Error:', error);
+    }
+});
+</script>
+{% endblock %}

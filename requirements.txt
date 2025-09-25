@@ -1,0 +1,5 @@
+Django
+mysqlclient
+google-generativeai
+python-dotenv
+Pillow
