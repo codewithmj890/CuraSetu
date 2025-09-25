@@ -5,18 +5,23 @@
 {% block content %}
 <div class="chat-container">
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <div class="p-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">CuraSetu</h5>
-                <div class="dropdown">
-                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-user"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
-                    </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,7 +49,7 @@
     </div>
     
     <!-- Main Chat Area -->
-    <div class="chat-main">
+    <div class="chat-main" id="chatMain">
         <div class="chat-header">
             <h6 class="mb-0">
                 {% if active_thread %}
@@ -159,6 +164,24 @@ document.getElementById('chatForm').addEventListener('submit', async function(e)
     } catch (error) {
         typingIndicator.remove();
         console.error('Error:', error);
+    }
+});
+
+// Sidebar toggle functionality
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    const chatMain = document.getElementById('chatMain');
+    const toggleIcon = this.querySelector('i');
+    
+    sidebar.classList.toggle('collapsed');
+    chatMain.classList.toggle('expanded');
+    
+    if (sidebar.classList.contains('collapsed')) {
+        toggleIcon.classList.remove('fa-chevron-left');
+        toggleIcon.classList.add('fa-chevron-right');
+    } else {
+        toggleIcon.classList.remove('fa-chevron-right');
+        toggleIcon.classList.add('fa-chevron-left');
     }
 });
 </script>
