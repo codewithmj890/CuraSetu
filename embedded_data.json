@@ -1,0 +1,2752 @@
+[
+  {
+    "chunk_id": "cf172fa6-0dde-4346-9560-cd2b83c1643d",
+    "text": "Common Cold - Summary:A viral infection of the upper respiratory tract that is generally mild and self-limiting.",
+    "metadata": {
+      "disease_id": "common_cold",
+      "disease_name": "Common Cold",
+      "source": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "249e86d1-7833-47d8-a47a-d97df9ce5ce6",
+    "text": "Common Cold - Symptoms:Runny or stuffy nose,Sore throat,Cough,Congestion,Mild body aches,Sneezing",
+    "metadata": {
+      "disease_id": "common_cold",
+      "disease_name": "Common Cold",
+      "source": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "ccc53076-5820-4a6c-b123-091bfc6b7569",
+    "text": "Common Cold - Treatment:Rest,Hydration (water, juice, broth),Saltwater gargle for sore throat,Over-the-counter pain relievers (Acetaminophen, Ibuprofen)",
+    "metadata": {
+      "disease_id": "common_cold",
+      "disease_name": "Common Cold",
+      "source": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "e4bcd30b-fed2-498b-b4db-cfa7f4df6408",
+    "text": "Common Cold - Warning_Signs:Fever lasting more than 3 days,Wheezing or difficulty breathing,Severe sore throat or earache,Symptoms worsening after 10 days",
+    "metadata": {
+      "disease_id": "common_cold",
+      "disease_name": "Common Cold",
+      "source": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "2f4a3f3c-ce82-4672-94c0-2fa4527f20ec",
+    "text": "Common Cold - Prevention:Frequent handwashing,Avoid touching face (eyes, nose, mouth),Disinfect high-touch surfaces,Avoid close contact with infected individuals",
+    "metadata": {
+      "disease_id": "common_cold",
+      "disease_name": "Common Cold",
+      "source": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "31171903-ac26-498b-baa8-c5ce91883e5a",
+    "text": "Viral Fever - Summary:A broad term for any fever caused by an underlying viral infection, often accompanied by generalized body aches.",
+    "metadata": {
+      "disease_id": "viral_fever",
+      "disease_name": "Viral Fever",
+      "source": "https://medlineplus.gov/fever.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "6be73191-a214-4b55-9627-6c72e917e8bb",
+    "text": "Viral Fever - Symptoms:High body temperature,Chills and shivering,Muscle and joint pain,Headache,Fatigue,Loss of appetite",
+    "metadata": {
+      "disease_id": "viral_fever",
+      "disease_name": "Viral Fever",
+      "source": "https://medlineplus.gov/fever.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "236e1aed-6523-4083-ac7d-cc20a1d84755",
+    "text": "Viral Fever - Treatment:Bed rest,Increased fluid intake,Antipyretics (fever reducers like paracetamol),Cool sponge baths if temperature is very high",
+    "metadata": {
+      "disease_id": "viral_fever",
+      "disease_name": "Viral Fever",
+      "source": "https://medlineplus.gov/fever.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "f092f496-c1a3-4fc6-84e9-4cb5820b32d4",
+    "text": "Viral Fever - Warning_Signs:Persistent high fever above 103°F (39.4°C),Severe headache or stiff neck,Confusion,Seizures",
+    "metadata": {
+      "disease_id": "viral_fever",
+      "disease_name": "Viral Fever",
+      "source": "https://medlineplus.gov/fever.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "0b65c10d-6433-47d7-a77e-d9405b7dbf79",
+    "text": "Viral Fever - Prevention:Maintain good personal hygiene,Vaccination (where applicable),Avoid sharing personal items like towels or utensils",
+    "metadata": {
+      "disease_id": "viral_fever",
+      "disease_name": "Viral Fever",
+      "source": "https://medlineplus.gov/fever.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "84969993-632a-4c21-a99b-1b51d1eeb0e1",
+    "text": "Influenza (Flu) - Summary:A contagious respiratory illness caused by influenza viruses that can range from mild to severe.",
+    "metadata": {
+      "disease_id": "influenza_(flu)",
+      "disease_name": "Influenza (Flu)",
+      "source": "https://www.cdc.gov/flu/about/index.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "d535c444-78f9-420b-9c9a-eca6d54246ac",
+    "text": "Influenza (Flu) - Symptoms:Sudden high fever,Dry cough,Sore throat,Extreme exhaustion,Chills,Muscle aches",
+    "metadata": {
+      "disease_id": "influenza_(flu)",
+      "disease_name": "Influenza (Flu)",
+      "source": "https://www.cdc.gov/flu/about/index.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "f2c2a84a-a9a4-4c6e-8727-4b0ad7d4eb5c",
+    "text": "Influenza (Flu) - Treatment:Antiviral drugs (if prescribed by a doctor early on),Rest and hydration,Fever reducers,Steam inhalation",
+    "metadata": {
+      "disease_id": "influenza_(flu)",
+      "disease_name": "Influenza (Flu)",
+      "source": "https://www.cdc.gov/flu/about/index.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "286ec170-058c-4ab6-946c-4b7e2b99e40e",
+    "text": "Influenza (Flu) - Warning_Signs:Difficulty breathing or shortness of breath,Chest pain,Sudden dizziness,Severe or persistent vomiting",
+    "metadata": {
+      "disease_id": "influenza_(flu)",
+      "disease_name": "Influenza (Flu)",
+      "source": "https://www.cdc.gov/flu/about/index.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "7e3e46ef-74a8-4547-b187-14f6956ef473",
+    "text": "Influenza (Flu) - Prevention:Annual flu vaccine,Hand hygiene,Covering coughs and sneezes,Staying home when sick",
+    "metadata": {
+      "disease_id": "influenza_(flu)",
+      "disease_name": "Influenza (Flu)",
+      "source": "https://www.cdc.gov/flu/about/index.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "3f91df34-77de-4967-a073-8873f3f9efec",
+    "text": "Dengue - Summary:A mosquito-borne viral infection causing high fever and severe flu-like symptoms, common in tropical regions.",
+    "metadata": {
+      "disease_id": "dengue",
+      "disease_name": "Dengue",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "13595a41-8dec-426e-9f33-158d9ae7caec",
+    "text": "Dengue - Symptoms:High fever (up to 104°F/40°C),Severe headache and pain behind the eyes,Joint and muscle pain (breakbone fever),Skin rash,Nausea and vomiting",
+    "metadata": {
+      "disease_id": "dengue",
+      "disease_name": "Dengue",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "3898797a-ee91-40ff-ac50-d502eef67e35",
+    "text": "Dengue - Treatment:Supportive care with fluids,Pain relief using Acetaminophen,Avoid Aspirin or Ibuprofen (increased bleeding risk),Medical monitoring",
+    "metadata": {
+      "disease_id": "dengue",
+      "disease_name": "Dengue",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "42eecc96-b257-453f-a888-f2d5b1da9ded",
+    "text": "Dengue - Warning_Signs:Severe abdominal pain,Persistent vomiting,Bleeding from gums or nose,Rapid breathing,Extreme fatigue/restlessness",
+    "metadata": {
+      "disease_id": "dengue",
+      "disease_name": "Dengue",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "99887829-46e4-4126-9e57-c46da36c478a",
+    "text": "Dengue - Prevention:Use mosquito repellent (DEET/Picaridin),Wear long-sleeved clothing,Eliminate standing water where mosquitoes breed,Use bed nets and window screens",
+    "metadata": {
+      "disease_id": "dengue",
+      "disease_name": "Dengue",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "9460e00b-3871-400b-9bff-b974d8d9df5f",
+    "text": "Malaria - Summary:A life-threatening disease caused by parasites transmitted through the bites of infected female Anopheles mosquitoes.",
+    "metadata": {
+      "disease_id": "malaria",
+      "disease_name": "Malaria",
+      "source": "https://www.cdc.gov/malaria/about/index.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "8ba6ee92-d9ea-4884-a75a-d2c8c52551b1",
+    "text": "Malaria - Symptoms:Cyclical fever and chills,Sweating,Headache,Nausea/vomiting,Muscle aches",
+    "metadata": {
+      "disease_id": "malaria",
+      "disease_name": "Malaria",
+      "source": "https://www.cdc.gov/malaria/about/index.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "f479345e-b740-4c1d-be73-3a979828ff34",
+    "text": "Malaria - Treatment:Prescription antimalarial drugs (e.g., Artemisinin-based therapy),Hospitalization for severe cases,Fluid management",
+    "metadata": {
+      "disease_id": "malaria",
+      "disease_name": "Malaria",
+      "source": "https://www.cdc.gov/malaria/about/index.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "b5524343-dab0-4113-9766-d63ba28cc5fd",
+    "text": "Malaria - Warning_Signs:Confusion or impaired consciousness,Yellowing of eyes/skin (jaundice),Dark-colored urine,Difficulty breathing",
+    "metadata": {
+      "disease_id": "malaria",
+      "disease_name": "Malaria",
+      "source": "https://www.cdc.gov/malaria/about/index.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "61afb2cf-05e6-4be7-9254-7f2e009e78fb",
+    "text": "Malaria - Prevention:Antimalarial chemoprophylaxis for travelers,Insecticide-treated bed nets,Indoor residual spraying,Using mosquito repellent",
+    "metadata": {
+      "disease_id": "malaria",
+      "disease_name": "Malaria",
+      "source": "https://www.cdc.gov/malaria/about/index.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "0c6589e5-74f2-4d99-affb-797bda45932b",
+    "text": "Typhoid - Summary:A bacterial infection caused by Salmonella Typhi, usually spread through contaminated food and water.",
+    "metadata": {
+      "disease_id": "typhoid",
+      "disease_name": "Typhoid",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/typhoid",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "52f1680c-be45-4c2e-b61d-eaa611066b8a",
+    "text": "Typhoid - Symptoms:Prolonged high fever,Weakness and fatigue,Stomach pain,Headache,Loss of appetite,Rose-colored spots on chest",
+    "metadata": {
+      "disease_id": "typhoid",
+      "disease_name": "Typhoid",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/typhoid",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "7f880d18-dd98-49aa-8ba8-300eb27345ad",
+    "text": "Typhoid - Treatment:Antibiotics (as prescribed by a healthcare provider),Fluid replacement,Nutritious, easy-to-digest diet",
+    "metadata": {
+      "disease_id": "typhoid",
+      "disease_name": "Typhoid",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/typhoid",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "da7839a2-13ee-40c2-8901-ce56a169a659",
+    "text": "Typhoid - Warning_Signs:Severe abdominal pain,Intestinal bleeding,Confusion or delirium,Persistent high fever despite antibiotics",
+    "metadata": {
+      "disease_id": "typhoid",
+      "disease_name": "Typhoid",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/typhoid",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "6c53b1d8-9482-4a5c-95fa-48bacf625124",
+    "text": "Typhoid - Prevention:Drink only boiled or bottled water,Eat thoroughly cooked food,Typhoid vaccination,Frequent handwashing with soap",
+    "metadata": {
+      "disease_id": "typhoid",
+      "disease_name": "Typhoid",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/typhoid",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "b933ac0d-2b37-4a50-894c-2cebd3689493",
+    "text": "COVID-19 - Summary:An infectious disease caused by the SARS-CoV-2 virus, primarily affecting the respiratory system.",
+    "metadata": {
+      "disease_id": "covid-19",
+      "disease_name": "COVID-19",
+      "source": "https://www.cdc.gov/coronavirus/2019-ncov/index.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "a9892644-a2a3-4bb3-a167-f91122f7edcd",
+    "text": "COVID-19 - Symptoms:Fever or chills,Cough,Shortness of breath,Fatigue,Loss of taste or smell,Sore throat",
+    "metadata": {
+      "disease_id": "covid-19",
+      "disease_name": "COVID-19",
+      "source": "https://www.cdc.gov/coronavirus/2019-ncov/index.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "cf64c817-7a12-4344-8d03-255d58f6a804",
+    "text": "COVID-19 - Treatment:Isolation to prevent spread,Rest and hydration,Symptomatic relief (fever reducers),Antivirals (for high-risk individuals, if prescribed)",
+    "metadata": {
+      "disease_id": "covid-19",
+      "disease_name": "COVID-19",
+      "source": "https://www.cdc.gov/coronavirus/2019-ncov/index.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "9a9f10cb-8d8f-4f4f-8d32-28a6e8f2bf5f",
+    "text": "COVID-19 - Warning_Signs:Trouble breathing,Persistent pain/pressure in chest,New confusion,Inability to wake or stay awake,Pale, gray, or blue-colored skin/lips",
+    "metadata": {
+      "disease_id": "covid-19",
+      "disease_name": "COVID-19",
+      "source": "https://www.cdc.gov/coronavirus/2019-ncov/index.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "bff40461-855d-4422-854b-2155e63606d0",
+    "text": "COVID-19 - Prevention:Vaccination and boosters,Wearing masks in crowded spaces,Maintaining physical distance,Good indoor ventilation",
+    "metadata": {
+      "disease_id": "covid-19",
+      "disease_name": "COVID-19",
+      "source": "https://www.cdc.gov/coronavirus/2019-ncov/index.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "bbff7e5d-2360-4d77-93e8-53eb3949bf95",
+    "text": "Diarrhea - Summary:Loose, watery stools occurring more frequently than usual, often caused by infection or food intolerance.",
+    "metadata": {
+      "disease_id": "diarrhea",
+      "disease_name": "Diarrhea",
+      "source": "https://medlineplus.gov/diarrhea.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "78a64bae-a634-40df-b61e-c88e7ca1c6d6",
+    "text": "Diarrhea - Symptoms:Frequent loose stools,Abdominal cramps,Bloating,Nausea,Urgent need for bowel movement",
+    "metadata": {
+      "disease_id": "diarrhea",
+      "disease_name": "Diarrhea",
+      "source": "https://medlineplus.gov/diarrhea.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "2db7e886-c0bf-4180-94de-b92e15c1198c",
+    "text": "Diarrhea - Treatment:Oral Rehydration Salts (ORS),Increased fluid intake,Bland diet (BRAT: Bananas, Rice, Applesauce, Toast),Probiotics",
+    "metadata": {
+      "disease_id": "diarrhea",
+      "disease_name": "Diarrhea",
+      "source": "https://medlineplus.gov/diarrhea.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "f2861000-d734-4d26-a14f-7e084a20f19f",
+    "text": "Diarrhea - Warning_Signs:Signs of severe dehydration (no urine, sunken eyes),Blood or mucus in stool,High fever,Symptoms lasting over 48 hours",
+    "metadata": {
+      "disease_id": "diarrhea",
+      "disease_name": "Diarrhea",
+      "source": "https://medlineplus.gov/diarrhea.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "41555dcb-b300-441f-85d7-b1e49ba237d9",
+    "text": "Diarrhea - Prevention:Safe drinking water,Proper food handling/cooking,Handwashing after bathroom use,Rotavirus vaccination for infants",
+    "metadata": {
+      "disease_id": "diarrhea",
+      "disease_name": "Diarrhea",
+      "source": "https://medlineplus.gov/diarrhea.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "0cd61189-704e-4b65-94a7-ef7efd49fd38",
+    "text": "Dehydration - Summary:A condition where the body loses more fluids than it takes in, hindering normal functions.",
+    "metadata": {
+      "disease_id": "dehydration",
+      "disease_name": "Dehydration",
+      "source": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "e042e7cf-11a3-4376-b741-cf049a567abb",
+    "text": "Dehydration - Symptoms:Extreme thirst,Dark-colored urine,Dizziness or lightheadedness,Dry mouth and skin,Fatigue",
+    "metadata": {
+      "disease_id": "dehydration",
+      "disease_name": "Dehydration",
+      "source": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "7b427901-7c7b-4d64-8c1b-285343919e5c",
+    "text": "Dehydration - Treatment:Sipping water or electrolyte drinks,Oral rehydration solutions,Intravenous fluids (in severe cases),Rest in a cool environment",
+    "metadata": {
+      "disease_id": "dehydration",
+      "disease_name": "Dehydration",
+      "source": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "2c499195-483d-4292-a5b1-42ad7862912e",
+    "text": "Dehydration - Warning_Signs:Confusion,Fainting,No urination for 8+ hours,Rapid heartbeat or breathing",
+    "metadata": {
+      "disease_id": "dehydration",
+      "disease_name": "Dehydration",
+      "source": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "616534bb-9793-49aa-b44d-60abaf7e0767",
+    "text": "Dehydration - Prevention:Drink water regularly throughout the day,Increase fluid intake during hot weather/exercise,Eat water-rich foods (fruits/vegetables),Monitor urine color (should be pale yellow)",
+    "metadata": {
+      "disease_id": "dehydration",
+      "disease_name": "Dehydration",
+      "source": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "4bd4fa82-fb03-4d3a-853c-df47cd8b8fd9",
+    "text": "Food Poisoning - Summary:Illness caused by eating contaminated, spoiled, or toxic food.",
+    "metadata": {
+      "disease_id": "food_poisoning",
+      "disease_name": "Food Poisoning",
+      "source": "https://www.cdc.gov/foodsafety/symptoms.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "deaa2116-dd5e-4ff5-8828-bafdfc64cf92",
+    "text": "Food Poisoning - Symptoms:Nausea and vomiting,Watery or bloody diarrhea,Abdominal pain and cramps,Fever",
+    "metadata": {
+      "disease_id": "food_poisoning",
+      "disease_name": "Food Poisoning",
+      "source": "https://www.cdc.gov/foodsafety/symptoms.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "5330f320-ba7e-463c-87b3-79bc784c9610",
+    "text": "Food Poisoning - Treatment:Fluid replacement (ORS),Gradual return to eating bland foods,Rest,Avoid anti-diarrheal meds if fever/bloody stool is present",
+    "metadata": {
+      "disease_id": "food_poisoning",
+      "disease_name": "Food Poisoning",
+      "source": "https://www.cdc.gov/foodsafety/symptoms.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "921c2067-8226-441a-afe4-95cab918430b",
+    "text": "Food Poisoning - Warning_Signs:Frequent episodes of vomiting/inability to keep liquids down,Bloody vomit or stools,Neurological symptoms (blurry vision, muscle weakness),High fever (above 102°F)",
+    "metadata": {
+      "disease_id": "food_poisoning",
+      "disease_name": "Food Poisoning",
+      "source": "https://www.cdc.gov/foodsafety/symptoms.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "eb66ecd0-728f-47a6-89c9-d16a972c1540",
+    "text": "Food Poisoning - Prevention:Wash hands and surfaces often,Separate raw meats from other foods,Cook food to the right temperature,Refrigerate perishables promptly",
+    "metadata": {
+      "disease_id": "food_poisoning",
+      "disease_name": "Food Poisoning",
+      "source": "https://www.cdc.gov/foodsafety/symptoms.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "b3c7d5a5-82e3-4066-83ec-b7e0234b6c76",
+    "text": "Gastritis / Acidity - Summary:Inflammation or irritation of the stomach lining, often leading to acid reflux symptoms.",
+    "metadata": {
+      "disease_id": "gastritis_/_acidity",
+      "disease_name": "Gastritis / Acidity",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "a655f5d4-9338-4ace-8bfa-a43653c8f948",
+    "text": "Gastritis / Acidity - Symptoms:Gnawing or burning ache in upper abdomen,Nausea,Fullness after eating,Bloating,Belching",
+    "metadata": {
+      "disease_id": "gastritis_/_acidity",
+      "disease_name": "Gastritis / Acidity",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "bd5d864d-4ce5-4d45-b63b-50e311bd03b9",
+    "text": "Gastritis / Acidity - Treatment:Antacids,H2 blockers or Proton Pump Inhibitors (PPIs),Avoiding spicy/acidic foods,Eating smaller, more frequent meals",
+    "metadata": {
+      "disease_id": "gastritis_/_acidity",
+      "disease_name": "Gastritis / Acidity",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "de72efed-a11e-42d5-84c7-aa7545ac52e9",
+    "text": "Gastritis / Acidity - Warning_Signs:Vomiting blood (may look like coffee grounds),Black, tarry stools,Unexplained weight loss,Severe, persistent pain",
+    "metadata": {
+      "disease_id": "gastritis_/_acidity",
+      "disease_name": "Gastritis / Acidity",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "804d065a-c265-4127-87bc-cba963315681",
+    "text": "Gastritis / Acidity - Prevention:Limit alcohol consumption,Avoid long-term use of NSAIDs (Aspirin/Ibuprofen),Manage stress levels,Quit smoking",
+    "metadata": {
+      "disease_id": "gastritis_/_acidity",
+      "disease_name": "Gastritis / Acidity",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "f8d246ec-4752-4fd1-8611-f65815db76c1",
+    "text": "Constipation - Summary:A condition characterized by infrequent bowel movements or difficulty passing stools.",
+    "metadata": {
+      "disease_id": "constipation",
+      "disease_name": "Constipation",
+      "source": "https://www.mayoclinic.org/diseases-conditions/constipation/symptoms-causes/syc-20353925",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "07591fd4-c672-4dba-be53-f0e502743446",
+    "text": "Constipation - Symptoms:Fewer than three bowel movements per week,Hard, lumpy stools,Straining to have a bowel movement,Feeling of incomplete evacuation",
+    "metadata": {
+      "disease_id": "constipation",
+      "disease_name": "Constipation",
+      "source": "https://www.mayoclinic.org/diseases-conditions/constipation/symptoms-causes/syc-20353925",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "7829e04d-a5f2-4689-9a24-3850011ec1d7",
+    "text": "Constipation - Treatment:Increase fiber intake (fruits, veggies, grains),Stay well-hydrated,Regular physical activity,Over-the-counter stool softeners or laxatives",
+    "metadata": {
+      "disease_id": "constipation",
+      "disease_name": "Constipation",
+      "source": "https://www.mayoclinic.org/diseases-conditions/constipation/symptoms-causes/syc-20353925",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "f5e2a616-65a7-436b-b067-d209e8f9edbc",
+    "text": "Constipation - Warning_Signs:Severe abdominal pain,Blood in stool,Weight loss,Persistent change in bowel habits",
+    "metadata": {
+      "disease_id": "constipation",
+      "disease_name": "Constipation",
+      "source": "https://www.mayoclinic.org/diseases-conditions/constipation/symptoms-causes/syc-20353925",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "97fd6fd8-ebe5-4f06-b9e2-c7cdb898f33a",
+    "text": "Constipation - Prevention:High-fiber diet,Don't ignore the urge to have a bowel movement,Establish a regular routine for bowel movements,Stay active",
+    "metadata": {
+      "disease_id": "constipation",
+      "disease_name": "Constipation",
+      "source": "https://www.mayoclinic.org/diseases-conditions/constipation/symptoms-causes/syc-20353925",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "1b438c30-7e12-4247-b943-58e570c67dae",
+    "text": "Indigestion - Summary:A general term for discomfort in the upper abdomen, often occurring after eating.",
+    "metadata": {
+      "disease_id": "indigestion",
+      "disease_name": "Indigestion",
+      "source": "https://medlineplus.gov/indigestion.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "d8fba2bb-5e41-4a6c-aa59-ad454c3a39ec",
+    "text": "Indigestion - Symptoms:Abdominal pain,Burning sensation in the stomach,Bloating,Nausea,Feeling uncomfortably full during or after a meal",
+    "metadata": {
+      "disease_id": "indigestion",
+      "disease_name": "Indigestion",
+      "source": "https://medlineplus.gov/indigestion.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "13aeff06-26a1-4a80-8229-db403db1f7c5",
+    "text": "Indigestion - Treatment:Avoid trigger foods (greasy, spicy),Eat slowly and chew thoroughly,Avoid lying down after meals,Antacids",
+    "metadata": {
+      "disease_id": "indigestion",
+      "disease_name": "Indigestion",
+      "source": "https://medlineplus.gov/indigestion.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "eb506f41-f4cb-493d-ac44-133e6db68942",
+    "text": "Indigestion - Warning_Signs:Shortness of breath or sweating with chest pain,Difficulty swallowing,Frequent vomiting,Unintentional weight loss",
+    "metadata": {
+      "disease_id": "indigestion",
+      "disease_name": "Indigestion",
+      "source": "https://medlineplus.gov/indigestion.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "0e1caf42-85a5-46f5-b555-0dff64059948",
+    "text": "Indigestion - Prevention:Manage stress,Avoid late-night snacking,Limit caffeine and alcohol,Maintain a healthy weight",
+    "metadata": {
+      "disease_id": "indigestion",
+      "disease_name": "Indigestion",
+      "source": "https://medlineplus.gov/indigestion.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "e8bf8e2f-6ca5-4bb7-8b39-72080f3ca9d0",
+    "text": "Headache - Summary:Pain or discomfort in the head or face area, ranging from mild to severe.",
+    "metadata": {
+      "disease_id": "headache",
+      "disease_name": "Headache",
+      "source": "https://www.mayoclinic.org/symptoms/headache/basics/definition/sym-20050800",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "3b4f6053-0834-47b0-8735-5973e7151b5c",
+    "text": "Headache - Symptoms:Pressure or throbbing sensation,Pain on one or both sides of the head,Tension in neck or shoulders",
+    "metadata": {
+      "disease_id": "headache",
+      "disease_name": "Headache",
+      "source": "https://www.mayoclinic.org/symptoms/headache/basics/definition/sym-20050800",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "3f3f6492-f20e-4e60-bd47-d5590121b93e",
+    "text": "Headache - Treatment:Rest in a quiet, dark room,Over-the-counter pain relief,Hydration,Cold or warm compress",
+    "metadata": {
+      "disease_id": "headache",
+      "disease_name": "Headache",
+      "source": "https://www.mayoclinic.org/symptoms/headache/basics/definition/sym-20050800",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "aa36d14b-d7ac-49de-a252-b387be9d2a2e",
+    "text": "Headache - Warning_Signs:Sudden, 'thunderclap' headache,Headache with stiff neck and fever,Headache after a head injury,Confusion or vision changes",
+    "metadata": {
+      "disease_id": "headache",
+      "disease_name": "Headache",
+      "source": "https://www.mayoclinic.org/symptoms/headache/basics/definition/sym-20050800",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "07461e47-f861-4123-b777-d3f0d1691aeb",
+    "text": "Headache - Prevention:Regular sleep schedule,Staying hydrated,Managing stress,Avoiding known food/environmental triggers",
+    "metadata": {
+      "disease_id": "headache",
+      "disease_name": "Headache",
+      "source": "https://www.mayoclinic.org/symptoms/headache/basics/definition/sym-20050800",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "e847a87a-f8a0-45c6-adb3-0e9c27f1e6a9",
+    "text": "Migraine - Summary:A type of headache characterized by severe throbbing pain, often accompanied by sensory sensitivities.",
+    "metadata": {
+      "disease_id": "migraine",
+      "disease_name": "Migraine",
+      "source": "https://medlineplus.gov/migraine.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "ba18d8b1-b385-4893-b1ba-e2f46350c332",
+    "text": "Migraine - Symptoms:Intense throbbing pain (usually one-sided),Nausea and vomiting,Sensitivity to light and sound,Aura (visual disturbances) in some cases",
+    "metadata": {
+      "disease_id": "migraine",
+      "disease_name": "Migraine",
+      "source": "https://medlineplus.gov/migraine.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "6b7dc6cd-47df-427e-ad09-804d57627fbe",
+    "text": "Migraine - Treatment:Specific migraine medications (Triptans),Resting in a dark room,Hydration,Preventative medications for frequent sufferers",
+    "metadata": {
+      "disease_id": "migraine",
+      "disease_name": "Migraine",
+      "source": "https://medlineplus.gov/migraine.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "af07be50-2533-4a5d-9e69-8a8db169933f",
+    "text": "Migraine - Warning_Signs:Sudden change in migraine pattern,Loss of vision,Speech difficulties,Weakness on one side of the body",
+    "metadata": {
+      "disease_id": "migraine",
+      "disease_name": "Migraine",
+      "source": "https://medlineplus.gov/migraine.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "c4cd1870-ed6f-43bf-bbe8-027ae175b81e",
+    "text": "Migraine - Prevention:Identify and avoid triggers (e.g., aged cheese, red wine, strong smells),Consistent meal times,Adequate sleep,Stress management techniques",
+    "metadata": {
+      "disease_id": "migraine",
+      "disease_name": "Migraine",
+      "source": "https://medlineplus.gov/migraine.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "0967c689-1aa5-405a-8b3d-95e37c78624b",
+    "text": "Body Ache (Myalgia) - Summary:Muscle pain or soreness that can involve a small area or the whole body.",
+    "metadata": {
+      "disease_id": "body_ache_(myalgia)",
+      "disease_name": "Body Ache (Myalgia)",
+      "source": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/myalgia",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "51a40ebb-e66d-4094-bd76-02b7c318d111",
+    "text": "Body Ache (Myalgia) - Symptoms:Muscle stiffness,Dull or sharp pain in muscles,Tenderness to touch,Reduced range of motion",
+    "metadata": {
+      "disease_id": "body_ache_(myalgia)",
+      "disease_name": "Body Ache (Myalgia)",
+      "source": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/myalgia",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "440bf2c6-d41c-4bc2-984f-628d44545716",
+    "text": "Body Ache (Myalgia) - Treatment:Rest and gentle stretching,Warm baths or heating pads,Over-the-counter anti-inflammatories,Massage",
+    "metadata": {
+      "disease_id": "body_ache_(myalgia)",
+      "disease_name": "Body Ache (Myalgia)",
+      "source": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/myalgia",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "d00714f5-8033-4169-8b0a-46206f01625a",
+    "text": "Body Ache (Myalgia) - Warning_Signs:Signs of infection (fever, swelling),Muscle weakness that doesn't improve,Pain that lasts more than a few days,Dark-colored urine (potential sign of muscle breakdown)",
+    "metadata": {
+      "disease_id": "body_ache_(myalgia)",
+      "disease_name": "Body Ache (Myalgia)",
+      "source": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/myalgia",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "fe866638-9495-4232-a9ca-b1b6669b7b0a",
+    "text": "Body Ache (Myalgia) - Prevention:Warm up before exercise,Stay hydrated,Proper ergonomics at work,Adequate potassium and magnesium in diet",
+    "metadata": {
+      "disease_id": "body_ache_(myalgia)",
+      "disease_name": "Body Ache (Myalgia)",
+      "source": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/myalgia",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "fe666b5b-3229-4956-a410-87628414204c",
+    "text": "Back Pain - Summary:Physical discomfort occurring anywhere in the spine or back, from mild to disabling.",
+    "metadata": {
+      "disease_id": "back_pain",
+      "disease_name": "Back Pain",
+      "source": "https://www.niams.nih.gov/health-topics/back-pain",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "d736c143-36db-49d6-976b-12e2ab82d05d",
+    "text": "Back Pain - Symptoms:Aching or stabbing sensation,Pain that radiates down the leg,Limited flexibility/range of motion",
+    "metadata": {
+      "disease_id": "back_pain",
+      "disease_name": "Back Pain",
+      "source": "https://www.niams.nih.gov/health-topics/back-pain",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "4a10deac-cda1-4c40-ad46-83472af15bbf",
+    "text": "Back Pain - Treatment:Gentle movement and walking,Heat or ice therapy,Physical therapy,Pain relief medication",
+    "metadata": {
+      "disease_id": "back_pain",
+      "disease_name": "Back Pain",
+      "source": "https://www.niams.nih.gov/health-topics/back-pain",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "3954b394-b87a-48cd-8479-946ac4f33d3e",
+    "text": "Back Pain - Warning_Signs:Loss of bladder or bowel control,Numbness/tingling in the groin area,Pain after a fall or injury,Unexplained fever with back pain",
+    "metadata": {
+      "disease_id": "back_pain",
+      "disease_name": "Back Pain",
+      "source": "https://www.niams.nih.gov/health-topics/back-pain",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "cb5a47cd-e532-496f-a6ed-85d2245469d1",
+    "text": "Back Pain - Prevention:Maintain a healthy weight,Use proper lifting techniques (legs, not back),Core-strengthening exercises,Good posture while sitting/standing",
+    "metadata": {
+      "disease_id": "back_pain",
+      "disease_name": "Back Pain",
+      "source": "https://www.niams.nih.gov/health-topics/back-pain",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "2cb96768-b4d5-4dca-9a8c-71b9f7c3b112",
+    "text": "Joint Pain - Summary:Discomfort, pain, or inflammation arising from any part of a joint.",
+    "metadata": {
+      "disease_id": "joint_pain",
+      "disease_name": "Joint Pain",
+      "source": "https://www.arthritis.org/health-wellness/about-arthritis/understanding-arthritis/joint-pain-causes",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "3a11fc54-6f10-4667-af32-aa8221b12cf1",
+    "text": "Joint Pain - Symptoms:Swelling or redness around a joint,Stiffness, especially in the morning,Reduced ability to move the joint",
+    "metadata": {
+      "disease_id": "joint_pain",
+      "disease_name": "Joint Pain",
+      "source": "https://www.arthritis.org/health-wellness/about-arthritis/understanding-arthritis/joint-pain-causes",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "33b8af1e-4fc2-4646-96df-7a91682be5d0",
+    "text": "Joint Pain - Treatment:Weight management to reduce stress on joints,Low-impact exercise (swimming, cycling),Ice/heat application,Anti-inflammatory medications",
+    "metadata": {
+      "disease_id": "joint_pain",
+      "disease_name": "Joint Pain",
+      "source": "https://www.arthritis.org/health-wellness/about-arthritis/understanding-arthritis/joint-pain-causes",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "eb5cb991-127d-4bf3-af12-1dd2dbe01e15",
+    "text": "Joint Pain - Warning_Signs:Joint deformity,Inability to use the joint at all,Intense pain and rapid swelling,Fever with joint pain",
+    "metadata": {
+      "disease_id": "joint_pain",
+      "disease_name": "Joint Pain",
+      "source": "https://www.arthritis.org/health-wellness/about-arthritis/understanding-arthritis/joint-pain-causes",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "ce24d912-b409-452e-8548-702df9f76f9e",
+    "text": "Joint Pain - Prevention:Protect joints from injury (use gear),Stay active to keep joints flexible,Eat an anti-inflammatory diet (Omega-3s),Stay hydrated",
+    "metadata": {
+      "disease_id": "joint_pain",
+      "disease_name": "Joint Pain",
+      "source": "https://www.arthritis.org/health-wellness/about-arthritis/understanding-arthritis/joint-pain-causes",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "4e0ce7ef-e1ce-4e66-96e8-0b4329ac851f",
+    "text": "Muscle Cramps - Summary:Sudden, involuntary contractions of one or more muscles.",
+    "metadata": {
+      "disease_id": "muscle_cramps",
+      "disease_name": "Muscle Cramps",
+      "source": "https://www.mayoclinic.org/diseases-conditions/muscle-cramp/symptoms-causes/syc-20350820",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "4d4f755c-aead-4817-8428-7898b8f3bb84",
+    "text": "Muscle Cramps - Symptoms:Sudden sharp pain,Hard lump of muscle tissue felt under the skin,Inability to move the affected limb temporarily",
+    "metadata": {
+      "disease_id": "muscle_cramps",
+      "disease_name": "Muscle Cramps",
+      "source": "https://www.mayoclinic.org/diseases-conditions/muscle-cramp/symptoms-causes/syc-20350820",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "fb306d91-c3dc-4c69-9db1-75f727d8357b",
+    "text": "Muscle Cramps - Treatment:Gently stretching and massaging the muscle,Applying heat to tense muscles or ice to sore ones,Drinking fluids with electrolytes",
+    "metadata": {
+      "disease_id": "muscle_cramps",
+      "disease_name": "Muscle Cramps",
+      "source": "https://www.mayoclinic.org/diseases-conditions/muscle-cramp/symptoms-causes/syc-20350820",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "8b8a9e29-9f95-4ddb-8cec-d79270bf8080",
+    "text": "Muscle Cramps - Warning_Signs:Severe discomfort with no obvious cause,Leg swelling or redness,Muscle weakness,Cramps that happen very frequently",
+    "metadata": {
+      "disease_id": "muscle_cramps",
+      "disease_name": "Muscle Cramps",
+      "source": "https://www.mayoclinic.org/diseases-conditions/muscle-cramp/symptoms-causes/syc-20350820",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "99c5d5d5-516a-401e-a914-248c98558f77",
+    "text": "Muscle Cramps - Prevention:Stay hydrated,Stretch before and after exercise,Ensure adequate intake of calcium, potassium, and magnesium,Avoid overexertion in hot weather",
+    "metadata": {
+      "disease_id": "muscle_cramps",
+      "disease_name": "Muscle Cramps",
+      "source": "https://www.mayoclinic.org/diseases-conditions/muscle-cramp/symptoms-causes/syc-20350820",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "06b43de2-8648-4a43-a033-38b8eaaa6332",
+    "text": "Sore Throat - Summary:Pain, scratchiness, or irritation of the throat that often worsens when swallowing.",
+    "metadata": {
+      "disease_id": "sore_throat",
+      "disease_name": "Sore Throat",
+      "source": "https://medlineplus.gov/sorethroat.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "80fc5dcf-a6d9-4b1d-9deb-b733e5e1142b",
+    "text": "Sore Throat - Symptoms:Pain or scratchy sensation,Difficulty swallowing,Swollen, red tonsils,Hoarse or muffled voice",
+    "metadata": {
+      "disease_id": "sore_throat",
+      "disease_name": "Sore Throat",
+      "source": "https://medlineplus.gov/sorethroat.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "1533e875-72c8-439d-b288-75b3c9a59c53",
+    "text": "Sore Throat - Treatment:Gargling with warm salt water,Drinking warm liquids (honey/lemon tea),Throat lozenges,Resting the voice",
+    "metadata": {
+      "disease_id": "sore_throat",
+      "disease_name": "Sore Throat",
+      "source": "https://medlineplus.gov/sorethroat.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "8e106ed0-3215-45ad-bd10-0c48c581647e",
+    "text": "Sore Throat - Warning_Signs:Difficulty breathing or swallowing,Drooling (inability to swallow saliva),Visible white patches on tonsils,Fever higher than 101°F",
+    "metadata": {
+      "disease_id": "sore_throat",
+      "disease_name": "Sore Throat",
+      "source": "https://medlineplus.gov/sorethroat.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "1b57cea7-23f1-4c35-98fe-e95535cb7071",
+    "text": "Sore Throat - Prevention:Avoid sharing food/utensils,Wash hands frequently,Avoid smoking and secondhand smoke,Humidify indoor air",
+    "metadata": {
+      "disease_id": "sore_throat",
+      "disease_name": "Sore Throat",
+      "source": "https://medlineplus.gov/sorethroat.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "37fe7e7e-f570-40a1-8a54-99e94e205a00",
+    "text": "Cough - Summary:A reflex action to clear the airways of mucus, irritants, or foreign particles.",
+    "metadata": {
+      "disease_id": "cough",
+      "disease_name": "Cough",
+      "source": "https://www.mayoclinic.org/symptoms/cough/basics/definition/sym-20050846",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "6afac1af-9ed2-4a2e-a6d5-d21f52d74e9c",
+    "text": "Cough - Symptoms:Dry or productive (phlegm) cough,Chest tightness,Throat irritation",
+    "metadata": {
+      "disease_id": "cough",
+      "disease_name": "Cough",
+      "source": "https://www.mayoclinic.org/symptoms/cough/basics/definition/sym-20050846",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "da5f1389-2e48-456b-b9e3-80dfa630410f",
+    "text": "Cough - Treatment:Stay hydrated,Use a humidifier,Honey (for those over 1 year old),Cough suppressants or expectorants (based on cough type)",
+    "metadata": {
+      "disease_id": "cough",
+      "disease_name": "Cough",
+      "source": "https://www.mayoclinic.org/symptoms/cough/basics/definition/sym-20050846",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "80c8f863-73c7-44d7-a44d-da0b61ff94c9",
+    "text": "Cough - Warning_Signs:Coughing up blood,Shortness of breath,Cough lasting more than 3 weeks,Wheezing",
+    "metadata": {
+      "disease_id": "cough",
+      "disease_name": "Cough",
+      "source": "https://www.mayoclinic.org/symptoms/cough/basics/definition/sym-20050846",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "f3d7d877-ffff-450c-b5c9-954ab588bd8d",
+    "text": "Cough - Prevention:Avoid air pollutants and smoke,Handwashing,Managing underlying conditions like GERD or asthma,Vaccination against pertussis and flu",
+    "metadata": {
+      "disease_id": "cough",
+      "disease_name": "Cough",
+      "source": "https://www.mayoclinic.org/symptoms/cough/basics/definition/sym-20050846",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "e6a0ff6c-490c-4200-b519-20ff4ccea962",
+    "text": "Asthma (non-acute) - Summary:A chronic condition where the airways narrow and swell, producing extra mucus.",
+    "metadata": {
+      "disease_id": "asthma_(non-acute)",
+      "disease_name": "Asthma (non-acute)",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "646f86c8-395e-4872-83aa-7f83f6a3b39b",
+    "text": "Asthma (non-acute) - Symptoms:Shortness of breath,Chest tightness,Wheezing (whistling sound) when exhaling,Coughing, especially at night",
+    "metadata": {
+      "disease_id": "asthma_(non-acute)",
+      "disease_name": "Asthma (non-acute)",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "6f1e44f0-565b-47a7-ac06-f9f4a7b241b2",
+    "text": "Asthma (non-acute) - Treatment:Inhaled corticosteroids (long-term control),Quick-relief inhalers (Albuterol) for flare-ups,Identifying and avoiding triggers,Regular follow-ups with a doctor",
+    "metadata": {
+      "disease_id": "asthma_(non-acute)",
+      "disease_name": "Asthma (non-acute)",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "53802726-a478-48d8-b79a-5429b2a86502",
+    "text": "Asthma (non-acute) - Warning_Signs:Rapid worsening of shortness of breath,No improvement after using a rescue inhaler,Difficulty speaking due to shortness of breath,Fingernails or lips turning blue",
+    "metadata": {
+      "disease_id": "asthma_(non-acute)",
+      "disease_name": "Asthma (non-acute)",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "8e3c3e28-2653-4528-ac2b-fd1bcdddb2f0",
+    "text": "Asthma (non-acute) - Prevention:Follow an asthma action plan,Avoid allergens (dust, pet dander, pollen),Quit smoking,Prevent respiratory infections",
+    "metadata": {
+      "disease_id": "asthma_(non-acute)",
+      "disease_name": "Asthma (non-acute)",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "ff143d35-f414-460a-b803-5634f9e52281",
+    "text": "Bronchitis (basic) - Summary:Inflammation of the lining of the bronchial tubes which carry air to and from the lungs.",
+    "metadata": {
+      "disease_id": "bronchitis_(basic)",
+      "disease_name": "Bronchitis (basic)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/bronchitis/symptoms-causes/syc-20353721",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "6ca166ad-d01d-472f-8767-fd0cca3c72eb",
+    "text": "Bronchitis (basic) - Symptoms:Cough (often with clear, yellow, or green mucus),Fatigue,Shortness of breath,Slight fever and chills,Chest discomfort",
+    "metadata": {
+      "disease_id": "bronchitis_(basic)",
+      "disease_name": "Bronchitis (basic)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/bronchitis/symptoms-causes/syc-20353721",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "1d5e5a03-6b2f-4eb3-8176-542a2e84e421",
+    "text": "Bronchitis (basic) - Treatment:Rest,Fluids,Cough medicine,Humidifier use,Avoiding lung irritants",
+    "metadata": {
+      "disease_id": "bronchitis_(basic)",
+      "disease_name": "Bronchitis (basic)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/bronchitis/symptoms-causes/syc-20353721",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "6f48f065-417c-4c0e-823f-3fd053424e2e",
+    "text": "Bronchitis (basic) - Warning_Signs:Fever higher than 100.4°F,Mucus containing blood,Difficulty breathing that prevents sleep,Symptoms lasting more than 3 weeks",
+    "metadata": {
+      "disease_id": "bronchitis_(basic)",
+      "disease_name": "Bronchitis (basic)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/bronchitis/symptoms-causes/syc-20353721",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "a5cb84ce-c826-453a-aef6-42f67b874018",
+    "text": "Bronchitis (basic) - Prevention:Don't smoke,Wash hands frequently,Wear a surgical mask when exposed to fumes,Get the flu vaccine",
+    "metadata": {
+      "disease_id": "bronchitis_(basic)",
+      "disease_name": "Bronchitis (basic)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/bronchitis/symptoms-causes/syc-20353721",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "f5ad462f-b9fc-4618-9e8d-e4ac0eed6e4d",
+    "text": "Skin Rash - Summary:An area of irritated or swollen skin, which can be caused by various factors.",
+    "metadata": {
+      "disease_id": "skin_rash",
+      "disease_name": "Skin Rash",
+      "source": "https://medlineplus.gov/rashes.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "cb713258-bbd9-4e75-80d9-c1a9e98d2d5d",
+    "text": "Skin Rash - Symptoms:Redness,Itching,Bumps or blisters,Dry, scaly, or crusted skin",
+    "metadata": {
+      "disease_id": "skin_rash",
+      "disease_name": "Skin Rash",
+      "source": "https://medlineplus.gov/rashes.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "768b9d80-8885-43f2-b760-5909d66bb8c3",
+    "text": "Skin Rash - Treatment:Gentle cleansing with mild soap,Hydrocortisone cream (for itching),Calamine lotion,Avoiding the irritant",
+    "metadata": {
+      "disease_id": "skin_rash",
+      "disease_name": "Skin Rash",
+      "source": "https://medlineplus.gov/rashes.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "966b08e9-ca0d-4c7f-9b1c-4314cc1fa9c1",
+    "text": "Skin Rash - Warning_Signs:Rash that spreads quickly over the body,Rash accompanied by fever,Painful rash or blisters in mouth/eyes,Signs of infection (pus, warmth)",
+    "metadata": {
+      "disease_id": "skin_rash",
+      "disease_name": "Skin Rash",
+      "source": "https://medlineplus.gov/rashes.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "142cc823-6731-4378-9977-b42d4be1f079",
+    "text": "Skin Rash - Prevention:Use hypoallergenic skincare products,Avoid known allergens/irritants,Maintain good skin hygiene,Wear breathable fabrics",
+    "metadata": {
+      "disease_id": "skin_rash",
+      "disease_name": "Skin Rash",
+      "source": "https://medlineplus.gov/rashes.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "e8acd8de-9cf5-4771-8b6f-86d4db71ae81",
+    "text": "Fungal Infection - Summary:A skin disease caused by a fungus (e.g., Athlete's foot, Ringworm, Yeast infection).",
+    "metadata": {
+      "disease_id": "fungal_infection",
+      "disease_name": "Fungal Infection",
+      "source": "https://www.cdc.gov/fungal/features/fungal-diseases.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "f2ce1ed1-fee7-49c7-b35f-93a4c46568da",
+    "text": "Fungal Infection - Symptoms:Itching and stinging,Red, scaly ring-shaped patches,Cracking or peeling skin,White patches in moist areas",
+    "metadata": {
+      "disease_id": "fungal_infection",
+      "disease_name": "Fungal Infection",
+      "source": "https://www.cdc.gov/fungal/features/fungal-diseases.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "8b6b8a73-c6d3-486f-9943-8258e7589be5",
+    "text": "Fungal Infection - Treatment:Over-the-counter antifungal creams/powders,Keeping the area dry and clean,Prescription medications for stubborn cases,Avoiding scratching",
+    "metadata": {
+      "disease_id": "fungal_infection",
+      "disease_name": "Fungal Infection",
+      "source": "https://www.cdc.gov/fungal/features/fungal-diseases.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "5c8ae7eb-f606-4a2e-bbc7-08b25bfe3bc2",
+    "text": "Fungal Infection - Warning_Signs:Infection not improving after OTC treatment,Widespread patches,Involvement of nails or scalp,Severe pain or swelling",
+    "metadata": {
+      "disease_id": "fungal_infection",
+      "disease_name": "Fungal Infection",
+      "source": "https://www.cdc.gov/fungal/features/fungal-diseases.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "0875b719-77c2-4dd1-89d7-1c8b8951d3be",
+    "text": "Fungal Infection - Prevention:Keep skin clean and dry,Change socks and underwear daily,Don't share towels or hairbrushes,Wear flip-flops in public showers/pools",
+    "metadata": {
+      "disease_id": "fungal_infection",
+      "disease_name": "Fungal Infection",
+      "source": "https://www.cdc.gov/fungal/features/fungal-diseases.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "68ed3e8b-d907-44b6-a29f-c7b0ba62b22a",
+    "text": "Minor Wounds / Cuts - Summary:Breaks in the skin surface, typically from sharp objects or abrasions.",
+    "metadata": {
+      "disease_id": "minor_wounds_/_cuts",
+      "disease_name": "Minor Wounds / Cuts",
+      "source": "https://medlineplus.gov/woundsandinjuries.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "28ca3127-f59f-416a-8174-c3f0118efbca",
+    "text": "Minor Wounds / Cuts - Symptoms:Bleeding,Pain at the site,Redness,Skin break or tear",
+    "metadata": {
+      "disease_id": "minor_wounds_/_cuts",
+      "disease_name": "Minor Wounds / Cuts",
+      "source": "https://medlineplus.gov/woundsandinjuries.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "ab500100-9c9a-46cd-b366-bc948931c643",
+    "text": "Minor Wounds / Cuts - Treatment:Stop bleeding with direct pressure,Clean with water and mild soap,Apply antibiotic ointment,Cover with a sterile bandage",
+    "metadata": {
+      "disease_id": "minor_wounds_/_cuts",
+      "disease_name": "Minor Wounds / Cuts",
+      "source": "https://medlineplus.gov/woundsandinjuries.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "e1a68645-1e41-4272-aceb-d5b69b6f8bc5",
+    "text": "Minor Wounds / Cuts - Warning_Signs:Bleeding that doesn't stop with pressure,Deep or gaping wound (may need stitches),Signs of infection (pus, red streaks),Debris in the wound that can't be removed",
+    "metadata": {
+      "disease_id": "minor_wounds_/_cuts",
+      "disease_name": "Minor Wounds / Cuts",
+      "source": "https://medlineplus.gov/woundsandinjuries.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "1fa92c11-fd76-482e-bc0a-1f839ffafb1d",
+    "text": "Minor Wounds / Cuts - Prevention:Use caution with sharp tools,Wear protective gear during activities,Keep a first-aid kit handy,Ensure tetanus vaccination is up to date",
+    "metadata": {
+      "disease_id": "minor_wounds_/_cuts",
+      "disease_name": "Minor Wounds / Cuts",
+      "source": "https://medlineplus.gov/woundsandinjuries.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "f6d40b90-3e63-4647-a02a-12ab77acfb89",
+    "text": "Allergic Reaction (mild) - Summary:An immune system response to a substance (allergen) that is usually harmless.",
+    "metadata": {
+      "disease_id": "allergic_reaction_(mild)",
+      "disease_name": "Allergic Reaction (mild)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/allergies/symptoms-causes/syc-20351497",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "a9ed61f0-214a-4db6-8e75-55f7f0cb99c6",
+    "text": "Allergic Reaction (mild) - Symptoms:Hives or itchy skin,Watery/itchy eyes,Sneezing,Mild swelling",
+    "metadata": {
+      "disease_id": "allergic_reaction_(mild)",
+      "disease_name": "Allergic Reaction (mild)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/allergies/symptoms-causes/syc-20351497",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "2ccf867e-05da-4417-8941-86031aa753b3",
+    "text": "Allergic Reaction (mild) - Treatment:Antihistamines (OTC),Cold compress on hives,Avoiding the allergen,Topical anti-itch creams",
+    "metadata": {
+      "disease_id": "allergic_reaction_(mild)",
+      "disease_name": "Allergic Reaction (mild)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/allergies/symptoms-causes/syc-20351497",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "1bc71c57-4aec-4e50-89cc-36374c254dc1",
+    "text": "Allergic Reaction (mild) - Warning_Signs:Difficulty breathing or wheezing (Anaphylaxis),Swelling of the lips, tongue, or throat,Rapid, weak pulse,Nausea/vomiting after a sting or food",
+    "metadata": {
+      "disease_id": "allergic_reaction_(mild)",
+      "disease_name": "Allergic Reaction (mild)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/allergies/symptoms-causes/syc-20351497",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "3ddd9fb6-ee33-4306-86de-25fdb6943efe",
+    "text": "Allergic Reaction (mild) - Prevention:Identify triggers through testing,Read food labels carefully,Inform others of your allergies,Keep emergency meds (like EpiPen) if prescribed",
+    "metadata": {
+      "disease_id": "allergic_reaction_(mild)",
+      "disease_name": "Allergic Reaction (mild)",
+      "source": "https://www.mayoclinic.org/diseases-conditions/allergies/symptoms-causes/syc-20351497",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "48409314-c7bb-4847-a117-18c023f09905",
+    "text": "Diabetes (Education) - Summary:A chronic condition that affects how the body turns food into energy, leading to high blood sugar.",
+    "metadata": {
+      "disease_id": "diabetes_(education)",
+      "disease_name": "Diabetes (Education)",
+      "source": "https://www.diabetes.org/diabetes",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "fd818200-0fbc-4033-a9d7-9c4d4e80e1fa",
+    "text": "Diabetes (Education) - Symptoms:Increased thirst and urination,Unexplained weight loss,Blurry vision,Slow-healing sores,Extreme fatigue",
+    "metadata": {
+      "disease_id": "diabetes_(education)",
+      "disease_name": "Diabetes (Education)",
+      "source": "https://www.diabetes.org/diabetes",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "64719899-6068-4029-bc6c-f08d2b5cbb48",
+    "text": "Diabetes (Education) - Treatment:Regular blood sugar monitoring,Healthy meal planning,Physical activity,Insulin or oral medications (as prescribed)",
+    "metadata": {
+      "disease_id": "diabetes_(education)",
+      "disease_name": "Diabetes (Education)",
+      "source": "https://www.diabetes.org/diabetes",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "9c3e49e3-92cb-4c05-b4b8-fe88bc5c9426",
+    "text": "Diabetes (Education) - Warning_Signs:Confusion or altered mental state,Breath that smells fruity (Ketoacidosis),Extreme dizziness/shaking (Hypoglycemia),Loss of consciousness",
+    "metadata": {
+      "disease_id": "diabetes_(education)",
+      "disease_name": "Diabetes (Education)",
+      "source": "https://www.diabetes.org/diabetes",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "67487ae1-d30a-4d28-9049-06b6a1436189",
+    "text": "Diabetes (Education) - Prevention:Maintain a healthy weight,Stay physically active,Limit sugary drinks and processed foods,Regular health screenings",
+    "metadata": {
+      "disease_id": "diabetes_(education)",
+      "disease_name": "Diabetes (Education)",
+      "source": "https://www.diabetes.org/diabetes",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "a07ba72e-3ee4-40c7-a6c7-6f92adb4605f",
+    "text": "Hypertension (Education) - Summary:A condition where the force of the blood against the artery walls is too high, often called a 'silent killer.'",
+    "metadata": {
+      "disease_id": "hypertension_(education)",
+      "disease_name": "Hypertension (Education)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "68fb8310-f3da-437f-9a9a-0ee06ada1229",
+    "text": "Hypertension (Education) - Symptoms:Often no symptoms (asymptomatic),Occasional headaches,Shortness of breath,Nosebleeds (only in very high stages)",
+    "metadata": {
+      "disease_id": "hypertension_(education)",
+      "disease_name": "Hypertension (Education)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "dffc2191-f637-41cf-9a77-0da29886abb6",
+    "text": "Hypertension (Education) - Treatment:Reducing salt intake,Regular aerobic exercise,Weight management,Prescription blood pressure medication",
+    "metadata": {
+      "disease_id": "hypertension_(education)",
+      "disease_name": "Hypertension (Education)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "07714c1b-984f-4819-a454-c0f13fd7acd8",
+    "text": "Hypertension (Education) - Warning_Signs:Severe chest pain,Severe headache with confusion/blurred vision,Nausea/vomiting with sudden anxiety,Difficulty speaking or weakness (Stroke risk)",
+    "metadata": {
+      "disease_id": "hypertension_(education)",
+      "disease_name": "Hypertension (Education)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "9ffa977c-6e03-4066-80de-7098baaaa73f",
+    "text": "Hypertension (Education) - Prevention:Follow the DASH diet (rich in fruits/veggies),Limit alcohol and quit smoking,Manage stress,Monitor blood pressure at home",
+    "metadata": {
+      "disease_id": "hypertension_(education)",
+      "disease_name": "Hypertension (Education)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "2a8ded39-982a-49f6-adb8-889cc5716cab",
+    "text": "Anemia - Summary:A condition in which the blood doesn't have enough healthy red blood cells to carry adequate oxygen.",
+    "metadata": {
+      "disease_id": "anemia",
+      "disease_name": "Anemia",
+      "source": "https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "bd1af5a3-dc05-4ca1-9651-00454d8a3670",
+    "text": "Anemia - Symptoms:Fatigue and weakness,Pale or yellowish skin,Irregular heartbeats,Cold hands and feet,Chest pain",
+    "metadata": {
+      "disease_id": "anemia",
+      "disease_name": "Anemia",
+      "source": "https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "9ff44389-9e27-4603-b70e-f0650272c989",
+    "text": "Anemia - Treatment:Iron-rich foods (red meat, beans, spinach),Vitamin B12 or Folate supplements,Iron supplements (if advised by doctor),Treating underlying blood loss",
+    "metadata": {
+      "disease_id": "anemia",
+      "disease_name": "Anemia",
+      "source": "https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "b00c7f27-186d-4a48-830b-10085a26a242",
+    "text": "Anemia - Warning_Signs:Severe shortness of breath even at rest,Fainting or severe dizziness,Rapid or pounding heart rate,Extreme pallor",
+    "metadata": {
+      "disease_id": "anemia",
+      "disease_name": "Anemia",
+      "source": "https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "6d8adc8c-4512-4241-af8a-da61e4fc9fcb",
+    "text": "Anemia - Prevention:Eat a balanced diet high in iron and vitamins,Vitamin C intake to help iron absorption,Regular check-ups during pregnancy,Addressing heavy menstrual cycles",
+    "metadata": {
+      "disease_id": "anemia",
+      "disease_name": "Anemia",
+      "source": "https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "d580d337-2ea0-4643-8c87-47d83ecdcf47",
+    "text": "Acute Pharyngitis (Strep Throat) - Summary:An inflammation of the pharynx, often caused by Group A Streptococcus bacteria, resulting in a severe sore throat.",
+    "metadata": {
+      "disease_id": "acute_pharyngitis_(strep_throat)",
+      "disease_name": "Acute Pharyngitis (Strep Throat)",
+      "source": "https://www.cdc.gov/groupastrep/diseases-public/strep-throat.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "cb96869b-637d-4f8d-9510-4f7653846b1e",
+    "text": "Acute Pharyngitis (Strep Throat) - Symptoms:Sudden severe sore throat,Pain when swallowing,Fever,Swollen tonsils, sometimes with white patches,Tiny red spots on the roof of the mouth",
+    "metadata": {
+      "disease_id": "acute_pharyngitis_(strep_throat)",
+      "disease_name": "Acute Pharyngitis (Strep Throat)",
+      "source": "https://www.cdc.gov/groupastrep/diseases-public/strep-throat.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "ac927866-a1f1-4645-b68f-b6a8a19d3ad9",
+    "text": "Acute Pharyngitis (Strep Throat) - Treatment:Antibiotics (if bacterial),Pain relievers (Ibuprofen/Acetaminophen),Saltwater gargle,Throat lozenges",
+    "metadata": {
+      "disease_id": "acute_pharyngitis_(strep_throat)",
+      "disease_name": "Acute Pharyngitis (Strep Throat)",
+      "source": "https://www.cdc.gov/groupastrep/diseases-public/strep-throat.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "40bdfdc6-c53a-4aba-8ad8-7ee6dedfdf03",
+    "text": "Acute Pharyngitis (Strep Throat) - Warning_Signs:Difficulty breathing,Inability to swallow saliva (drooling),Joint pain after the infection,Rash (Scarlet Fever)",
+    "metadata": {
+      "disease_id": "acute_pharyngitis_(strep_throat)",
+      "disease_name": "Acute Pharyngitis (Strep Throat)",
+      "source": "https://www.cdc.gov/groupastrep/diseases-public/strep-throat.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "7b0c7b7f-362a-4c9b-ab3a-3df2df4a66ee",
+    "text": "Acute Pharyngitis (Strep Throat) - Prevention:Frequent handwashing,Don't share utensils or toothbrushes,Cover mouth when sneezing",
+    "metadata": {
+      "disease_id": "acute_pharyngitis_(strep_throat)",
+      "disease_name": "Acute Pharyngitis (Strep Throat)",
+      "source": "https://www.cdc.gov/groupastrep/diseases-public/strep-throat.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "0b05c937-b791-4cd0-b38e-c1032ca0eb92",
+    "text": "Acute Sinusitis - Summary:Inflammation of the cavities around your nasal passages, often triggered by a cold or allergies.",
+    "metadata": {
+      "disease_id": "acute_sinusitis",
+      "disease_name": "Acute Sinusitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "d7c783f3-7e11-4ba0-99d7-d3c348d76498",
+    "text": "Acute Sinusitis - Symptoms:Thick yellow or green nasal discharge,Nasal congestion,Pain and tenderness around eyes, cheeks, nose,Reduced sense of smell",
+    "metadata": {
+      "disease_id": "acute_sinusitis",
+      "disease_name": "Acute Sinusitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "2f20b11f-9128-4de1-8b75-3e0b0b1249c7",
+    "text": "Acute Sinusitis - Treatment:Saline nasal spray,Nasal corticosteroids,Decongestants,Antibiotics (only if bacterial)",
+    "metadata": {
+      "disease_id": "acute_sinusitis",
+      "disease_name": "Acute Sinusitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "317fa99e-345b-423b-8312-acf2dc677198",
+    "text": "Acute Sinusitis - Warning_Signs:High fever,Severe headache,Confusion,Swelling or redness around the eyes",
+    "metadata": {
+      "disease_id": "acute_sinusitis",
+      "disease_name": "Acute Sinusitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "81bdbd1e-ade9-4c61-98be-0d326232202b",
+    "text": "Acute Sinusitis - Prevention:Avoid upper respiratory infections,Manage allergies,Avoid smoke and pollutants,Use a humidifier",
+    "metadata": {
+      "disease_id": "acute_sinusitis",
+      "disease_name": "Acute Sinusitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "36a97bfd-59ec-4c27-a113-4a585316e9be",
+    "text": "Osteoarthritis - Summary:The most common form of arthritis, occurring when the protective cartilage that cushions the ends of the bones wears down over time.",
+    "metadata": {
+      "disease_id": "osteoarthritis",
+      "disease_name": "Osteoarthritis",
+      "source": "https://www.arthritis.org/diseases/osteoarthritis",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "acba887f-d659-4e1f-8efd-20287e83e477",
+    "text": "Osteoarthritis - Symptoms:Joint pain during or after movement,Stiffness, especially upon waking,Loss of flexibility,Grating sensation in joints",
+    "metadata": {
+      "disease_id": "osteoarthritis",
+      "disease_name": "Osteoarthritis",
+      "source": "https://www.arthritis.org/diseases/osteoarthritis",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "3ba3df7e-0524-4050-8324-7ee4c61acae9",
+    "text": "Osteoarthritis - Treatment:Physical therapy,Weight management,Nonsteroidal anti-inflammatory drugs (NSAIDs),Corticosteroid injections",
+    "metadata": {
+      "disease_id": "osteoarthritis",
+      "disease_name": "Osteoarthritis",
+      "source": "https://www.arthritis.org/diseases/osteoarthritis",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "a3b10f95-3711-469b-81dc-4b3596a84d53",
+    "text": "Osteoarthritis - Warning_Signs:Severe joint instability,Rapidly worsening pain,Inability to perform daily activities",
+    "metadata": {
+      "disease_id": "osteoarthritis",
+      "disease_name": "Osteoarthritis",
+      "source": "https://www.arthritis.org/diseases/osteoarthritis",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "3330204f-33f9-4619-9507-2b0b2eae25e5",
+    "text": "Osteoarthritis - Prevention:Maintain a healthy weight,Exercise regularly (low impact),Avoid repetitive joint injuries",
+    "metadata": {
+      "disease_id": "osteoarthritis",
+      "disease_name": "Osteoarthritis",
+      "source": "https://www.arthritis.org/diseases/osteoarthritis",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "7987367f-6122-4c9e-a58a-1e8a5d22cd71",
+    "text": "Gastroesophageal Reflux Disease (GERD) - Summary:A chronic condition where stomach acid frequently flows back into the tube connecting your mouth and stomach (esophagus).",
+    "metadata": {
+      "disease_id": "gastroesophageal_reflux_disease_(gerd)",
+      "disease_name": "Gastroesophageal Reflux Disease (GERD)",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "1e24dd0f-4178-4d67-a416-1dd11e25328a",
+    "text": "Gastroesophageal Reflux Disease (GERD) - Symptoms:Heartburn, usually after eating,Chest pain,Difficulty swallowing,Regurgitation of food or sour liquid",
+    "metadata": {
+      "disease_id": "gastroesophageal_reflux_disease_(gerd)",
+      "disease_name": "Gastroesophageal Reflux Disease (GERD)",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "1b5b3290-a2b1-4df5-b8f4-740a19c7c7e3",
+    "text": "Gastroesophageal Reflux Disease (GERD) - Treatment:Antacids,H2 blockers,Proton pump inhibitors (PPIs),Lifestyle and dietary changes",
+    "metadata": {
+      "disease_id": "gastroesophageal_reflux_disease_(gerd)",
+      "disease_name": "Gastroesophageal Reflux Disease (GERD)",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "c1291c3d-f6de-47a0-8c1c-c68a0779189a",
+    "text": "Gastroesophageal Reflux Disease (GERD) - Warning_Signs:Chronic cough,Weight loss,Persistent vomiting,Difficulty swallowing or food sticking",
+    "metadata": {
+      "disease_id": "gastroesophageal_reflux_disease_(gerd)",
+      "disease_name": "Gastroesophageal Reflux Disease (GERD)",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "303bc5e8-b50c-494c-8061-a6eb11d5dd5e",
+    "text": "Gastroesophageal Reflux Disease (GERD) - Prevention:Maintain a healthy weight,Stop smoking,Avoid trigger foods (fatty/spicy),Don't lie down after a meal",
+    "metadata": {
+      "disease_id": "gastroesophageal_reflux_disease_(gerd)",
+      "disease_name": "Gastroesophageal Reflux Disease (GERD)",
+      "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "937c5bf3-62d2-4867-9562-553995733455",
+    "text": "Hyperlipidemia (High Cholesterol) - Summary:High levels of lipids (fats) in the blood, which can lead to plaque buildup in arteries.",
+    "metadata": {
+      "disease_id": "hyperlipidemia_(high_cholesterol)",
+      "disease_name": "Hyperlipidemia (High Cholesterol)",
+      "source": "https://medlineplus.gov/cholesterol.html",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "a71225aa-cac0-4081-bc19-ac72e83bddfc",
+    "text": "Hyperlipidemia (High Cholesterol) - Symptoms:Usually no symptoms,Yellowish deposits around eyes (Xanthelasma) in severe cases",
+    "metadata": {
+      "disease_id": "hyperlipidemia_(high_cholesterol)",
+      "disease_name": "Hyperlipidemia (High Cholesterol)",
+      "source": "https://medlineplus.gov/cholesterol.html",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "52f6620c-13b3-4146-bc08-607ac830622a",
+    "text": "Hyperlipidemia (High Cholesterol) - Treatment:Statins,Healthy diet (low saturated fats),Aerobic exercise,Weight loss",
+    "metadata": {
+      "disease_id": "hyperlipidemia_(high_cholesterol)",
+      "disease_name": "Hyperlipidemia (High Cholesterol)",
+      "source": "https://medlineplus.gov/cholesterol.html",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "a6980be5-aa6b-4ffa-bc4c-c42f29e45d0f",
+    "text": "Hyperlipidemia (High Cholesterol) - Warning_Signs:Chest pain (Angina),Signs of stroke (slurred speech, weakness),Leg pain when walking (PAD)",
+    "metadata": {
+      "disease_id": "hyperlipidemia_(high_cholesterol)",
+      "disease_name": "Hyperlipidemia (High Cholesterol)",
+      "source": "https://medlineplus.gov/cholesterol.html",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "35449e03-7561-480e-8db1-b1c98fb1632a",
+    "text": "Hyperlipidemia (High Cholesterol) - Prevention:Eat heart-healthy foods,Regular exercise,Avoid smoking,Limit alcohol consumption",
+    "metadata": {
+      "disease_id": "hyperlipidemia_(high_cholesterol)",
+      "disease_name": "Hyperlipidemia (High Cholesterol)",
+      "source": "https://medlineplus.gov/cholesterol.html",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "76d0af14-2aff-4769-a284-aa10ec7a066f",
+    "text": "Hypothyroidism - Summary:A condition in which the thyroid gland doesn't produce enough of certain crucial hormones.",
+    "metadata": {
+      "disease_id": "hypothyroidism",
+      "disease_name": "Hypothyroidism",
+      "source": "https://www.thyroid.org/hypothyroidism/",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "927dcc73-4330-405f-8aef-66e20fb9e702",
+    "text": "Hypothyroidism - Symptoms:Fatigue,Increased sensitivity to cold,Weight gain,Dry skin,Thinning hair",
+    "metadata": {
+      "disease_id": "hypothyroidism",
+      "disease_name": "Hypothyroidism",
+      "source": "https://www.thyroid.org/hypothyroidism/",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "0350497a-d0ce-4210-81d6-db791b6ffedc",
+    "text": "Hypothyroidism - Treatment:Levothyroxine (synthetic thyroid hormone),Regular blood tests (TSH/T4),Consistent medication schedule",
+    "metadata": {
+      "disease_id": "hypothyroidism",
+      "disease_name": "Hypothyroidism",
+      "source": "https://www.thyroid.org/hypothyroidism/",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "d4f30eed-1f99-4c03-b805-cbb0ef8e791f",
+    "text": "Hypothyroidism - Warning_Signs:Depression,Goiter (enlarged thyroid),Memory issues,Myxedema coma (severe, life-threatening cases)",
+    "metadata": {
+      "disease_id": "hypothyroidism",
+      "disease_name": "Hypothyroidism",
+      "source": "https://www.thyroid.org/hypothyroidism/",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "95ec3ae1-6cab-4ec5-b616-8f7ea7cdbf8e",
+    "text": "Hypothyroidism - Prevention:Ensure adequate iodine intake (iodized salt),Screening for high-risk groups (pregnant women/seniors)",
+    "metadata": {
+      "disease_id": "hypothyroidism",
+      "disease_name": "Hypothyroidism",
+      "source": "https://www.thyroid.org/hypothyroidism/",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "e5b646b8-20dc-4726-a0ef-66bda3b42e24",
+    "text": "Generalized Anxiety Disorder (GAD) - Summary:A mental health condition characterized by persistent and excessive worry about various things.",
+    "metadata": {
+      "disease_id": "generalized_anxiety_disorder_(gad)",
+      "disease_name": "Generalized Anxiety Disorder (GAD)",
+      "source": "https://www.nimh.nih.gov/health/topics/anxiety-disorders",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "677b1ff1-f5f1-4633-a06c-4251a2f8d6f2",
+    "text": "Generalized Anxiety Disorder (GAD) - Symptoms:Restlessness,Fatigue,Difficulty concentrating,Irritability,Muscle tension,Sleep disturbances",
+    "metadata": {
+      "disease_id": "generalized_anxiety_disorder_(gad)",
+      "disease_name": "Generalized Anxiety Disorder (GAD)",
+      "source": "https://www.nimh.nih.gov/health/topics/anxiety-disorders",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "c8c0d1c8-c2f3-463c-b81b-6abc18a7f2c1",
+    "text": "Generalized Anxiety Disorder (GAD) - Treatment:Cognitive Behavioral Therapy (CBT),Antidepressants (SSRIs/SNRIs),Mindfulness and meditation,Lifestyle changes (exercise/sleep)",
+    "metadata": {
+      "disease_id": "generalized_anxiety_disorder_(gad)",
+      "disease_name": "Generalized Anxiety Disorder (GAD)",
+      "source": "https://www.nimh.nih.gov/health/topics/anxiety-disorders",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "9b19099e-9fef-458f-9a59-22abb6287fcd",
+    "text": "Generalized Anxiety Disorder (GAD) - Warning_Signs:Panic attacks,Social isolation,Physical symptoms like chronic headaches or IBS,Suicidal ideation",
+    "metadata": {
+      "disease_id": "generalized_anxiety_disorder_(gad)",
+      "disease_name": "Generalized Anxiety Disorder (GAD)",
+      "source": "https://www.nimh.nih.gov/health/topics/anxiety-disorders",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "d97cc450-6233-41c8-aee3-010bc703e540",
+    "text": "Generalized Anxiety Disorder (GAD) - Prevention:Early intervention,Stress management techniques,Avoiding caffeine and alcohol",
+    "metadata": {
+      "disease_id": "generalized_anxiety_disorder_(gad)",
+      "disease_name": "Generalized Anxiety Disorder (GAD)",
+      "source": "https://www.nimh.nih.gov/health/topics/anxiety-disorders",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "a0f22184-bf1f-4748-8b00-1d2b26860212",
+    "text": "Pneumonia - Summary:An infection that inflames the air sacs in one or both lungs, which may fill with fluid.",
+    "metadata": {
+      "disease_id": "pneumonia",
+      "disease_name": "Pneumonia",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/pneumonia",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "54bfb15b-bebd-4855-ab0d-61872b56261a",
+    "text": "Pneumonia - Symptoms:Chest pain when breathing or coughing,Cough with phlegm,Fever, sweating, and shaking chills,Shortness of breath",
+    "metadata": {
+      "disease_id": "pneumonia",
+      "disease_name": "Pneumonia",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/pneumonia",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "cdd5c25f-24da-45a8-9f1b-67edd3f6169b",
+    "text": "Pneumonia - Treatment:Antibiotics (for bacterial),Antivirals (for viral),Cough medicine,Fever reducers/Pain relievers",
+    "metadata": {
+      "disease_id": "pneumonia",
+      "disease_name": "Pneumonia",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/pneumonia",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "f9fca07d-fa7a-4c4b-9dbc-94e339c70ce2",
+    "text": "Pneumonia - Warning_Signs:Blue tint in lips or fingertips,Confusion (especially in seniors),Very high fever,Inability to keep liquids down",
+    "metadata": {
+      "disease_id": "pneumonia",
+      "disease_name": "Pneumonia",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/pneumonia",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "3b21db13-db3b-482c-afb9-fa9119666364",
+    "text": "Pneumonia - Prevention:Pneumococcal vaccine,Flu vaccine,Don't smoke,Maintain strong immune system",
+    "metadata": {
+      "disease_id": "pneumonia",
+      "disease_name": "Pneumonia",
+      "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/pneumonia",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "74af083e-e165-4758-946c-d88e11851fe9",
+    "text": "Tuberculosis (TB) - Summary:A serious infectious bacterial disease that mainly affects the lungs but can spread to other organs.",
+    "metadata": {
+      "disease_id": "tuberculosis_(tb)",
+      "disease_name": "Tuberculosis (TB)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "cb1473b4-ae64-4aa5-ac35-69088ff2e4e2",
+    "text": "Tuberculosis (TB) - Symptoms:Cough lasting 3 or more weeks,Coughing up blood,Chest pain,Unintentional weight loss,Night sweats",
+    "metadata": {
+      "disease_id": "tuberculosis_(tb)",
+      "disease_name": "Tuberculosis (TB)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "9af7ef96-d293-4303-838f-9c82083e1377",
+    "text": "Tuberculosis (TB) - Treatment:Long-term course of antibiotics (6-9 months),DOTS (Directly Observed Treatment Short-course),Isolation during infectious phase",
+    "metadata": {
+      "disease_id": "tuberculosis_(tb)",
+      "disease_name": "Tuberculosis (TB)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "82dfe4c1-1010-4d85-9c64-9b55697ec48d",
+    "text": "Tuberculosis (TB) - Warning_Signs:Persistent fever,Loss of appetite,Severe shortness of breath,Swollen glands",
+    "metadata": {
+      "disease_id": "tuberculosis_(tb)",
+      "disease_name": "Tuberculosis (TB)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "20b911a6-6cd5-4424-9a84-9975c8c274f3",
+    "text": "Tuberculosis (TB) - Prevention:BCG vaccination (in endemic areas),Good ventilation,Screening high-risk contacts,Covering mouth when coughing",
+    "metadata": {
+      "disease_id": "tuberculosis_(tb)",
+      "disease_name": "Tuberculosis (TB)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "efd090e0-5891-4031-9fe0-2caa32e0a970",
+    "text": "Urinary Tract Infection (UTI) - Summary:An infection in any part of the urinary system—kidneys, ureters, bladder, or urethra.",
+    "metadata": {
+      "disease_id": "urinary_tract_infection_(uti)",
+      "disease_name": "Urinary Tract Infection (UTI)",
+      "source": "https://www.urologyhealth.org/urologic-conditions/urinary-tract-infections-adults",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "33d311cd-2fb6-4fee-b040-96f654076a36",
+    "text": "Urinary Tract Infection (UTI) - Symptoms:Strong, persistent urge to urinate,Burning sensation when urinating,Cloudy or strong-smelling urine,Pelvic pain (in women)",
+    "metadata": {
+      "disease_id": "urinary_tract_infection_(uti)",
+      "disease_name": "Urinary Tract Infection (UTI)",
+      "source": "https://www.urologyhealth.org/urologic-conditions/urinary-tract-infections-adults",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "0b4f255d-3561-4c7e-af26-2dd778085c29",
+    "text": "Urinary Tract Infection (UTI) - Treatment:Antibiotics,Increased water intake,Pain relievers (Phenazopyridine),Heating pad for pelvic discomfort",
+    "metadata": {
+      "disease_id": "urinary_tract_infection_(uti)",
+      "disease_name": "Urinary Tract Infection (UTI)",
+      "source": "https://www.urologyhealth.org/urologic-conditions/urinary-tract-infections-adults",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "c18e4fe0-4ce1-4d9b-9eae-94396c4f9135",
+    "text": "Urinary Tract Infection (UTI) - Warning_Signs:Back or side (flank) pain,High fever and chills,Nausea and vomiting,Blood in urine",
+    "metadata": {
+      "disease_id": "urinary_tract_infection_(uti)",
+      "disease_name": "Urinary Tract Infection (UTI)",
+      "source": "https://www.urologyhealth.org/urologic-conditions/urinary-tract-infections-adults",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "e4ad7c2c-3a25-455d-8138-bff70a3dd785",
+    "text": "Urinary Tract Infection (UTI) - Prevention:Drink plenty of water,Wipe from front to back,Empty bladder after intercourse,Avoid irritating feminine products",
+    "metadata": {
+      "disease_id": "urinary_tract_infection_(uti)",
+      "disease_name": "Urinary Tract Infection (UTI)",
+      "source": "https://www.urologyhealth.org/urologic-conditions/urinary-tract-infections-adults",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "9648ec61-0c97-463b-989c-a3be562179ed",
+    "text": "Coronary Artery Disease (CAD) - Summary:The most common heart disease, caused by plaque buildup in the wall of the arteries that supply blood to the heart.",
+    "metadata": {
+      "disease_id": "coronary_artery_disease_(cad)",
+      "disease_name": "Coronary Artery Disease (CAD)",
+      "source": "https://www.cdc.gov/heartdisease/coronary_ad.htm",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "3a9d9ca0-85e4-4594-b2eb-97edb08aa8ad",
+    "text": "Coronary Artery Disease (CAD) - Symptoms:Chest pain (Angina),Shortness of breath,Fatigue,Neck or jaw pain",
+    "metadata": {
+      "disease_id": "coronary_artery_disease_(cad)",
+      "disease_name": "Coronary Artery Disease (CAD)",
+      "source": "https://www.cdc.gov/heartdisease/coronary_ad.htm",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "36c4a241-55bd-4eee-b70f-aa1253b3f07f",
+    "text": "Coronary Artery Disease (CAD) - Treatment:Lifestyle changes (diet/exercise),Statins or Beta-blockers,Angioplasty or Stenting,Coronary artery bypass surgery",
+    "metadata": {
+      "disease_id": "coronary_artery_disease_(cad)",
+      "disease_name": "Coronary Artery Disease (CAD)",
+      "source": "https://www.cdc.gov/heartdisease/coronary_ad.htm",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "d61e2564-3ca5-490d-8f80-7ac4b910fb39",
+    "text": "Coronary Artery Disease (CAD) - Warning_Signs:Crushing chest pressure,Pain radiating to left arm,Sudden cold sweat,Nausea",
+    "metadata": {
+      "disease_id": "coronary_artery_disease_(cad)",
+      "disease_name": "Coronary Artery Disease (CAD)",
+      "source": "https://www.cdc.gov/heartdisease/coronary_ad.htm",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "984f42f4-8c25-4901-b215-6e05b5871c36",
+    "text": "Coronary Artery Disease (CAD) - Prevention:Maintain low cholesterol,Control blood pressure,No smoking,Manage diabetes",
+    "metadata": {
+      "disease_id": "coronary_artery_disease_(cad)",
+      "disease_name": "Coronary Artery Disease (CAD)",
+      "source": "https://www.cdc.gov/heartdisease/coronary_ad.htm",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "002a650f-fa82-4c4a-bd7e-e8ae95a5db10",
+    "text": "Atrial Fibrillation (AFib) - Summary:An irregular and often very rapid heart rhythm that can lead to blood clots in the heart.",
+    "metadata": {
+      "disease_id": "atrial_fibrillation_(afib)",
+      "disease_name": "Atrial Fibrillation (AFib)",
+      "source": "https://www.heart.org/en/health-topics/atrial-fibrillation",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "670dd786-c48e-403b-bb08-b4b12e925bf4",
+    "text": "Atrial Fibrillation (AFib) - Symptoms:Heart palpitations,Weakness,Dizziness,Shortness of breath",
+    "metadata": {
+      "disease_id": "atrial_fibrillation_(afib)",
+      "disease_name": "Atrial Fibrillation (AFib)",
+      "source": "https://www.heart.org/en/health-topics/atrial-fibrillation",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "29c3e000-b2dc-4e56-9b32-0047118b239f",
+    "text": "Atrial Fibrillation (AFib) - Treatment:Blood thinners (Anticoagulants),Beta-blockers,Cardioversion,Catheter ablation",
+    "metadata": {
+      "disease_id": "atrial_fibrillation_(afib)",
+      "disease_name": "Atrial Fibrillation (AFib)",
+      "source": "https://www.heart.org/en/health-topics/atrial-fibrillation",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "c2a7f408-fbee-439f-a3da-af783b97678b",
+    "text": "Atrial Fibrillation (AFib) - Warning_Signs:Sudden fainting,Severe chest pain,Signs of stroke (drooping face, arm weakness)",
+    "metadata": {
+      "disease_id": "atrial_fibrillation_(afib)",
+      "disease_name": "Atrial Fibrillation (AFib)",
+      "source": "https://www.heart.org/en/health-topics/atrial-fibrillation",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "d05eef4f-590e-4bfa-bcd1-48e0ded072a3",
+    "text": "Atrial Fibrillation (AFib) - Prevention:Limit caffeine and alcohol,Control high blood pressure,Regular physical activity,Reduce stress",
+    "metadata": {
+      "disease_id": "atrial_fibrillation_(afib)",
+      "disease_name": "Atrial Fibrillation (AFib)",
+      "source": "https://www.heart.org/en/health-topics/atrial-fibrillation",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "0e822e4a-3e5a-42f7-998e-5e831ebb66aa",
+    "text": "Alzheimer's Disease - Summary:A progressive neurological disorder that causes the brain to shrink and brain cells to die, leading to memory loss.",
+    "metadata": {
+      "disease_id": "alzheimer's_disease",
+      "disease_name": "Alzheimer's Disease",
+      "source": "https://www.alz.org/alzheimers-dementia/what-is-alzheimers",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "819e7f34-535a-4518-8ee8-ea931efffef5",
+    "text": "Alzheimer's Disease - Symptoms:Memory loss affecting daily life,Confusion with time or place,Difficulty completing familiar tasks,Changes in mood and personality",
+    "metadata": {
+      "disease_id": "alzheimer's_disease",
+      "disease_name": "Alzheimer's Disease",
+      "source": "https://www.alz.org/alzheimers-dementia/what-is-alzheimers",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "175f2ddc-c521-48af-8eac-af760aae21b0",
+    "text": "Alzheimer's Disease - Treatment:Cholinesterase inhibitors,Memantine,Cognitive stimulation therapy,Safety and environment management",
+    "metadata": {
+      "disease_id": "alzheimer's_disease",
+      "disease_name": "Alzheimer's Disease",
+      "source": "https://www.alz.org/alzheimers-dementia/what-is-alzheimers",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "eedf72f6-245e-4017-8d36-62e7de839189",
+    "text": "Alzheimer's Disease - Warning_Signs:Getting lost in familiar places,Severe suspicion of family/caregivers,Inability to swallow or move in late stages",
+    "metadata": {
+      "disease_id": "alzheimer's_disease",
+      "disease_name": "Alzheimer's Disease",
+      "source": "https://www.alz.org/alzheimers-dementia/what-is-alzheimers",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "0d0c6f51-fcf3-4376-a212-47f4a27922ae",
+    "text": "Alzheimer's Disease - Prevention:Regular mental stimulation,Heart-healthy diet,Social engagement,Quality sleep",
+    "metadata": {
+      "disease_id": "alzheimer's_disease",
+      "disease_name": "Alzheimer's Disease",
+      "source": "https://www.alz.org/alzheimers-dementia/what-is-alzheimers",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "7bc38ab4-7975-4c3a-85c0-85f98b91dfcb",
+    "text": "Parkinson's Disease - Summary:A brain disorder that leads to shaking, stiffness, and difficulty with walking, balance, and coordination.",
+    "metadata": {
+      "disease_id": "parkinson's_disease",
+      "disease_name": "Parkinson's Disease",
+      "source": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "5d0f5291-82ca-42cc-b012-51ccaa97df72",
+    "text": "Parkinson's Disease - Symptoms:Tremor (shaking) at rest,Slowed movement (Bradykinesia),Rigid muscles,Impaired posture and balance",
+    "metadata": {
+      "disease_id": "parkinson's_disease",
+      "disease_name": "Parkinson's Disease",
+      "source": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "b1b8c85e-e0e2-4e3e-ac64-974a3dd90709",
+    "text": "Parkinson's Disease - Treatment:Levodopa/Carbidopa,Dopamine agonists,Deep Brain Stimulation (DBS),Physical and occupational therapy",
+    "metadata": {
+      "disease_id": "parkinson's_disease",
+      "disease_name": "Parkinson's Disease",
+      "source": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "5de68151-5d92-4cea-aade-fc0610a4ef95",
+    "text": "Parkinson's Disease - Warning_Signs:Sudden falls,Difficulty swallowing,Severe depression or anxiety,Freezing of gait",
+    "metadata": {
+      "disease_id": "parkinson's_disease",
+      "disease_name": "Parkinson's Disease",
+      "source": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "4ca4ba88-7ef2-4142-9c21-c03e3edddc04",
+    "text": "Parkinson's Disease - Prevention:Regular aerobic exercise,Consumption of caffeine (linked to lower risk),Avoiding environmental toxins (pesticides)",
+    "metadata": {
+      "disease_id": "parkinson's_disease",
+      "disease_name": "Parkinson's Disease",
+      "source": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "d8ff3538-41af-49be-b767-55eb0ecf63a6",
+    "text": "Epilepsy - Summary:A central nervous system (neurological) disorder in which brain activity becomes abnormal, causing seizures.",
+    "metadata": {
+      "disease_id": "epilepsy",
+      "disease_name": "Epilepsy",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/epilepsy",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "c860dbc8-7b06-4f29-afb4-3ed003166ebc",
+    "text": "Epilepsy - Symptoms:Temporary confusion,A staring spell,Stiff muscles,Uncontrollable jerking movements",
+    "metadata": {
+      "disease_id": "epilepsy",
+      "disease_name": "Epilepsy",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/epilepsy",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "aa2d4668-2e2b-47a9-bfce-e48d84b6f532",
+    "text": "Epilepsy - Treatment:Anti-epileptic drugs (AEDs),Ketogenic diet,Vagus nerve stimulation,Brain surgery (for focal cases)",
+    "metadata": {
+      "disease_id": "epilepsy",
+      "disease_name": "Epilepsy",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/epilepsy",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "21a5cc46-4363-4846-b99c-48b82c32d07f",
+    "text": "Epilepsy - Warning_Signs:Seizure lasting more than 5 minutes,Slow recovery after a seizure,Second seizure follows immediately,Seizure during pregnancy",
+    "metadata": {
+      "disease_id": "epilepsy",
+      "disease_name": "Epilepsy",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/epilepsy",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "09d30f84-aafd-48ce-994c-2ac6e30f6e6e",
+    "text": "Epilepsy - Prevention:Preventing head injuries,Reducing risk of stroke,Prenatal care to prevent birth complications",
+    "metadata": {
+      "disease_id": "epilepsy",
+      "disease_name": "Epilepsy",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/epilepsy",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "962d6b58-0e82-48b2-9661-76c238ed686f",
+    "text": "Rheumatoid Arthritis (RA) - Summary:An autoimmune disorder where the immune system attacks the lining of the joints, causing painful swelling.",
+    "metadata": {
+      "disease_id": "rheumatoid_arthritis_(ra)",
+      "disease_name": "Rheumatoid Arthritis (RA)",
+      "source": "https://www.rheumatology.org/I-Am-A/Patient-Care/Diseases-Conditions/Rheumatoid-Arthritis",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "04c4209d-b884-4c8a-98d8-33d52f4fbff4",
+    "text": "Rheumatoid Arthritis (RA) - Symptoms:Tender, warm, swollen joints,Joint stiffness (worse in mornings),Fatigue, fever, and loss of appetite,Symmetrical joint involvement",
+    "metadata": {
+      "disease_id": "rheumatoid_arthritis_(ra)",
+      "disease_name": "Rheumatoid Arthritis (RA)",
+      "source": "https://www.rheumatology.org/I-Am-A/Patient-Care/Diseases-Conditions/Rheumatoid-Arthritis",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "abbb4c4c-846c-408b-94e6-da526df6b9d9",
+    "text": "Rheumatoid Arthritis (RA) - Treatment:DMARDs (Disease-modifying antirheumatic drugs),Biologic agents,NSAIDs,Physical therapy",
+    "metadata": {
+      "disease_id": "rheumatoid_arthritis_(ra)",
+      "disease_name": "Rheumatoid Arthritis (RA)",
+      "source": "https://www.rheumatology.org/I-Am-A/Patient-Care/Diseases-Conditions/Rheumatoid-Arthritis",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "c307b23f-ec09-49b3-95f0-51489a61705c",
+    "text": "Rheumatoid Arthritis (RA) - Warning_Signs:Rapidly developing joint deformities,Numbness/tingling (nerve involvement),Chest pain (heart lining inflammation)",
+    "metadata": {
+      "disease_id": "rheumatoid_arthritis_(ra)",
+      "disease_name": "Rheumatoid Arthritis (RA)",
+      "source": "https://www.rheumatology.org/I-Am-A/Patient-Care/Diseases-Conditions/Rheumatoid-Arthritis",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "5e45d7b9-bc05-4773-b9fc-0d35580bb698",
+    "text": "Rheumatoid Arthritis (RA) - Prevention:Quit smoking,Maintain healthy weight,Early diagnosis and treatment to prevent damage",
+    "metadata": {
+      "disease_id": "rheumatoid_arthritis_(ra)",
+      "disease_name": "Rheumatoid Arthritis (RA)",
+      "source": "https://www.rheumatology.org/I-Am-A/Patient-Care/Diseases-Conditions/Rheumatoid-Arthritis",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "de06dcee-747e-46bb-83d2-4076057f083c",
+    "text": "Celiac Disease - Summary:An immune reaction to eating gluten that creates inflammation and damages the small intestine's lining.",
+    "metadata": {
+      "disease_id": "celiac_disease",
+      "disease_name": "Celiac Disease",
+      "source": "https://celiac.org/about-celiac-disease/what-is-celiac-disease/",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "47248744-dc5a-44bd-a993-ec0eaff30905",
+    "text": "Celiac Disease - Symptoms:Diarrhea and bloating,Fatigue,Weight loss,Iron-deficiency anemia",
+    "metadata": {
+      "disease_id": "celiac_disease",
+      "disease_name": "Celiac Disease",
+      "source": "https://celiac.org/about-celiac-disease/what-is-celiac-disease/",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "0d3839ea-be66-4712-86d7-c256e38b5040",
+    "text": "Celiac Disease - Treatment:Strict lifelong gluten-free diet,Vitamin and mineral supplements,Dermatitis herpetiformis medication",
+    "metadata": {
+      "disease_id": "celiac_disease",
+      "disease_name": "Celiac Disease",
+      "source": "https://celiac.org/about-celiac-disease/what-is-celiac-disease/",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "71d0689e-c1f0-42f9-90ad-f05a11dd7fdc",
+    "text": "Celiac Disease - Warning_Signs:Severe malnutrition,Bone weakening (Osteoporosis),Infertility or miscarriage,Neurological problems",
+    "metadata": {
+      "disease_id": "celiac_disease",
+      "disease_name": "Celiac Disease",
+      "source": "https://celiac.org/about-celiac-disease/what-is-celiac-disease/",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "ee3d49ab-7a81-4f39-8900-89794f395c73",
+    "text": "Celiac Disease - Prevention:No known prevention; managed through diet after diagnosis,Screening for first-degree relatives",
+    "metadata": {
+      "disease_id": "celiac_disease",
+      "disease_name": "Celiac Disease",
+      "source": "https://celiac.org/about-celiac-disease/what-is-celiac-disease/",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "360791be-11a7-4d6d-a8a5-44d9c1bd7b7b",
+    "text": "Chronic Obstructive Pulmonary Disease (COPD) - Summary:A chronic inflammatory lung disease that causes obstructed airflow from the lungs.",
+    "metadata": {
+      "disease_id": "chronic_obstructive_pulmonary_disease_(copd)",
+      "disease_name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "6a33c197-19c2-46a3-afb3-f84a7fa662e0",
+    "text": "Chronic Obstructive Pulmonary Disease (COPD) - Symptoms:Shortness of breath, especially during activity,Wheezing,Chest tightness,Chronic cough with mucus",
+    "metadata": {
+      "disease_id": "chronic_obstructive_pulmonary_disease_(copd)",
+      "disease_name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "01cf7a06-4822-46ab-9a28-f449f456ebb9",
+    "text": "Chronic Obstructive Pulmonary Disease (COPD) - Treatment:Bronchodilators,Inhaled steroids,Oxygen therapy,Pulmonary rehabilitation",
+    "metadata": {
+      "disease_id": "chronic_obstructive_pulmonary_disease_(copd)",
+      "disease_name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "371bd7ff-c64d-455d-9892-d2293c85526a",
+    "text": "Chronic Obstructive Pulmonary Disease (COPD) - Warning_Signs:Blue fingernails or lips,Inability to catch breath or speak,Confusion,Rapid heartbeat",
+    "metadata": {
+      "disease_id": "chronic_obstructive_pulmonary_disease_(copd)",
+      "disease_name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "47b8379c-7d3b-4253-b81f-f411c850fb53",
+    "text": "Chronic Obstructive Pulmonary Disease (COPD) - Prevention:Don't smoke,Avoid secondhand smoke,Protect yourself from dust and fumes at work",
+    "metadata": {
+      "disease_id": "chronic_obstructive_pulmonary_disease_(copd)",
+      "disease_name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "source": "https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "de86ba47-6ba5-44db-ae81-62e154b8333c",
+    "text": "Tonsillitis - Summary:Inflammation of the tonsils, typically caused by a viral or bacterial infection (such as Strep throat).",
+    "metadata": {
+      "disease_id": "tonsillitis",
+      "disease_name": "Tonsillitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/tonsillitis/symptoms-causes/syc-20378479",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "5b9e36c9-5acf-471f-b4c6-d585a044ba59",
+    "text": "Tonsillitis - Symptoms:Swollen, red tonsils,White or yellow coating/patches on tonsils,Sore throat,Difficult or painful swallowing,Swollen lymph nodes in the neck",
+    "metadata": {
+      "disease_id": "tonsillitis",
+      "disease_name": "Tonsillitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/tonsillitis/symptoms-causes/syc-20378479",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "50b9991d-22d9-41be-8439-14ee20dc3894",
+    "text": "Tonsillitis - Treatment:Antibiotics (if bacterial),Hydration and rest,Saltwater gargle,Tonsillectomy (surgery) for chronic or recurrent cases",
+    "metadata": {
+      "disease_id": "tonsillitis",
+      "disease_name": "Tonsillitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/tonsillitis/symptoms-causes/syc-20378479",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "0676cad5-93bf-42cb-9e6e-eb6c21597c94",
+    "text": "Tonsillitis - Warning_Signs:Inability to swallow fluids,Drooling (due to inability to swallow),Severe difficulty breathing,Muffled 'hot potato' voice",
+    "metadata": {
+      "disease_id": "tonsillitis",
+      "disease_name": "Tonsillitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/tonsillitis/symptoms-causes/syc-20378479",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "3f8c93f1-adb2-4fdc-8893-77d323d67f60",
+    "text": "Tonsillitis - Prevention:Frequent handwashing,Avoid sharing food, glasses, or water bottles,Replace toothbrush after a strep diagnosis",
+    "metadata": {
+      "disease_id": "tonsillitis",
+      "disease_name": "Tonsillitis",
+      "source": "https://www.mayoclinic.org/diseases-conditions/tonsillitis/symptoms-causes/syc-20378479",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "5611dcfa-eaf1-4ea1-8a74-7c68428376fa",
+    "text": "Peritonsillar Abscess - Summary:A complication of tonsillitis where a collection of pus forms near the tonsils, pushing the tonsil toward the center of the throat.",
+    "metadata": {
+      "disease_id": "peritonsillar_abscess",
+      "disease_name": "Peritonsillar Abscess",
+      "source": "https://medlineplus.gov/ency/article/000986.htm",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "db0b7906-8ec2-4d84-8475-7c7f53032083",
+    "text": "Peritonsillar Abscess - Symptoms:Severe throat pain (usually one-sided),Fever and chills,Difficulty opening the mouth (trismus),Muffled voice",
+    "metadata": {
+      "disease_id": "peritonsillar_abscess",
+      "disease_name": "Peritonsillar Abscess",
+      "source": "https://medlineplus.gov/ency/article/000986.htm",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "60f4a0dd-2ebd-4a5f-b847-bf1f28fe8af0",
+    "text": "Peritonsillar Abscess - Treatment:Drainage of the abscess by a doctor,Intravenous or oral antibiotics,Pain management,Steroids to reduce swelling",
+    "metadata": {
+      "disease_id": "peritonsillar_abscess",
+      "disease_name": "Peritonsillar Abscess",
+      "source": "https://medlineplus.gov/ency/article/000986.htm",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "d307f2d4-c970-4a00-a1cd-2160ba02cc1a",
+    "text": "Peritonsillar Abscess - Warning_Signs:Airway obstruction,Dehydration from inability to drink,Spreading infection to the neck or chest",
+    "metadata": {
+      "disease_id": "peritonsillar_abscess",
+      "disease_name": "Peritonsillar Abscess",
+      "source": "https://medlineplus.gov/ency/article/000986.htm",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "f1f34bdb-9b62-44c0-b5a6-5e4160c4c0a1",
+    "text": "Peritonsillar Abscess - Prevention:Prompt treatment of tonsillitis,Maintaining oral hygiene,Quitting smoking",
+    "metadata": {
+      "disease_id": "peritonsillar_abscess",
+      "disease_name": "Peritonsillar Abscess",
+      "source": "https://medlineplus.gov/ency/article/000986.htm",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "98c15926-7cd2-4cdc-bf67-68fe4db0d0ae",
+    "text": "Tonsil Stones (Tonsilloliths) - Summary:Small, hard white or yellow deposits that form in the crevices (crypts) of the tonsils.",
+    "metadata": {
+      "disease_id": "tonsil_stones_(tonsilloliths)",
+      "disease_name": "Tonsil Stones (Tonsilloliths)",
+      "source": "https://my.clevelandclinic.org/health/diseases/21505-tonsil-stones",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "4c353367-381e-4ef3-a062-e300e4fe451e",
+    "text": "Tonsil Stones (Tonsilloliths) - Symptoms:Bad breath (Halitosis),Sore throat,Sensation of something stuck in the throat,Visible white debris on tonsils",
+    "metadata": {
+      "disease_id": "tonsil_stones_(tonsilloliths)",
+      "disease_name": "Tonsil Stones (Tonsilloliths)",
+      "source": "https://my.clevelandclinic.org/health/diseases/21505-tonsil-stones",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "d038e10b-0395-4f36-9aee-e6f4c1f2fda6",
+    "text": "Tonsil Stones (Tonsilloliths) - Treatment:Vigorous saltwater gargling,Manual removal (if safe and advised),Laser tonsil cryptolysis,Antibiotics (if infected)",
+    "metadata": {
+      "disease_id": "tonsil_stones_(tonsilloliths)",
+      "disease_name": "Tonsil Stones (Tonsilloliths)",
+      "source": "https://my.clevelandclinic.org/health/diseases/21505-tonsil-stones",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "c965c7c5-d2c0-44eb-9410-2aace53ea29f",
+    "text": "Tonsil Stones (Tonsilloliths) - Warning_Signs:Significant swelling of the tonsil,Difficulty swallowing,Persistent ear pain",
+    "metadata": {
+      "disease_id": "tonsil_stones_(tonsilloliths)",
+      "disease_name": "Tonsil Stones (Tonsilloliths)",
+      "source": "https://my.clevelandclinic.org/health/diseases/21505-tonsil-stones",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "a70cc9b5-5b97-4b7b-9bae-3d18d75b547c",
+    "text": "Tonsil Stones (Tonsilloliths) - Prevention:Good oral hygiene (brushing/flossing),Gargling regularly after meals,Staying hydrated",
+    "metadata": {
+      "disease_id": "tonsil_stones_(tonsilloliths)",
+      "disease_name": "Tonsil Stones (Tonsilloliths)",
+      "source": "https://my.clevelandclinic.org/health/diseases/21505-tonsil-stones",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "b2f4139c-e028-423f-9987-840826d2dfa5",
+    "text": "Chronic Kidney Disease (CKD) - Summary:A long-term condition where the kidneys don't work as well as they should, often worsening over time.",
+    "metadata": {
+      "disease_id": "chronic_kidney_disease_(ckd)",
+      "disease_name": "Chronic Kidney Disease (CKD)",
+      "source": "https://www.kidney.org/atoz/content/about-chronic-kidney-disease",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "522275e3-54d9-4d66-84ec-4ea847f4a370",
+    "text": "Chronic Kidney Disease (CKD) - Symptoms:Nausea and vomiting,Fatigue and weakness,Changes in urination frequency,Swollen feet and ankles",
+    "metadata": {
+      "disease_id": "chronic_kidney_disease_(ckd)",
+      "disease_name": "Chronic Kidney Disease (CKD)",
+      "source": "https://www.kidney.org/atoz/content/about-chronic-kidney-disease",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "4e946ecc-d051-4203-9060-b8567aab835c",
+    "text": "Chronic Kidney Disease (CKD) - Treatment:Managing blood pressure and diabetes,Dietary changes (low protein/salt),Dialysis (in late stages),Kidney transplant",
+    "metadata": {
+      "disease_id": "chronic_kidney_disease_(ckd)",
+      "disease_name": "Chronic Kidney Disease (CKD)",
+      "source": "https://www.kidney.org/atoz/content/about-chronic-kidney-disease",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "d8ae0d47-0a10-466b-a48f-e8160e365848",
+    "text": "Chronic Kidney Disease (CKD) - Warning_Signs:Fluid retention (Edema),Sudden shortness of breath,Chest pain (fluid buildup around heart),High potassium levels",
+    "metadata": {
+      "disease_id": "chronic_kidney_disease_(ckd)",
+      "disease_name": "Chronic Kidney Disease (CKD)",
+      "source": "https://www.kidney.org/atoz/content/about-chronic-kidney-disease",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "2c69f14b-81b4-4f7c-91d7-bf9a4b1e6436",
+    "text": "Chronic Kidney Disease (CKD) - Prevention:Control blood sugar and blood pressure,Stay hydrated,Limit OTC painkiller use (NSAIDs),Reduce salt intake",
+    "metadata": {
+      "disease_id": "chronic_kidney_disease_(ckd)",
+      "disease_name": "Chronic Kidney Disease (CKD)",
+      "source": "https://www.kidney.org/atoz/content/about-chronic-kidney-disease",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "c497142c-163f-472c-a641-dadb450f88cc",
+    "text": "Osteoporosis - Summary:A condition that weakens bones, making them fragile and more likely to break.",
+    "metadata": {
+      "disease_id": "osteoporosis",
+      "disease_name": "Osteoporosis",
+      "source": "https://www.niams.nih.gov/health-topics/osteoporosis",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "fe463645-6dfd-4e92-9149-eced100bee57",
+    "text": "Osteoporosis - Symptoms:Back pain (caused by fractured vertebra),Loss of height over time,Stooped posture,Bones that break easily",
+    "metadata": {
+      "disease_id": "osteoporosis",
+      "disease_name": "Osteoporosis",
+      "source": "https://www.niams.nih.gov/health-topics/osteoporosis",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "761c5937-17a2-4271-a814-8f90c389c317",
+    "text": "Osteoporosis - Treatment:Bisphosphonates,Hormone-related therapy,Calcium and Vitamin D supplements,Weight-bearing exercise",
+    "metadata": {
+      "disease_id": "osteoporosis",
+      "disease_name": "Osteoporosis",
+      "source": "https://www.niams.nih.gov/health-topics/osteoporosis",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "03dacaef-6823-430b-9670-12c477774217",
+    "text": "Osteoporosis - Warning_Signs:Sudden sharp back pain,Fracture from a minor fall,Visible hump in the upper back",
+    "metadata": {
+      "disease_id": "osteoporosis",
+      "disease_name": "Osteoporosis",
+      "source": "https://www.niams.nih.gov/health-topics/osteoporosis",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "7d19003b-20bf-4130-a7ae-d8ef5277e870",
+    "text": "Osteoporosis - Prevention:Adequate calcium intake,Weight-bearing exercise (walking, jogging),Avoiding excessive alcohol,Quitting smoking",
+    "metadata": {
+      "disease_id": "osteoporosis",
+      "disease_name": "Osteoporosis",
+      "source": "https://www.niams.nih.gov/health-topics/osteoporosis",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "f8aee345-12d7-4aca-b781-9e17f2c67adb",
+    "text": "Eczema (Atopic Dermatitis) - Summary:A condition that makes your skin red and itchy, common in children but can occur at any age.",
+    "metadata": {
+      "disease_id": "eczema_(atopic_dermatitis)",
+      "disease_name": "Eczema (Atopic Dermatitis)",
+      "source": "https://www.nationaleczema.org/eczema/",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "6b244008-7f0d-43fc-bc69-e81c88dc9d3a",
+    "text": "Eczema (Atopic Dermatitis) - Symptoms:Dry, scaly skin,Itching, which may be severe,Red to brownish-gray patches,Small, raised bumps",
+    "metadata": {
+      "disease_id": "eczema_(atopic_dermatitis)",
+      "disease_name": "Eczema (Atopic Dermatitis)",
+      "source": "https://www.nationaleczema.org/eczema/",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "e4d02c88-2f9e-428b-aa10-14298f2801bf",
+    "text": "Eczema (Atopic Dermatitis) - Treatment:Moisturizing regularly,Corticosteroid creams,Topical calcineurin inhibitors,Phototherapy",
+    "metadata": {
+      "disease_id": "eczema_(atopic_dermatitis)",
+      "disease_name": "Eczema (Atopic Dermatitis)",
+      "source": "https://www.nationaleczema.org/eczema/",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "00450afe-4f03-47ca-b8e9-1b3fd22208a2",
+    "text": "Eczema (Atopic Dermatitis) - Warning_Signs:Signs of infection (pus, yellow crusts),Skin is painful to the touch,Sleep loss due to itching",
+    "metadata": {
+      "disease_id": "eczema_(atopic_dermatitis)",
+      "disease_name": "Eczema (Atopic Dermatitis)",
+      "source": "https://www.nationaleczema.org/eczema/",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "2a5f5e69-089c-4e6c-a145-61864496407c",
+    "text": "Eczema (Atopic Dermatitis) - Prevention:Identify and avoid triggers (soaps, sweat),Short, warm showers (not hot),Use 'fragrance-free' products",
+    "metadata": {
+      "disease_id": "eczema_(atopic_dermatitis)",
+      "disease_name": "Eczema (Atopic Dermatitis)",
+      "source": "https://www.nationaleczema.org/eczema/",
+      "section": "Prevention"
+    }
+  },
+  {
+    "chunk_id": "ff362b99-3d90-4cb5-b599-e3e979bccf25",
+    "text": "Gout - Summary:A form of inflammatory arthritis characterized by sudden, severe attacks of pain and redness in joints.",
+    "metadata": {
+      "disease_id": "gout",
+      "disease_name": "Gout",
+      "source": "https://www.arthritis.org/diseases/gout",
+      "section": "Summary"
+    }
+  },
+  {
+    "chunk_id": "5ab18e08-5d6e-493d-b6a2-6f512bba826b",
+    "text": "Gout - Symptoms:Intense joint pain (often big toe),Lingering discomfort,Inflammation and redness,Limited range of motion",
+    "metadata": {
+      "disease_id": "gout",
+      "disease_name": "Gout",
+      "source": "https://www.arthritis.org/diseases/gout",
+      "section": "Symptoms"
+    }
+  },
+  {
+    "chunk_id": "40b4152a-4f2c-4e27-bd4b-020b0c3962b2",
+    "text": "Gout - Treatment:NSAIDs or Colchicine,Corticosteroids,Urate-lowering therapy (Allopurinol),Ice application",
+    "metadata": {
+      "disease_id": "gout",
+      "disease_name": "Gout",
+      "source": "https://www.arthritis.org/diseases/gout",
+      "section": "Treatment"
+    }
+  },
+  {
+    "chunk_id": "22931c8e-8b87-4f58-b376-69d6e059861b",
+    "text": "Gout - Warning_Signs:Repeated attacks (chronic gout),Joint damage/deformity,Kidney stones",
+    "metadata": {
+      "disease_id": "gout",
+      "disease_name": "Gout",
+      "source": "https://www.arthritis.org/diseases/gout",
+      "section": "Warning_Signs"
+    }
+  },
+  {
+    "chunk_id": "98064dc0-a132-4eb6-ba27-73f48990e1ca",
+    "text": "Gout - Prevention:Limit purine-rich foods (red meat, seafood),Avoid sugary drinks and alcohol,Drink plenty of water,Maintain a healthy weight",
+    "metadata": {
+      "disease_id": "gout",
+      "disease_name": "Gout",
+      "source": "https://www.arthritis.org/diseases/gout",
+      "section": "Prevention"
+    }
+  }
+]

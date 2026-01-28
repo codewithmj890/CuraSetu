@@ -1,0 +1,8 @@
+Django
+mysqlclient
+google-generativeai
+python-dotenv
+Pillow
+sentence-transformers
+faiss-cpu
+numpy

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - CuraSetu{% endblock %}
+
+{% block content %}
+<div class="app-container py-4">
+    <div class="glass crystal" style="max-width: 800px; margin: 0 auto; padding: 32px;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-600" style="color: var(--text-primary);">My Profile</h2>
+            <a href="{% url 'chatbot:chat' %}" class="btn glass crystal" style="padding: 8px 16px; color: var(--text-primary);">
+                <i class="fas fa-arrow-left me-2" style="color: var(--text-primary);"></i>Back to Chat
+            </a>
+        </div>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert glass" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: var(--success); border: 1px solid var(--border); margin-bottom: 16px;" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                {% if user.profile_picture %}
+                    <div class="glass crystal" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto; padding: 4px; background: linear-gradient(135deg, var(--accent), var(--success));">
+                        <img src="{{ user.profile_picture.url }}" alt="Profile Picture" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                {% else %}
+                    <div class="glass crystal d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto;">
+                        <i class="fas fa-user fa-3x" style="color: var(--text-secondary);"></i>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-8">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Username</label>
+                        {{ form.username }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Email</label>
+                        {{ form.email }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.profile_picture.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Profile Picture</label>
+                        {{ form.profile_picture }}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary crystal">Update Profile</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-4 pt-4" style="border-top: 1px solid var(--border);">
+            <a href="{% url 'accounts:logout' %}" class="btn glass crystal" style="background: linear-gradient(135deg, #fee2e2, #fecaca); color: var(--danger); border: 1px solid var(--border);">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

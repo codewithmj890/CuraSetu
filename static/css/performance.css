@@ -1,0 +1,247 @@
+/* CuraSetu Performance-Optimized Styles - 60fps Guaranteed */
+
+/* ============================================
+   ADAPTIVE GLASSMORPHISM - Device Detection
+   ============================================ */
+
+:root {
+    --glass-blur: 0px;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-bg-hover: rgba(255, 255, 255, 0.95);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --animation-speed: 150ms;
+}
+
+/* High-end devices: Enable blur */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    :root {
+        --glass-blur: 8px;
+    }
+}
+
+/* Dark theme optimized colors */
+[data-theme="dark"] {
+    --glass-bg: rgba(15, 23, 42, 0.9);
+    --glass-bg-hover: rgba(30, 41, 59, 0.95);
+}
+
+/* ============================================
+   PERFORMANCE-SAFE GLASSMORPHISM
+   ============================================ */
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.glass:hover {
+    background: var(--glass-bg-hover);
+    box-shadow: var(--shadow-md);
+}
+
+/* Remove GPU acceleration from non-animating elements */
+.glass,
+.message-content,
+.thread-item {
+    will-change: auto;
+    transform: none;
+}
+
+/* ============================================
+   SCROLL OPTIMIZATION - Zero Jank
+   ============================================ */
+
+.chat-messages {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Never blur scrolling containers */
+.chat-messages,
+.sidebar .overflow-auto {
+    backdrop-filter: none !important;
+}
+
+/* Lightweight scrollbar */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* ============================================
+   ANIMATION DISCIPLINE - Transform/Opacity Only
+   ============================================ */
+
+.message {
+    animation: messageSlide var(--animation-speed) ease-out;
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button hover - safe properties only */
+.btn-primary {
+    transition: transform var(--animation-speed) ease-out, 
+                opacity var(--animation-speed) ease-out;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+/* Thread hover - minimal transform */
+.thread-item {
+    transition: transform var(--animation-speed) ease-out,
+                background var(--animation-speed) ease-out;
+}
+
+.thread-item:hover {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   SHADOW BUDGET - Max 1 per component
+   ============================================ */
+
+.glass {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.message.user .message-content {
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+/* ============================================
+   LAYOUT STABILITY - No Shifts
+   ============================================ */
+
+.input-dock {
+    min-height: 56px;
+}
+
+.input-dock .btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    flex-shrink: 0;
+}
+
+.profile-btn {
+    min-height: 40px;
+}
+
+/* ============================================
+   REDUCED MOTION - Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    :root {
+        --glass-blur: 0px;
+        --animation-speed: 0ms;
+    }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATION - Disable Heavy Effects
+   ============================================ */
+
+@media (max-width: 768px) {
+    :root {
+        --glass-blur: 0px;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+    
+    .glass {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    
+    .crystal::before {
+        display: none;
+    }
+}
+
+/* ============================================
+   LOW-END DEVICE DETECTION
+   ============================================ */
+
+@media (max-device-memory: 4) {
+    :root {
+        --glass-blur: 0px;
+    }
+    
+    .glass {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* ============================================
+   INPUT OPTIMIZATION - Zero Lag
+   ============================================ */
+
+.form-control {
+    transition: border-color var(--animation-speed) ease-out;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ============================================
+   TYPING INDICATOR - Lightweight Animation
+   ============================================ */
+
+.typing-dots span {
+    animation: typingBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes typingBounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-6px);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   THEME SWITCHING - CSS Variables Only
+   ============================================ */
+
+:root,
+[data-theme="dark"] {
+    transition: none;
+}
+
+/* Instant theme switch */
+* {
+    color-scheme: light dark;
+}

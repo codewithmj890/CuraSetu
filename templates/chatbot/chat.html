@@ -1,0 +1,1108 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat - CuraSetu{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <!-- Mobile Sidebar Toggle -->
+    <button class="btn btn-primary d-md-none position-fixed"
+        style="top: 80px; left: 16px; z-index: 1001; border-radius: 50%; width: 44px; height: 44px;"
+        id="mobileSidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Glassmorphism Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="d-flex justify-content-between align-items-center w-100 sidebar-header-expanded">
+                <h5 class="mb-0 fw-600 sidebar-title" style="color: var(--text-primary); flex-shrink: 0;">CuraSetu</h5>
+                <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">
+                    <i class="fas fa-chevron-left" id="sidebarToggleIcon"></i>
+                </button>
+            </div>
+            <div class="sidebar-header-collapsed">
+                <div class="trust-badge crystal">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">
+                    <i class="fas fa-chevron-right" id="sidebarToggleIconCollapsed"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-3">
+            <a href="{% url 'chatbot:new_thread' %}" class="btn btn-primary w-100 crystal" style="color: white !important;">
+                <i class="fas fa-plus me-2" style="color: white !important;"></i><span class="btn-text" style="color: white !important;">New Consultation</span>
+            </a>
+        </div>
+
+        <div class="flex-grow-1 overflow-auto">
+            {% for thread in threads %}
+            <div class="thread-item {% if thread == active_thread %}active{% endif %}" data-thread-id="{{ thread.id }}"
+                data-tooltip="{{ thread.title }}" onclick="location.href='{% url 'chatbot:thread' thread.id %}'">
+                <div class="thread-content">
+                    <div class="fw-500 thread-title">{{ thread.title|truncatechars:25 }}</div>
+                    <small style="color: var(--text-muted);">{{ thread.updated_at|timesince }} ago</small>
+                </div>
+                <div class="thread-actions">
+                    <div class="thread-action" onclick="event.stopPropagation(); renameThread({{ thread.id }})"
+                        title="Rename">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="thread-action" onclick="event.stopPropagation(); togglePin({{ thread.id }})"
+                        title="Pin">
+                        <i class="fas fa-thumbtack"></i>
+                    </div>
+                    <div class="thread-action danger" onclick="event.stopPropagation(); deleteThread({{ thread.id }})"
+                        title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center p-3" style="color: var(--text-muted);">
+                <i class="fas fa-stethoscope fa-2x mb-2" style="color: var(--accent);"></i>
+                <p class="mb-0 empty-text">No consultations yet</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- Main Chat Area -->
+    <div class="chat-main">
+        <div class="chat-header glass">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="flex-grow-1" style="min-width: 0;">
+                    <h6 class="mb-1 fw-600" style="color: var(--text-primary);">
+                        {% if active_thread %}
+                        {{ active_thread.title }}
+                        {% else %}
+                        Healthcare Assistant
+                        {% endif %}
+                    </h6>
+                    <small style="color: var(--text-secondary); font-size: 11px;">AI-powered medical guidance</small>
+                </div>
+                <div class="profile-menu" style="flex-shrink: 0;">
+                    <button class="profile-btn" onclick="toggleProfileMenu()">
+                        <i class="fas fa-user-circle"></i>
+                        <span>{{ user.username }}</span>
+                        <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                    </button>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="{% url 'accounts:profile' %}" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                        <div class="dropdown-item theme-toggle-item" onclick="toggleTheme()">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas fa-moon" id="themeIcon"></i>
+                                <span>Theme</span>
+                            </div>
+                            <div class="theme-switch"></div>
+                        </div>
+                        <a href="{% url 'accounts:logout' %}" class="dropdown-item danger">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            {% if active_thread %}
+            {% for message in messages %}
+            <div class="message user">
+                <div class="message-header">
+                    <i class="fas fa-user-circle"></i>
+                    <span>You</span>
+                </div>
+                <div class="message-content crystal">
+                    {{ message.user_message }}
+                </div>
+            </div>
+            <div class="message bot">
+                <div class="message-header">
+                    <i class="fas fa-robot" style="color: var(--accent);"></i>
+                    <span>CuraSetu Assistant</span>
+                    <div class="trust-badge ms-auto crystal">
+                        <i class="fas fa-check-circle"></i>
+                        Verified Sources
+                    </div>
+                </div>
+                <div class="message-content">
+                    <div class="medical-response">
+                        {{ message.bot_response|safe }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="text-center mt-5">
+                <div class="mb-4">
+                    <i class="fas fa-stethoscope fa-4x" style="color: var(--accent);"></i>
+                </div>
+                <h4 class="fw-600 mb-3">Welcome to CuraSetu</h4>
+                <p style="color: var(--text-secondary);" class="mb-4">Your AI healthcare assistant for minor ailments
+                    and traditional remedies.</p>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-md-4">
+                        <div class="glass crystal" style="padding: 20px; text-align: center;">
+                            <i class="fas fa-search fa-2x mb-3" style="color: var(--accent);"></i>
+                            <h6 class="fw-600 mb-2">Symptom Analysis</h6>
+                            <small style="color: var(--text-secondary);">Describe your symptoms for guidance</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass crystal" style="padding: 20px; text-align: center;">
+                            <i class="fas fa-leaf fa-2x mb-3" style="color: var(--success);"></i>
+                            <h6 class="fw-600 mb-2">Traditional Remedies</h6>
+                            <small style="color: var(--text-secondary);">Natural healing suggestions</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass crystal" style="padding: 20px; text-align: center;">
+                            <i class="fas fa-exclamation-triangle fa-2x mb-3" style="color: var(--warning);"></i>
+                            <h6 class="fw-600 mb-2">Warning Signs</h6>
+                            <small style="color: var(--text-secondary);">Know when to seek help</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Floating Glass Input Dock -->
+        <div class="chat-input">
+            <form id="chatForm">
+                {% csrf_token %}
+                <div class="input-dock crystal">
+                    <input type="text" id="messageInput" class="form-control"
+                        placeholder="Describe your symptoms (e.g., fever and headache for 2 days)..." required disabled>
+                    <button type="submit" class="btn btn-primary crystal" id="sendButton" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Sidebar Controls */
+    .sidebar {
+        width: 280px;
+        background: var(--bg-glass);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        transition: width 300ms ease-out;
+        position: relative;
+        z-index: 10;
+    }
+    
+    @media (min-width: 1024px) {
+        .sidebar {
+            backdrop-filter: blur(8px);
+        }
+    }
+
+    .sidebar.collapsed {
+        width: 72px !important;
+    }
+
+    .sidebar-header-collapsed {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .sidebar.collapsed .sidebar-header-expanded {
+        display: none !important;
+    }
+
+    .sidebar.collapsed .sidebar-header-collapsed {
+        display: flex !important;
+    }
+
+    .sidebar.collapsed .sidebar-header {
+        padding: 16px 12px;
+    }
+
+    .sidebar.collapsed .sidebar-title,
+    .sidebar.collapsed .trust-text,
+    .sidebar.collapsed .btn-text,
+    .sidebar.collapsed .empty-text {
+        display: none;
+    }
+
+    .sidebar.collapsed .thread-content {
+        display: none;
+    }
+
+    .sidebar.collapsed .thread-actions {
+        display: none;
+    }
+
+    .sidebar.collapsed .thread-item {
+        margin: 8px auto;
+        padding: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        min-height: 48px;
+        width: 48px;
+        border-radius: 12px;
+        background: var(--bg-glass);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar.collapsed .thread-item:hover {
+        background: var(--bg-glass-hover);
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar.collapsed .thread-item.active {
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .sidebar.collapsed .thread-item::before {
+        content: '';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f086';
+        font-size: 20px;
+        color: var(--text-secondary);
+    }
+
+    .sidebar.collapsed .thread-item.active::before {
+        content: '\f086';
+        color: white;
+    }
+
+    .sidebar.collapsed .thread-item:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: 80px;
+        background: var(--bg-glass);
+        backdrop-filter: blur(14px) saturate(160%);
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        white-space: nowrap;
+        font-size: 13px;
+        z-index: 1000;
+        box-shadow: var(--shadow-lg);
+        color: var(--text-primary);
+        font-weight: 500;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .sidebar.collapsed .btn-primary {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .sidebar.collapsed .btn-primary i {
+        margin: 0 !important;
+    }
+
+
+    .sidebar-toggle {
+        width: 28px;
+        height: 28px;
+        background: var(--bg-glass);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        padding: 0;
+        color: var(--text-primary);
+    }
+
+    .sidebar-toggle:hover {
+        background: var(--bg-glass-hover);
+        transform: scale(1.05);
+        color: var(--accent);
+    }
+
+    .sidebar-toggle i {
+        color: inherit;
+    }
+
+    .sidebar-header {
+        padding: 16px;
+        border-bottom: 1px solid var(--border);
+        transition: all 0.25s ease;
+    }
+
+    .sidebar.collapsed .sidebar-header {
+        padding: 16px 8px;
+    }
+
+    .sidebar.collapsed .sidebar-title,
+    .sidebar.collapsed .trust-text,
+    .sidebar.collapsed .btn-text,
+    .sidebar.collapsed .empty-text {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Chat Actions */
+    .thread-item {
+        padding: 12px 16px;
+        margin: 4px 8px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 150ms ease-out, background 150ms ease-out;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .thread-content {
+        flex: 1;
+        min-width: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .sidebar.collapsed .thread-content {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .thread-actions {
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .thread-item:hover {
+        background: var(--bg-glass-hover);
+        transform: translateX(4px);
+    }
+
+    .thread-item:hover .thread-actions {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .thread-action {
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 150ms ease-out, background 150ms ease-out;
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    .thread-action:hover {
+        background: var(--bg-glass-hover);
+        color: var(--text-primary);
+        transform: scale(1.1);
+    }
+
+    .thread-action.danger:hover {
+        background: rgba(220, 38, 38, 0.1);
+        color: var(--danger);
+    }
+
+    .thread-item.pinned {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+        border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .thread-item.pinned::before {
+        content: '';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f08d';
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 10px;
+        color: var(--accent);
+    }
+
+    /* Rename Input */
+    .rename-input {
+        background: var(--bg-glass);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        padding: 4px 8px;
+        color: var(--text-primary);
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .rename-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+
+
+    /* Chat Footer Disclaimer */
+    .chat-footer-disclaimer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        margin-top: 8px;
+        font-size: 11px;
+        color: var(--text-secondary);
+        text-align: center;
+        opacity: 0.85;
+        line-height: 1.4;
+    }
+
+    .chat-footer-disclaimer i {
+        font-size: 13px;
+        color: var(--text-muted);
+        flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .chat-footer-disclaimer {
+        opacity: 0.7;
+    }
+
+
+
+    /* Smooth Animations */
+    @keyframes fadeInSlide {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes typingBounce {
+
+        0%,
+        60%,
+        100% {
+            transform: translateY(0);
+            opacity: 0.4;
+        }
+
+        30% {
+            transform: translateY(-10px);
+            opacity: 1;
+        }
+    }
+
+    /* Enhanced Typing Effect */
+    .typing-effect {
+        overflow: hidden;
+        border-right: 2px solid var(--accent);
+        white-space: nowrap;
+        animation: typing 0.5s steps(40) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent;
+        }
+    }
+
+    /* Smooth transitions for all interactive elements */
+    .sidebar,
+    .thread-item,
+    .message,
+    .btn,
+    .form-control {
+        transition: transform 150ms ease-out, opacity 150ms ease-out;
+    }
+
+    /* Icon visibility in dark theme */
+    [data-theme="dark"] .sidebar-toggle i,
+    [data-theme="dark"] .profile-btn i,
+    [data-theme="dark"] .dropdown-item i,
+    [data-theme="dark"] .btn-primary i {
+        color: currentColor !important;
+        opacity: 1;
+    }
+
+    /* Message header icons */
+    .message-header i {
+        color: var(--text-secondary);
+    }
+
+    [data-theme="dark"] .message-header i {
+        color: var(--text-secondary);
+        opacity: 1;
+    }
+
+    /* Adaptive Chat Bubbles */
+    .message.user .message-content {
+        display: inline-block;
+        max-width: 70%;
+        width: fit-content;
+        min-width: 60px;
+        height: auto;
+        word-wrap: break-word;
+        word-break: break-word;
+        white-space: pre-wrap;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-radius: 18px 18px 6px 18px;
+        padding: 8px 12px;
+        font-size: 15px;
+        line-height: 1.4;
+        border: 1px solid var(--border);
+    }
+
+    .message.bot .message-content {
+        border-radius: 18px 18px 18px 6px;
+        padding: 10px 14px;
+        line-height: 1.5;
+    }
+
+    .message.user {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 12px;
+    }
+
+    .message.bot {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px;
+    }
+
+    .message-header {
+        margin-bottom: 6px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Enhanced UI interactions
+    document.addEventListener('DOMContentLoaded', function () {
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+
+        // Enable input after page load
+        messageInput.disabled = false;
+        sendButton.disabled = false;
+
+        // Initialize sidebar state
+        const sidebarCollapsed = localStorage.getItem('sidebar_collapsed') === 'true';
+        const sidebar = document.getElementById('sidebar');
+        if (sidebarCollapsed) {
+            sidebar.classList.add('collapsed');
+            const icon = document.getElementById('sidebarToggleIcon');
+            const iconCollapsed = document.getElementById('sidebarToggleIconCollapsed');
+            if (icon) icon.className = 'fas fa-chevron-right';
+            if (iconCollapsed) iconCollapsed.className = 'fas fa-chevron-right';
+        }
+
+        // Initialize pinned chats
+        const pinnedChats = JSON.parse(localStorage.getItem('pinned_chats') || '[]');
+        pinnedChats.forEach(threadId => {
+            const threadItem = document.querySelector(`[data-thread-id="${threadId}"]`);
+            if (threadItem) {
+                threadItem.classList.add('pinned');
+            }
+        });
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const themeIcon = document.getElementById('themeIcon');
+        if (themeIcon) {
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Mobile sidebar toggle
+        const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (mobileSidebarToggle) {
+            mobileSidebarToggle.addEventListener('click', function () {
+                toggleMobileSidebar();
+            });
+        }
+
+        // Add crystal effect to existing elements
+        document.querySelectorAll('.btn-primary, .trust-badge').forEach(el => {
+            if (!el.classList.contains('crystal')) {
+                el.classList.add('crystal');
+            }
+        });
+
+        // Convert existing tables to content blocks
+        convertTablesToContentBlocks();
+    });
+
+    // Convert tables to theme-aware content blocks
+    function convertTablesToContentBlocks() {
+        const tables = document.querySelectorAll('.medical-response table');
+        tables.forEach(table => {
+            const contentBlock = document.createElement('div');
+            contentBlock.className = 'content-block';
+
+            const rows = table.querySelectorAll('tr');
+            rows.forEach((row, index) => {
+                if (index === 0) return; // Skip header
+
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 2) {
+                    const section = document.createElement('div');
+                    section.className = 'content-section';
+
+                    const title = document.createElement('div');
+                    title.className = 'section-title';
+                    title.textContent = cells[0].textContent.trim();
+
+                    const body = document.createElement('div');
+                    body.className = 'section-body';
+                    body.innerHTML = cells[1].innerHTML;
+
+                    section.appendChild(title);
+                    section.appendChild(body);
+
+                    if (index > 1) {
+                        const divider = document.createElement('div');
+                        divider.className = 'section-divider';
+                        contentBlock.appendChild(divider);
+                    }
+
+                    contentBlock.appendChild(section);
+                }
+            });
+
+            table.parentNode.replaceChild(contentBlock, table);
+        });
+    }
+
+    // Sidebar Management
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const icon = document.getElementById('sidebarToggleIcon');
+        const iconCollapsed = document.getElementById('sidebarToggleIconCollapsed');
+        const isCollapsed = sidebar.classList.toggle('collapsed');
+
+        if (icon) {
+            icon.className = isCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+        }
+        if (iconCollapsed) {
+            iconCollapsed.className = isCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+        }
+
+        localStorage.setItem('sidebar_collapsed', isCollapsed);
+    }
+
+    // Mobile Sidebar Toggle
+    function toggleMobileSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const isShowing = sidebar.classList.toggle('show');
+
+        if (isShowing) {
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        } else {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Theme Management
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        const themeIcon = document.getElementById('themeIcon');
+        if (themeIcon) {
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+
+    // Profile Menu Management
+    function toggleProfileMenu() {
+        const dropdown = document.getElementById('profileDropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    // Chat Actions
+    function renameThread(threadId) {
+        const threadItem = document.querySelector(`[data-thread-id="${threadId}"]`);
+        const titleElement = threadItem.querySelector('.thread-title');
+        const currentTitle = titleElement.textContent.trim();
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'rename-input';
+        input.value = currentTitle;
+
+        titleElement.replaceWith(input);
+        input.focus();
+        input.select();
+
+        function saveRename() {
+            const newTitle = input.value.trim() || currentTitle;
+            const newTitleElement = document.createElement('div');
+            newTitleElement.className = 'fw-500 thread-title';
+            newTitleElement.textContent = newTitle;
+            input.replaceWith(newTitleElement);
+
+            // Here you would typically make an API call to save the new title
+            console.log(`Renamed thread ${threadId} to: ${newTitle}`);
+        }
+
+        input.addEventListener('blur', saveRename);
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                saveRename();
+            }
+        });
+    }
+
+    function togglePin(threadId) {
+        const threadItem = document.querySelector(`[data-thread-id="${threadId}"]`);
+        const isPinned = threadItem.classList.toggle('pinned');
+
+        let pinnedChats = JSON.parse(localStorage.getItem('pinned_chats') || '[]');
+
+        if (isPinned) {
+            if (!pinnedChats.includes(threadId)) {
+                pinnedChats.push(threadId);
+            }
+            // Move to top
+            const parent = threadItem.parentNode;
+            parent.insertBefore(threadItem, parent.firstChild);
+        } else {
+            pinnedChats = pinnedChats.filter(id => id !== threadId);
+        }
+
+        localStorage.setItem('pinned_chats', JSON.stringify(pinnedChats));
+    }
+
+    function deleteThread(threadId) {
+        if (confirm('Are you sure you want to delete this conversation? This action cannot be undone.')) {
+            // Make API call to delete from database
+            fetch(`/chat/delete/${threadId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Remove from DOM
+                        const threadItem = document.querySelector(`[data-thread-id="${threadId}"]`);
+                        if (threadItem) {
+                            threadItem.remove();
+                        }
+
+                        // Remove from pinned chats localStorage
+                        let pinnedChats = JSON.parse(localStorage.getItem('pinned_chats') || '[]');
+                        pinnedChats = pinnedChats.filter(id => id !== threadId);
+                        localStorage.setItem('pinned_chats', JSON.stringify(pinnedChats));
+
+                        // Redirect if this was the active thread
+                        if (window.location.pathname.includes(`/thread/${threadId}/`)) {
+                            window.location.href = '/chat/';
+                        }
+                    } else {
+                        alert('Failed to delete thread. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting thread:', error);
+                    alert('An error occurred while deleting the thread.');
+                });
+        }
+    }
+
+    // Typing Animation Effect
+    function typeWriter(element, text, speed = 15) {
+        let i = 0;
+        element.innerHTML = '';
+
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+
+        type();
+    }
+
+    // Smooth scroll to bottom with RAF
+    function smoothScrollToBottom(element) {
+        if (!element) return;
+        requestAnimationFrame(() => {
+            element.scrollTop = element.scrollHeight;
+        });
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function (event) {
+        const profileMenu = document.querySelector('.profile-menu');
+        const dropdown = document.getElementById('profileDropdown');
+
+        if (profileMenu && dropdown && !profileMenu.contains(event.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+
+    document.getElementById('chatForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const message = messageInput.value.trim();
+
+        if (!message) return;
+
+        // Disable input during processing
+        messageInput.disabled = true;
+        sendButton.disabled = true;
+        sendButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+        // Add user message with glassmorphism
+        const chatMessages = document.getElementById('chatMessages');
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user';
+        userMessage.innerHTML = `
+        <div class="message-header">
+            <i class="fas fa-user-circle"></i>
+            <span>You</span>
+        </div>
+        <div class="message-content crystal">${message}</div>
+    `;
+        chatMessages.appendChild(userMessage);
+
+        // Clear input and smooth scroll
+        messageInput.value = '';
+        smoothScrollToBottom(chatMessages);
+
+        // Enhanced typing indicator with glassmorphism
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'message bot';
+        typingIndicator.innerHTML = `
+        <div class="message-header">
+            <i class="fas fa-robot" style="color: var(--accent);"></i>
+            <span>CuraSetu Assistant</span>
+        </div>
+        <div class="message-content glass">
+            <div class="typing-indicator">
+                <span>Analyzing symptoms with AI</span>
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    `;
+        chatMessages.appendChild(typingIndicator);
+
+        // Update typing dots animation
+        const typingDots = typingIndicator.querySelectorAll('.typing-dots span');
+        typingDots.forEach(dot => {
+            dot.style.animation = 'typingBounce 1.4s ease-in-out infinite';
+        });
+
+        smoothScrollToBottom(chatMessages);
+
+        try {
+            const response = await fetch('{% url "chatbot:send_message" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    message: message,
+                    thread_id: {% if active_thread %}{{ active_thread.id }}{% else %}null{% endif %}
+    })
+        });
+
+    const data = await response.json();
+
+    // Remove typing indicator
+    typingIndicator.remove();
+
+    if (data.success) {
+        // Add enhanced bot response with medical styling
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.innerHTML = `
+                <div class="message-header">
+                    <i class="fas fa-robot" style="color: var(--accent);"></i>
+                    <span>CuraSetu Assistant</span>
+                    <div class="trust-badge ms-auto crystal">
+                        <i class="fas fa-check-circle"></i>
+                        Verified Sources
+                    </div>
+                </div>
+                <div class="message-content glass">
+                    <div class="medical-response">
+                        ${data.bot_response}
+                    </div>
+                </div>
+            `;
+        chatMessages.appendChild(botMessage);
+
+        // Add crystal effects to new elements
+        botMessage.querySelectorAll('.trust-badge').forEach(el => {
+            el.classList.add('crystal');
+        });
+
+        // Add fade-in animation
+        botMessage.style.opacity = '0';
+        setTimeout(() => {
+            botMessage.style.transition = 'opacity 0.5s ease-in';
+            botMessage.style.opacity = '1';
+        }, 50);
+
+        // Convert tables in new message
+        setTimeout(() => {
+            convertTablesToContentBlocks();
+            smoothScrollToBottom(chatMessages);
+        }, 100);
+
+        // Redirect if new thread created
+        if (!{% if active_thread %} {{active_thread.id}} {% else %} null{% endif %} && data.thread_id) {
+        setTimeout(() => {
+            window.location.href = `/chat/thread/${data.thread_id}/`;
+        }, 500);
+        return;
+    }
+        } else {
+        // Enhanced error message
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'message bot';
+        errorMessage.innerHTML = `
+                <div class="message-header">
+                    <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                    <span>System Notice</span>
+                </div>
+                <div class="message-content glass" style="background: linear-gradient(135deg, #fee2e2, #fecaca); color: var(--danger);">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>I'm currently unable to process your request. Please try again or consult a healthcare professional.</span>
+                    </div>
+                </div>
+            `;
+        chatMessages.appendChild(errorMessage);
+    }
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    } catch (error) {
+        typingIndicator.remove();
+        console.error('Error:', error);
+
+        // Enhanced connection error
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'message bot';
+        errorMessage.innerHTML = `
+            <div class="message-header">
+                <i class="fas fa-wifi" style="color: var(--danger);"></i>
+                <span>Connection Error</span>
+            </div>
+            <div class="message-content glass" style="background: linear-gradient(135deg, #fee2e2, #fecaca); color: var(--danger);">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Unable to connect to the service. Please check your connection and try again.</span>
+                </div>
+            </div>
+        `;
+        chatMessages.appendChild(errorMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    } finally {
+        // Re-enable input with enhanced styling
+        messageInput.disabled = false;
+        sendButton.disabled = false;
+        sendButton.innerHTML = '<i class="fas fa-paper-plane"></i>';
+        messageInput.focus();
+    }
+});
+
+    // Enhanced input interactions with debouncing
+    const messageInput = document.getElementById('messageInput');
+    if (messageInput) {
+        let inputTimeout;
+        messageInput.addEventListener('input', function () {
+            clearTimeout(inputTimeout);
+            inputTimeout = setTimeout(() => {
+                const sendButton = document.getElementById('sendButton');
+                if (this.value.trim()) {
+                    sendButton.style.opacity = '1';
+                } else {
+                    sendButton.style.opacity = '0.7';
+                }
+            }, 50);
+        }, { passive: true });
+    }
+
+    // Optimized mutation observer
+    const observer = new MutationObserver(function (mutations) {
+        requestAnimationFrame(() => {
+            convertTablesToContentBlocks();
+        });
+    });
+
+    observer.observe(document.getElementById('chatMessages'), {
+        childList: true,
+        subtree: true
+    });
+</script>
+{% endblock %}

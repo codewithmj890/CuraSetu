@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - CuraSetu{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card glass crystal">
+        <div class="text-center mb-4">
+            <h2 class="fw-600 mb-3" style="color: var(--text-primary);">Join CuraSetu</h2>
+            <p style="color: var(--text-secondary);">Create your healthcare assistant account</p>
+        </div>
+        
+        {% if form.errors %}
+            <div class="alert glass" style="background: linear-gradient(135deg, #fee2e2, #fecaca); color: var(--danger); border: 1px solid var(--border);">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.username.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Username</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.email.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Email</label>
+                {{ form.email }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.password1.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Password</label>
+                <div class="position-relative">
+                    <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" class="form-control has-icon" required>
+                    <div class="password-toggle" onclick="togglePassword('{{ form.password1.id_for_label }}')">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.password2.id_for_label }}" class="form-label fw-500" style="color: var(--text-primary);">Confirm Password</label>
+                <div class="position-relative">
+                    <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" class="form-control has-icon" required>
+                    <div class="password-toggle" onclick="togglePassword('{{ form.password2.id_for_label }}')">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 mb-3 crystal">Create Account</button>
+        </form>
+        
+        <div class="text-center">
+            <p style="color: var(--text-secondary);">Already have an account? <a href="{% url 'accounts:login' %}" style="color: var(--accent); text-decoration: none; font-weight: 500;">Sign in</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = field.parentElement.querySelector('.fa-eye, .fa-eye-slash');
+    
+    if (field.type === 'password') {
+        field.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        field.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+</script>
+{% endblock %}

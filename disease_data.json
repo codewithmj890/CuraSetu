@@ -1,0 +1,1586 @@
+[
+  {
+    "disease": "Common Cold",
+    "summary": "A viral infection of the upper respiratory tract that is generally mild and self-limiting.",
+    "symptoms": [
+      "Runny or stuffy nose",
+      "Sore throat",
+      "Cough",
+      "Congestion",
+      "Mild body aches",
+      "Sneezing"
+    ],
+    "treatment": [
+      "Rest",
+      "Hydration (water, juice, broth)",
+      "Saltwater gargle for sore throat",
+      "Over-the-counter pain relievers (Acetaminophen, Ibuprofen)"
+    ],
+    "warning_signs": [
+      "Fever lasting more than 3 days",
+      "Wheezing or difficulty breathing",
+      "Severe sore throat or earache",
+      "Symptoms worsening after 10 days"
+    ],
+    "prevention": [
+      "Frequent handwashing",
+      "Avoid touching face (eyes, nose, mouth)",
+      "Disinfect high-touch surfaces",
+      "Avoid close contact with infected individuals"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605"
+  },
+  {
+    "disease": "Viral Fever",
+    "summary": "A broad term for any fever caused by an underlying viral infection, often accompanied by generalized body aches.",
+    "symptoms": [
+      "High body temperature",
+      "Chills and shivering",
+      "Muscle and joint pain",
+      "Headache",
+      "Fatigue",
+      "Loss of appetite"
+    ],
+    "treatment": [
+      "Bed rest",
+      "Increased fluid intake",
+      "Antipyretics (fever reducers like paracetamol)",
+      "Cool sponge baths if temperature is very high"
+    ],
+    "warning_signs": [
+      "Persistent high fever above 103°F (39.4°C)",
+      "Severe headache or stiff neck",
+      "Confusion",
+      "Seizures"
+    ],
+    "prevention": [
+      "Maintain good personal hygiene",
+      "Vaccination (where applicable)",
+      "Avoid sharing personal items like towels or utensils"
+    ],
+    "source": "https://medlineplus.gov/fever.html"
+  },
+  {
+    "disease": "Influenza (Flu)",
+    "summary": "A contagious respiratory illness caused by influenza viruses that can range from mild to severe.",
+    "symptoms": [
+      "Sudden high fever",
+      "Dry cough",
+      "Sore throat",
+      "Extreme exhaustion",
+      "Chills",
+      "Muscle aches"
+    ],
+    "treatment": [
+      "Antiviral drugs (if prescribed by a doctor early on)",
+      "Rest and hydration",
+      "Fever reducers",
+      "Steam inhalation"
+    ],
+    "warning_signs": [
+      "Difficulty breathing or shortness of breath",
+      "Chest pain",
+      "Sudden dizziness",
+      "Severe or persistent vomiting"
+    ],
+    "prevention": [
+      "Annual flu vaccine",
+      "Hand hygiene",
+      "Covering coughs and sneezes",
+      "Staying home when sick"
+    ],
+    "source": "https://www.cdc.gov/flu/about/index.html"
+  },
+  {
+    "disease": "Dengue",
+    "summary": "A mosquito-borne viral infection causing high fever and severe flu-like symptoms, common in tropical regions.",
+    "symptoms": [
+      "High fever (up to 104°F/40°C)",
+      "Severe headache and pain behind the eyes",
+      "Joint and muscle pain (breakbone fever)",
+      "Skin rash",
+      "Nausea and vomiting"
+    ],
+    "treatment": [
+      "Supportive care with fluids",
+      "Pain relief using Acetaminophen",
+      "Avoid Aspirin or Ibuprofen (increased bleeding risk)",
+      "Medical monitoring"
+    ],
+    "warning_signs": [
+      "Severe abdominal pain",
+      "Persistent vomiting",
+      "Bleeding from gums or nose",
+      "Rapid breathing",
+      "Extreme fatigue/restlessness"
+    ],
+    "prevention": [
+      "Use mosquito repellent (DEET/Picaridin)",
+      "Wear long-sleeved clothing",
+      "Eliminate standing water where mosquitoes breed",
+      "Use bed nets and window screens"
+    ],
+    "source": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue"
+  },
+  {
+    "disease": "Malaria",
+    "summary": "A life-threatening disease caused by parasites transmitted through the bites of infected female Anopheles mosquitoes.",
+    "symptoms": [
+      "Cyclical fever and chills",
+      "Sweating",
+      "Headache",
+      "Nausea/vomiting",
+      "Muscle aches"
+    ],
+    "treatment": [
+      "Prescription antimalarial drugs (e.g., Artemisinin-based therapy)",
+      "Hospitalization for severe cases",
+      "Fluid management"
+    ],
+    "warning_signs": [
+      "Confusion or impaired consciousness",
+      "Yellowing of eyes/skin (jaundice)",
+      "Dark-colored urine",
+      "Difficulty breathing"
+    ],
+    "prevention": [
+      "Antimalarial chemoprophylaxis for travelers",
+      "Insecticide-treated bed nets",
+      "Indoor residual spraying",
+      "Using mosquito repellent"
+    ],
+    "source": "https://www.cdc.gov/malaria/about/index.html"
+  },
+  {
+    "disease": "Typhoid",
+    "summary": "A bacterial infection caused by Salmonella Typhi, usually spread through contaminated food and water.",
+    "symptoms": [
+      "Prolonged high fever",
+      "Weakness and fatigue",
+      "Stomach pain",
+      "Headache",
+      "Loss of appetite",
+      "Rose-colored spots on chest"
+    ],
+    "treatment": [
+      "Antibiotics (as prescribed by a healthcare provider)",
+      "Fluid replacement",
+      "Nutritious, easy-to-digest diet"
+    ],
+    "warning_signs": [
+      "Severe abdominal pain",
+      "Intestinal bleeding",
+      "Confusion or delirium",
+      "Persistent high fever despite antibiotics"
+    ],
+    "prevention": [
+      "Drink only boiled or bottled water",
+      "Eat thoroughly cooked food",
+      "Typhoid vaccination",
+      "Frequent handwashing with soap"
+    ],
+    "source": "https://www.who.int/news-room/fact-sheets/detail/typhoid"
+  },
+  {
+    "disease": "COVID-19",
+    "summary": "An infectious disease caused by the SARS-CoV-2 virus, primarily affecting the respiratory system.",
+    "symptoms": [
+      "Fever or chills",
+      "Cough",
+      "Shortness of breath",
+      "Fatigue",
+      "Loss of taste or smell",
+      "Sore throat"
+    ],
+    "treatment": [
+      "Isolation to prevent spread",
+      "Rest and hydration",
+      "Symptomatic relief (fever reducers)",
+      "Antivirals (for high-risk individuals, if prescribed)"
+    ],
+    "warning_signs": [
+      "Trouble breathing",
+      "Persistent pain/pressure in chest",
+      "New confusion",
+      "Inability to wake or stay awake",
+      "Pale, gray, or blue-colored skin/lips"
+    ],
+    "prevention": [
+      "Vaccination and boosters",
+      "Wearing masks in crowded spaces",
+      "Maintaining physical distance",
+      "Good indoor ventilation"
+    ],
+    "source": "https://www.cdc.gov/coronavirus/2019-ncov/index.html"
+  },
+  {
+    "disease": "Diarrhea",
+    "summary": "Loose, watery stools occurring more frequently than usual, often caused by infection or food intolerance.",
+    "symptoms": [
+      "Frequent loose stools",
+      "Abdominal cramps",
+      "Bloating",
+      "Nausea",
+      "Urgent need for bowel movement"
+    ],
+    "treatment": [
+      "Oral Rehydration Salts (ORS)",
+      "Increased fluid intake",
+      "Bland diet (BRAT: Bananas, Rice, Applesauce, Toast)",
+      "Probiotics"
+    ],
+    "warning_signs": [
+      "Signs of severe dehydration (no urine, sunken eyes)",
+      "Blood or mucus in stool",
+      "High fever",
+      "Symptoms lasting over 48 hours"
+    ],
+    "prevention": [
+      "Safe drinking water",
+      "Proper food handling/cooking",
+      "Handwashing after bathroom use",
+      "Rotavirus vaccination for infants"
+    ],
+    "source": "https://medlineplus.gov/diarrhea.html"
+  },
+  {
+    "disease": "Dehydration",
+    "summary": "A condition where the body loses more fluids than it takes in, hindering normal functions.",
+    "symptoms": [
+      "Extreme thirst",
+      "Dark-colored urine",
+      "Dizziness or lightheadedness",
+      "Dry mouth and skin",
+      "Fatigue"
+    ],
+    "treatment": [
+      "Sipping water or electrolyte drinks",
+      "Oral rehydration solutions",
+      "Intravenous fluids (in severe cases)",
+      "Rest in a cool environment"
+    ],
+    "warning_signs": [
+      "Confusion",
+      "Fainting",
+      "No urination for 8+ hours",
+      "Rapid heartbeat or breathing"
+    ],
+    "prevention": [
+      "Drink water regularly throughout the day",
+      "Increase fluid intake during hot weather/exercise",
+      "Eat water-rich foods (fruits/vegetables)",
+      "Monitor urine color (should be pale yellow)"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/dehydration/symptoms-causes/syc-20354086"
+  },
+  {
+    "disease": "Food Poisoning",
+    "summary": "Illness caused by eating contaminated, spoiled, or toxic food.",
+    "symptoms": [
+      "Nausea and vomiting",
+      "Watery or bloody diarrhea",
+      "Abdominal pain and cramps",
+      "Fever"
+    ],
+    "treatment": [
+      "Fluid replacement (ORS)",
+      "Gradual return to eating bland foods",
+      "Rest",
+      "Avoid anti-diarrheal meds if fever/bloody stool is present"
+    ],
+    "warning_signs": [
+      "Frequent episodes of vomiting/inability to keep liquids down",
+      "Bloody vomit or stools",
+      "Neurological symptoms (blurry vision, muscle weakness)",
+      "High fever (above 102°F)"
+    ],
+    "prevention": [
+      "Wash hands and surfaces often",
+      "Separate raw meats from other foods",
+      "Cook food to the right temperature",
+      "Refrigerate perishables promptly"
+    ],
+    "source": "https://www.cdc.gov/foodsafety/symptoms.html"
+  },
+  {
+    "disease": "Gastritis / Acidity",
+    "summary": "Inflammation or irritation of the stomach lining, often leading to acid reflux symptoms.",
+    "symptoms": [
+      "Gnawing or burning ache in upper abdomen",
+      "Nausea",
+      "Fullness after eating",
+      "Bloating",
+      "Belching"
+    ],
+    "treatment": [
+      "Antacids",
+      "H2 blockers or Proton Pump Inhibitors (PPIs)",
+      "Avoiding spicy/acidic foods",
+      "Eating smaller, more frequent meals"
+    ],
+    "warning_signs": [
+      "Vomiting blood (may look like coffee grounds)",
+      "Black, tarry stools",
+      "Unexplained weight loss",
+      "Severe, persistent pain"
+    ],
+    "prevention": [
+      "Limit alcohol consumption",
+      "Avoid long-term use of NSAIDs (Aspirin/Ibuprofen)",
+      "Manage stress levels",
+      "Quit smoking"
+    ],
+    "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy"
+  },
+  {
+    "disease": "Constipation",
+    "summary": "A condition characterized by infrequent bowel movements or difficulty passing stools.",
+    "symptoms": [
+      "Fewer than three bowel movements per week",
+      "Hard, lumpy stools",
+      "Straining to have a bowel movement",
+      "Feeling of incomplete evacuation"
+    ],
+    "treatment": [
+      "Increase fiber intake (fruits, veggies, grains)",
+      "Stay well-hydrated",
+      "Regular physical activity",
+      "Over-the-counter stool softeners or laxatives"
+    ],
+    "warning_signs": [
+      "Severe abdominal pain",
+      "Blood in stool",
+      "Weight loss",
+      "Persistent change in bowel habits"
+    ],
+    "prevention": [
+      "High-fiber diet",
+      "Don't ignore the urge to have a bowel movement",
+      "Establish a regular routine for bowel movements",
+      "Stay active"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/constipation/symptoms-causes/syc-20353925"
+  },
+  {
+    "disease": "Indigestion",
+    "summary": "A general term for discomfort in the upper abdomen, often occurring after eating.",
+    "symptoms": [
+      "Abdominal pain",
+      "Burning sensation in the stomach",
+      "Bloating",
+      "Nausea",
+      "Feeling uncomfortably full during or after a meal"
+    ],
+    "treatment": [
+      "Avoid trigger foods (greasy, spicy)",
+      "Eat slowly and chew thoroughly",
+      "Avoid lying down after meals",
+      "Antacids"
+    ],
+    "warning_signs": [
+      "Shortness of breath or sweating with chest pain",
+      "Difficulty swallowing",
+      "Frequent vomiting",
+      "Unintentional weight loss"
+    ],
+    "prevention": [
+      "Manage stress",
+      "Avoid late-night snacking",
+      "Limit caffeine and alcohol",
+      "Maintain a healthy weight"
+    ],
+    "source": "https://medlineplus.gov/indigestion.html"
+  },
+  {
+    "disease": "Headache",
+    "summary": "Pain or discomfort in the head or face area, ranging from mild to severe.",
+    "symptoms": [
+      "Pressure or throbbing sensation",
+      "Pain on one or both sides of the head",
+      "Tension in neck or shoulders"
+    ],
+    "treatment": [
+      "Rest in a quiet, dark room",
+      "Over-the-counter pain relief",
+      "Hydration",
+      "Cold or warm compress"
+    ],
+    "warning_signs": [
+      "Sudden, 'thunderclap' headache",
+      "Headache with stiff neck and fever",
+      "Headache after a head injury",
+      "Confusion or vision changes"
+    ],
+    "prevention": [
+      "Regular sleep schedule",
+      "Staying hydrated",
+      "Managing stress",
+      "Avoiding known food/environmental triggers"
+    ],
+    "source": "https://www.mayoclinic.org/symptoms/headache/basics/definition/sym-20050800"
+  },
+  {
+    "disease": "Migraine",
+    "summary": "A type of headache characterized by severe throbbing pain, often accompanied by sensory sensitivities.",
+    "symptoms": [
+      "Intense throbbing pain (usually one-sided)",
+      "Nausea and vomiting",
+      "Sensitivity to light and sound",
+      "Aura (visual disturbances) in some cases"
+    ],
+    "treatment": [
+      "Specific migraine medications (Triptans)",
+      "Resting in a dark room",
+      "Hydration",
+      "Preventative medications for frequent sufferers"
+    ],
+    "warning_signs": [
+      "Sudden change in migraine pattern",
+      "Loss of vision",
+      "Speech difficulties",
+      "Weakness on one side of the body"
+    ],
+    "prevention": [
+      "Identify and avoid triggers (e.g., aged cheese, red wine, strong smells)",
+      "Consistent meal times",
+      "Adequate sleep",
+      "Stress management techniques"
+    ],
+    "source": "https://medlineplus.gov/migraine.html"
+  },
+  {
+    "disease": "Body Ache (Myalgia)",
+    "summary": "Muscle pain or soreness that can involve a small area or the whole body.",
+    "symptoms": [
+      "Muscle stiffness",
+      "Dull or sharp pain in muscles",
+      "Tenderness to touch",
+      "Reduced range of motion"
+    ],
+    "treatment": [
+      "Rest and gentle stretching",
+      "Warm baths or heating pads",
+      "Over-the-counter anti-inflammatories",
+      "Massage"
+    ],
+    "warning_signs": [
+      "Signs of infection (fever, swelling)",
+      "Muscle weakness that doesn't improve",
+      "Pain that lasts more than a few days",
+      "Dark-colored urine (potential sign of muscle breakdown)"
+    ],
+    "prevention": [
+      "Warm up before exercise",
+      "Stay hydrated",
+      "Proper ergonomics at work",
+      "Adequate potassium and magnesium in diet"
+    ],
+    "source": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/myalgia"
+  },
+  {
+    "disease": "Back Pain",
+    "summary": "Physical discomfort occurring anywhere in the spine or back, from mild to disabling.",
+    "symptoms": [
+      "Aching or stabbing sensation",
+      "Pain that radiates down the leg",
+      "Limited flexibility/range of motion"
+    ],
+    "treatment": [
+      "Gentle movement and walking",
+      "Heat or ice therapy",
+      "Physical therapy",
+      "Pain relief medication"
+    ],
+    "warning_signs": [
+      "Loss of bladder or bowel control",
+      "Numbness/tingling in the groin area",
+      "Pain after a fall or injury",
+      "Unexplained fever with back pain"
+    ],
+    "prevention": [
+      "Maintain a healthy weight",
+      "Use proper lifting techniques (legs, not back)",
+      "Core-strengthening exercises",
+      "Good posture while sitting/standing"
+    ],
+    "source": "https://www.niams.nih.gov/health-topics/back-pain"
+  },
+  {
+    "disease": "Joint Pain",
+    "summary": "Discomfort, pain, or inflammation arising from any part of a joint.",
+    "symptoms": [
+      "Swelling or redness around a joint",
+      "Stiffness, especially in the morning",
+      "Reduced ability to move the joint"
+    ],
+    "treatment": [
+      "Weight management to reduce stress on joints",
+      "Low-impact exercise (swimming, cycling)",
+      "Ice/heat application",
+      "Anti-inflammatory medications"
+    ],
+    "warning_signs": [
+      "Joint deformity",
+      "Inability to use the joint at all",
+      "Intense pain and rapid swelling",
+      "Fever with joint pain"
+    ],
+    "prevention": [
+      "Protect joints from injury (use gear)",
+      "Stay active to keep joints flexible",
+      "Eat an anti-inflammatory diet (Omega-3s)",
+      "Stay hydrated"
+    ],
+    "source": "https://www.arthritis.org/health-wellness/about-arthritis/understanding-arthritis/joint-pain-causes"
+  },
+  {
+    "disease": "Muscle Cramps",
+    "summary": "Sudden, involuntary contractions of one or more muscles.",
+    "symptoms": [
+      "Sudden sharp pain",
+      "Hard lump of muscle tissue felt under the skin",
+      "Inability to move the affected limb temporarily"
+    ],
+    "treatment": [
+      "Gently stretching and massaging the muscle",
+      "Applying heat to tense muscles or ice to sore ones",
+      "Drinking fluids with electrolytes"
+    ],
+    "warning_signs": [
+      "Severe discomfort with no obvious cause",
+      "Leg swelling or redness",
+      "Muscle weakness",
+      "Cramps that happen very frequently"
+    ],
+    "prevention": [
+      "Stay hydrated",
+      "Stretch before and after exercise",
+      "Ensure adequate intake of calcium, potassium, and magnesium",
+      "Avoid overexertion in hot weather"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/muscle-cramp/symptoms-causes/syc-20350820"
+  },
+  {
+    "disease": "Sore Throat",
+    "summary": "Pain, scratchiness, or irritation of the throat that often worsens when swallowing.",
+    "symptoms": [
+      "Pain or scratchy sensation",
+      "Difficulty swallowing",
+      "Swollen, red tonsils",
+      "Hoarse or muffled voice"
+    ],
+    "treatment": [
+      "Gargling with warm salt water",
+      "Drinking warm liquids (honey/lemon tea)",
+      "Throat lozenges",
+      "Resting the voice"
+    ],
+    "warning_signs": [
+      "Difficulty breathing or swallowing",
+      "Drooling (inability to swallow saliva)",
+      "Visible white patches on tonsils",
+      "Fever higher than 101°F"
+    ],
+    "prevention": [
+      "Avoid sharing food/utensils",
+      "Wash hands frequently",
+      "Avoid smoking and secondhand smoke",
+      "Humidify indoor air"
+    ],
+    "source": "https://medlineplus.gov/sorethroat.html"
+  },
+  {
+    "disease": "Cough",
+    "summary": "A reflex action to clear the airways of mucus, irritants, or foreign particles.",
+    "symptoms": [
+      "Dry or productive (phlegm) cough",
+      "Chest tightness",
+      "Throat irritation"
+    ],
+    "treatment": [
+      "Stay hydrated",
+      "Use a humidifier",
+      "Honey (for those over 1 year old)",
+      "Cough suppressants or expectorants (based on cough type)"
+    ],
+    "warning_signs": [
+      "Coughing up blood",
+      "Shortness of breath",
+      "Cough lasting more than 3 weeks",
+      "Wheezing"
+    ],
+    "prevention": [
+      "Avoid air pollutants and smoke",
+      "Handwashing",
+      "Managing underlying conditions like GERD or asthma",
+      "Vaccination against pertussis and flu"
+    ],
+    "source": "https://www.mayoclinic.org/symptoms/cough/basics/definition/sym-20050846"
+  },
+  {
+    "disease": "Asthma (non-acute)",
+    "summary": "A chronic condition where the airways narrow and swell, producing extra mucus.",
+    "symptoms": [
+      "Shortness of breath",
+      "Chest tightness",
+      "Wheezing (whistling sound) when exhaling",
+      "Coughing, especially at night"
+    ],
+    "treatment": [
+      "Inhaled corticosteroids (long-term control)",
+      "Quick-relief inhalers (Albuterol) for flare-ups",
+      "Identifying and avoiding triggers",
+      "Regular follow-ups with a doctor"
+    ],
+    "warning_signs": [
+      "Rapid worsening of shortness of breath",
+      "No improvement after using a rescue inhaler",
+      "Difficulty speaking due to shortness of breath",
+      "Fingernails or lips turning blue"
+    ],
+    "prevention": [
+      "Follow an asthma action plan",
+      "Avoid allergens (dust, pet dander, pollen)",
+      "Quit smoking",
+      "Prevent respiratory infections"
+    ],
+    "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma"
+  },
+  {
+    "disease": "Bronchitis (basic)",
+    "summary": "Inflammation of the lining of the bronchial tubes which carry air to and from the lungs.",
+    "symptoms": [
+      "Cough (often with clear, yellow, or green mucus)",
+      "Fatigue",
+      "Shortness of breath",
+      "Slight fever and chills",
+      "Chest discomfort"
+    ],
+    "treatment": [
+      "Rest",
+      "Fluids",
+      "Cough medicine",
+      "Humidifier use",
+      "Avoiding lung irritants"
+    ],
+    "warning_signs": [
+      "Fever higher than 100.4°F",
+      "Mucus containing blood",
+      "Difficulty breathing that prevents sleep",
+      "Symptoms lasting more than 3 weeks"
+    ],
+    "prevention": [
+      "Don't smoke",
+      "Wash hands frequently",
+      "Wear a surgical mask when exposed to fumes",
+      "Get the flu vaccine"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/bronchitis/symptoms-causes/syc-20353721"
+  },
+  {
+    "disease": "Skin Rash",
+    "summary": "An area of irritated or swollen skin, which can be caused by various factors.",
+    "symptoms": [
+      "Redness",
+      "Itching",
+      "Bumps or blisters",
+      "Dry, scaly, or crusted skin"
+    ],
+    "treatment": [
+      "Gentle cleansing with mild soap",
+      "Hydrocortisone cream (for itching)",
+      "Calamine lotion",
+      "Avoiding the irritant"
+    ],
+    "warning_signs": [
+      "Rash that spreads quickly over the body",
+      "Rash accompanied by fever",
+      "Painful rash or blisters in mouth/eyes",
+      "Signs of infection (pus, warmth)"
+    ],
+    "prevention": [
+      "Use hypoallergenic skincare products",
+      "Avoid known allergens/irritants",
+      "Maintain good skin hygiene",
+      "Wear breathable fabrics"
+    ],
+    "source": "https://medlineplus.gov/rashes.html"
+  },
+  {
+    "disease": "Fungal Infection",
+    "summary": "A skin disease caused by a fungus (e.g., Athlete's foot, Ringworm, Yeast infection).",
+    "symptoms": [
+      "Itching and stinging",
+      "Red, scaly ring-shaped patches",
+      "Cracking or peeling skin",
+      "White patches in moist areas"
+    ],
+    "treatment": [
+      "Over-the-counter antifungal creams/powders",
+      "Keeping the area dry and clean",
+      "Prescription medications for stubborn cases",
+      "Avoiding scratching"
+    ],
+    "warning_signs": [
+      "Infection not improving after OTC treatment",
+      "Widespread patches",
+      "Involvement of nails or scalp",
+      "Severe pain or swelling"
+    ],
+    "prevention": [
+      "Keep skin clean and dry",
+      "Change socks and underwear daily",
+      "Don't share towels or hairbrushes",
+      "Wear flip-flops in public showers/pools"
+    ],
+    "source": "https://www.cdc.gov/fungal/features/fungal-diseases.html"
+  },
+  {
+    "disease": "Minor Wounds / Cuts",
+    "summary": "Breaks in the skin surface, typically from sharp objects or abrasions.",
+    "symptoms": [
+      "Bleeding",
+      "Pain at the site",
+      "Redness",
+      "Skin break or tear"
+    ],
+    "treatment": [
+      "Stop bleeding with direct pressure",
+      "Clean with water and mild soap",
+      "Apply antibiotic ointment",
+      "Cover with a sterile bandage"
+    ],
+    "warning_signs": [
+      "Bleeding that doesn't stop with pressure",
+      "Deep or gaping wound (may need stitches)",
+      "Signs of infection (pus, red streaks)",
+      "Debris in the wound that can't be removed"
+    ],
+    "prevention": [
+      "Use caution with sharp tools",
+      "Wear protective gear during activities",
+      "Keep a first-aid kit handy",
+      "Ensure tetanus vaccination is up to date"
+    ],
+    "source": "https://medlineplus.gov/woundsandinjuries.html"
+  },
+  {
+    "disease": "Allergic Reaction (mild)",
+    "summary": "An immune system response to a substance (allergen) that is usually harmless.",
+    "symptoms": [
+      "Hives or itchy skin",
+      "Watery/itchy eyes",
+      "Sneezing",
+      "Mild swelling"
+    ],
+    "treatment": [
+      "Antihistamines (OTC)",
+      "Cold compress on hives",
+      "Avoiding the allergen",
+      "Topical anti-itch creams"
+    ],
+    "warning_signs": [
+      "Difficulty breathing or wheezing (Anaphylaxis)",
+      "Swelling of the lips, tongue, or throat",
+      "Rapid, weak pulse",
+      "Nausea/vomiting after a sting or food"
+    ],
+    "prevention": [
+      "Identify triggers through testing",
+      "Read food labels carefully",
+      "Inform others of your allergies",
+      "Keep emergency meds (like EpiPen) if prescribed"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/allergies/symptoms-causes/syc-20351497"
+  },
+  {
+    "disease": "Diabetes (Education)",
+    "summary": "A chronic condition that affects how the body turns food into energy, leading to high blood sugar.",
+    "symptoms": [
+      "Increased thirst and urination",
+      "Unexplained weight loss",
+      "Blurry vision",
+      "Slow-healing sores",
+      "Extreme fatigue"
+    ],
+    "treatment": [
+      "Regular blood sugar monitoring",
+      "Healthy meal planning",
+      "Physical activity",
+      "Insulin or oral medications (as prescribed)"
+    ],
+    "warning_signs": [
+      "Confusion or altered mental state",
+      "Breath that smells fruity (Ketoacidosis)",
+      "Extreme dizziness/shaking (Hypoglycemia)",
+      "Loss of consciousness"
+    ],
+    "prevention": [
+      "Maintain a healthy weight",
+      "Stay physically active",
+      "Limit sugary drinks and processed foods",
+      "Regular health screenings"
+    ],
+    "source": "https://www.diabetes.org/diabetes"
+  },
+  {
+    "disease": "Hypertension (Education)",
+    "summary": "A condition where the force of the blood against the artery walls is too high, often called a 'silent killer.'",
+    "symptoms": [
+      "Often no symptoms (asymptomatic)",
+      "Occasional headaches",
+      "Shortness of breath",
+      "Nosebleeds (only in very high stages)"
+    ],
+    "treatment": [
+      "Reducing salt intake",
+      "Regular aerobic exercise",
+      "Weight management",
+      "Prescription blood pressure medication"
+    ],
+    "warning_signs": [
+      "Severe chest pain",
+      "Severe headache with confusion/blurred vision",
+      "Nausea/vomiting with sudden anxiety",
+      "Difficulty speaking or weakness (Stroke risk)"
+    ],
+    "prevention": [
+      "Follow the DASH diet (rich in fruits/veggies)",
+      "Limit alcohol and quit smoking",
+      "Manage stress",
+      "Monitor blood pressure at home"
+    ],
+    "source": "https://www.who.int/news-room/fact-sheets/detail/hypertension"
+  },
+  {
+    "disease": "Anemia",
+    "summary": "A condition in which the blood doesn't have enough healthy red blood cells to carry adequate oxygen.",
+    "symptoms": [
+      "Fatigue and weakness",
+      "Pale or yellowish skin",
+      "Irregular heartbeats",
+      "Cold hands and feet",
+      "Chest pain"
+    ],
+    "treatment": [
+      "Iron-rich foods (red meat, beans, spinach)",
+      "Vitamin B12 or Folate supplements",
+      "Iron supplements (if advised by doctor)",
+      "Treating underlying blood loss"
+    ],
+    "warning_signs": [
+      "Severe shortness of breath even at rest",
+      "Fainting or severe dizziness",
+      "Rapid or pounding heart rate",
+      "Extreme pallor"
+    ],
+    "prevention": [
+      "Eat a balanced diet high in iron and vitamins",
+      "Vitamin C intake to help iron absorption",
+      "Regular check-ups during pregnancy",
+      "Addressing heavy menstrual cycles"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360"
+  },
+  {
+    "disease": "Acute Pharyngitis (Strep Throat)",
+    "summary": "An inflammation of the pharynx, often caused by Group A Streptococcus bacteria, resulting in a severe sore throat.",
+    "symptoms": [
+      "Sudden severe sore throat",
+      "Pain when swallowing",
+      "Fever",
+      "Swollen tonsils, sometimes with white patches",
+      "Tiny red spots on the roof of the mouth"
+    ],
+    "treatment": [
+      "Antibiotics (if bacterial)",
+      "Pain relievers (Ibuprofen/Acetaminophen)",
+      "Saltwater gargle",
+      "Throat lozenges"
+    ],
+    "warning_signs": [
+      "Difficulty breathing",
+      "Inability to swallow saliva (drooling)",
+      "Joint pain after the infection",
+      "Rash (Scarlet Fever)"
+    ],
+    "prevention": [
+      "Frequent handwashing",
+      "Don't share utensils or toothbrushes",
+      "Cover mouth when sneezing"
+    ],
+    "source": "https://www.cdc.gov/groupastrep/diseases-public/strep-throat.html"
+  },
+  {
+    "disease": "Acute Sinusitis",
+    "summary": "Inflammation of the cavities around your nasal passages, often triggered by a cold or allergies.",
+    "symptoms": [
+      "Thick yellow or green nasal discharge",
+      "Nasal congestion",
+      "Pain and tenderness around eyes, cheeks, nose",
+      "Reduced sense of smell"
+    ],
+    "treatment": [
+      "Saline nasal spray",
+      "Nasal corticosteroids",
+      "Decongestants",
+      "Antibiotics (only if bacterial)"
+    ],
+    "warning_signs": [
+      "High fever",
+      "Severe headache",
+      "Confusion",
+      "Swelling or redness around the eyes"
+    ],
+    "prevention": [
+      "Avoid upper respiratory infections",
+      "Manage allergies",
+      "Avoid smoke and pollutants",
+      "Use a humidifier"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/acute-sinusitis/symptoms-causes/syc-20351671"
+  },
+  {
+    "disease": "Osteoarthritis",
+    "summary": "The most common form of arthritis, occurring when the protective cartilage that cushions the ends of the bones wears down over time.",
+    "symptoms": [
+      "Joint pain during or after movement",
+      "Stiffness, especially upon waking",
+      "Loss of flexibility",
+      "Grating sensation in joints"
+    ],
+    "treatment": [
+      "Physical therapy",
+      "Weight management",
+      "Nonsteroidal anti-inflammatory drugs (NSAIDs)",
+      "Corticosteroid injections"
+    ],
+    "warning_signs": [
+      "Severe joint instability",
+      "Rapidly worsening pain",
+      "Inability to perform daily activities"
+    ],
+    "prevention": [
+      "Maintain a healthy weight",
+      "Exercise regularly (low impact)",
+      "Avoid repetitive joint injuries"
+    ],
+    "source": "https://www.arthritis.org/diseases/osteoarthritis"
+  },
+  {
+    "disease": "Gastroesophageal Reflux Disease (GERD)",
+    "summary": "A chronic condition where stomach acid frequently flows back into the tube connecting your mouth and stomach (esophagus).",
+    "symptoms": [
+      "Heartburn, usually after eating",
+      "Chest pain",
+      "Difficulty swallowing",
+      "Regurgitation of food or sour liquid"
+    ],
+    "treatment": [
+      "Antacids",
+      "H2 blockers",
+      "Proton pump inhibitors (PPIs)",
+      "Lifestyle and dietary changes"
+    ],
+    "warning_signs": [
+      "Chronic cough",
+      "Weight loss",
+      "Persistent vomiting",
+      "Difficulty swallowing or food sticking"
+    ],
+    "prevention": [
+      "Maintain a healthy weight",
+      "Stop smoking",
+      "Avoid trigger foods (fatty/spicy)",
+      "Don't lie down after a meal"
+    ],
+    "source": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults"
+  },
+  {
+    "disease": "Hyperlipidemia (High Cholesterol)",
+    "summary": "High levels of lipids (fats) in the blood, which can lead to plaque buildup in arteries.",
+    "symptoms": [
+      "Usually no symptoms",
+      "Yellowish deposits around eyes (Xanthelasma) in severe cases"
+    ],
+    "treatment": [
+      "Statins",
+      "Healthy diet (low saturated fats)",
+      "Aerobic exercise",
+      "Weight loss"
+    ],
+    "warning_signs": [
+      "Chest pain (Angina)",
+      "Signs of stroke (slurred speech, weakness)",
+      "Leg pain when walking (PAD)"
+    ],
+    "prevention": [
+      "Eat heart-healthy foods",
+      "Regular exercise",
+      "Avoid smoking",
+      "Limit alcohol consumption"
+    ],
+    "source": "https://medlineplus.gov/cholesterol.html"
+  },
+  {
+    "disease": "Hypothyroidism",
+    "summary": "A condition in which the thyroid gland doesn't produce enough of certain crucial hormones.",
+    "symptoms": [
+      "Fatigue",
+      "Increased sensitivity to cold",
+      "Weight gain",
+      "Dry skin",
+      "Thinning hair"
+    ],
+    "treatment": [
+      "Levothyroxine (synthetic thyroid hormone)",
+      "Regular blood tests (TSH/T4)",
+      "Consistent medication schedule"
+    ],
+    "warning_signs": [
+      "Depression",
+      "Goiter (enlarged thyroid)",
+      "Memory issues",
+      "Myxedema coma (severe, life-threatening cases)"
+    ],
+    "prevention": [
+      "Ensure adequate iodine intake (iodized salt)",
+      "Screening for high-risk groups (pregnant women/seniors)"
+    ],
+    "source": "https://www.thyroid.org/hypothyroidism/"
+  },
+  {
+    "disease": "Generalized Anxiety Disorder (GAD)",
+    "summary": "A mental health condition characterized by persistent and excessive worry about various things.",
+    "symptoms": [
+      "Restlessness",
+      "Fatigue",
+      "Difficulty concentrating",
+      "Irritability",
+      "Muscle tension",
+      "Sleep disturbances"
+    ],
+    "treatment": [
+      "Cognitive Behavioral Therapy (CBT)",
+      "Antidepressants (SSRIs/SNRIs)",
+      "Mindfulness and meditation",
+      "Lifestyle changes (exercise/sleep)"
+    ],
+    "warning_signs": [
+      "Panic attacks",
+      "Social isolation",
+      "Physical symptoms like chronic headaches or IBS",
+      "Suicidal ideation"
+    ],
+    "prevention": [
+      "Early intervention",
+      "Stress management techniques",
+      "Avoiding caffeine and alcohol"
+    ],
+    "source": "https://www.nimh.nih.gov/health/topics/anxiety-disorders"
+  },
+  {
+    "disease": "Pneumonia",
+    "summary": "An infection that inflames the air sacs in one or both lungs, which may fill with fluid.",
+    "symptoms": [
+      "Chest pain when breathing or coughing",
+      "Cough with phlegm",
+      "Fever, sweating, and shaking chills",
+      "Shortness of breath"
+    ],
+    "treatment": [
+      "Antibiotics (for bacterial)",
+      "Antivirals (for viral)",
+      "Cough medicine",
+      "Fever reducers/Pain relievers"
+    ],
+    "warning_signs": [
+      "Blue tint in lips or fingertips",
+      "Confusion (especially in seniors)",
+      "Very high fever",
+      "Inability to keep liquids down"
+    ],
+    "prevention": [
+      "Pneumococcal vaccine",
+      "Flu vaccine",
+      "Don't smoke",
+      "Maintain strong immune system"
+    ],
+    "source": "https://www.lung.org/lung-health-diseases/lung-disease-lookup/pneumonia"
+  },
+  {
+    "disease": "Tuberculosis (TB)",
+    "summary": "A serious infectious bacterial disease that mainly affects the lungs but can spread to other organs.",
+    "symptoms": [
+      "Cough lasting 3 or more weeks",
+      "Coughing up blood",
+      "Chest pain",
+      "Unintentional weight loss",
+      "Night sweats"
+    ],
+    "treatment": [
+      "Long-term course of antibiotics (6-9 months)",
+      "DOTS (Directly Observed Treatment Short-course)",
+      "Isolation during infectious phase"
+    ],
+    "warning_signs": [
+      "Persistent fever",
+      "Loss of appetite",
+      "Severe shortness of breath",
+      "Swollen glands"
+    ],
+    "prevention": [
+      "BCG vaccination (in endemic areas)",
+      "Good ventilation",
+      "Screening high-risk contacts",
+      "Covering mouth when coughing"
+    ],
+    "source": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis"
+  },
+  {
+    "disease": "Urinary Tract Infection (UTI)",
+    "summary": "An infection in any part of the urinary system—kidneys, ureters, bladder, or urethra.",
+    "symptoms": [
+      "Strong, persistent urge to urinate",
+      "Burning sensation when urinating",
+      "Cloudy or strong-smelling urine",
+      "Pelvic pain (in women)"
+    ],
+    "treatment": [
+      "Antibiotics",
+      "Increased water intake",
+      "Pain relievers (Phenazopyridine)",
+      "Heating pad for pelvic discomfort"
+    ],
+    "warning_signs": [
+      "Back or side (flank) pain",
+      "High fever and chills",
+      "Nausea and vomiting",
+      "Blood in urine"
+    ],
+    "prevention": [
+      "Drink plenty of water",
+      "Wipe from front to back",
+      "Empty bladder after intercourse",
+      "Avoid irritating feminine products"
+    ],
+    "source": "https://www.urologyhealth.org/urologic-conditions/urinary-tract-infections-adults"
+  },
+  {
+    "disease": "Coronary Artery Disease (CAD)",
+    "summary": "The most common heart disease, caused by plaque buildup in the wall of the arteries that supply blood to the heart.",
+    "symptoms": [
+      "Chest pain (Angina)",
+      "Shortness of breath",
+      "Fatigue",
+      "Neck or jaw pain"
+    ],
+    "treatment": [
+      "Lifestyle changes (diet/exercise)",
+      "Statins or Beta-blockers",
+      "Angioplasty or Stenting",
+      "Coronary artery bypass surgery"
+    ],
+    "warning_signs": [
+      "Crushing chest pressure",
+      "Pain radiating to left arm",
+      "Sudden cold sweat",
+      "Nausea"
+    ],
+    "prevention": [
+      "Maintain low cholesterol",
+      "Control blood pressure",
+      "No smoking",
+      "Manage diabetes"
+    ],
+    "source": "https://www.cdc.gov/heartdisease/coronary_ad.htm"
+  },
+  {
+    "disease": "Atrial Fibrillation (AFib)",
+    "summary": "An irregular and often very rapid heart rhythm that can lead to blood clots in the heart.",
+    "symptoms": [
+      "Heart palpitations",
+      "Weakness",
+      "Dizziness",
+      "Shortness of breath"
+    ],
+    "treatment": [
+      "Blood thinners (Anticoagulants)",
+      "Beta-blockers",
+      "Cardioversion",
+      "Catheter ablation"
+    ],
+    "warning_signs": [
+      "Sudden fainting",
+      "Severe chest pain",
+      "Signs of stroke (drooping face, arm weakness)"
+    ],
+    "prevention": [
+      "Limit caffeine and alcohol",
+      "Control high blood pressure",
+      "Regular physical activity",
+      "Reduce stress"
+    ],
+    "source": "https://www.heart.org/en/health-topics/atrial-fibrillation"
+  },
+  {
+    "disease": "Alzheimer's Disease",
+    "summary": "A progressive neurological disorder that causes the brain to shrink and brain cells to die, leading to memory loss.",
+    "symptoms": [
+      "Memory loss affecting daily life",
+      "Confusion with time or place",
+      "Difficulty completing familiar tasks",
+      "Changes in mood and personality"
+    ],
+    "treatment": [
+      "Cholinesterase inhibitors",
+      "Memantine",
+      "Cognitive stimulation therapy",
+      "Safety and environment management"
+    ],
+    "warning_signs": [
+      "Getting lost in familiar places",
+      "Severe suspicion of family/caregivers",
+      "Inability to swallow or move in late stages"
+    ],
+    "prevention": [
+      "Regular mental stimulation",
+      "Heart-healthy diet",
+      "Social engagement",
+      "Quality sleep"
+    ],
+    "source": "https://www.alz.org/alzheimers-dementia/what-is-alzheimers"
+  },
+  {
+    "disease": "Parkinson's Disease",
+    "summary": "A brain disorder that leads to shaking, stiffness, and difficulty with walking, balance, and coordination.",
+    "symptoms": [
+      "Tremor (shaking) at rest",
+      "Slowed movement (Bradykinesia)",
+      "Rigid muscles",
+      "Impaired posture and balance"
+    ],
+    "treatment": [
+      "Levodopa/Carbidopa",
+      "Dopamine agonists",
+      "Deep Brain Stimulation (DBS)",
+      "Physical and occupational therapy"
+    ],
+    "warning_signs": [
+      "Sudden falls",
+      "Difficulty swallowing",
+      "Severe depression or anxiety",
+      "Freezing of gait"
+    ],
+    "prevention": [
+      "Regular aerobic exercise",
+      "Consumption of caffeine (linked to lower risk)",
+      "Avoiding environmental toxins (pesticides)"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055"
+  },
+  {
+    "disease": "Epilepsy",
+    "summary": "A central nervous system (neurological) disorder in which brain activity becomes abnormal, causing seizures.",
+    "symptoms": [
+      "Temporary confusion",
+      "A staring spell",
+      "Stiff muscles",
+      "Uncontrollable jerking movements"
+    ],
+    "treatment": [
+      "Anti-epileptic drugs (AEDs)",
+      "Ketogenic diet",
+      "Vagus nerve stimulation",
+      "Brain surgery (for focal cases)"
+    ],
+    "warning_signs": [
+      "Seizure lasting more than 5 minutes",
+      "Slow recovery after a seizure",
+      "Second seizure follows immediately",
+      "Seizure during pregnancy"
+    ],
+    "prevention": [
+      "Preventing head injuries",
+      "Reducing risk of stroke",
+      "Prenatal care to prevent birth complications"
+    ],
+    "source": "https://www.who.int/news-room/fact-sheets/detail/epilepsy"
+  },
+  {
+    "disease": "Rheumatoid Arthritis (RA)",
+    "summary": "An autoimmune disorder where the immune system attacks the lining of the joints, causing painful swelling.",
+    "symptoms": [
+      "Tender, warm, swollen joints",
+      "Joint stiffness (worse in mornings)",
+      "Fatigue, fever, and loss of appetite",
+      "Symmetrical joint involvement"
+    ],
+    "treatment": [
+      "DMARDs (Disease-modifying antirheumatic drugs)",
+      "Biologic agents",
+      "NSAIDs",
+      "Physical therapy"
+    ],
+    "warning_signs": [
+      "Rapidly developing joint deformities",
+      "Numbness/tingling (nerve involvement)",
+      "Chest pain (heart lining inflammation)"
+    ],
+    "prevention": [
+      "Quit smoking",
+      "Maintain healthy weight",
+      "Early diagnosis and treatment to prevent damage"
+    ],
+    "source": "https://www.rheumatology.org/I-Am-A/Patient-Care/Diseases-Conditions/Rheumatoid-Arthritis"
+  },
+  {
+    "disease": "Celiac Disease",
+    "summary": "An immune reaction to eating gluten that creates inflammation and damages the small intestine's lining.",
+    "symptoms": [
+      "Diarrhea and bloating",
+      "Fatigue",
+      "Weight loss",
+      "Iron-deficiency anemia"
+    ],
+    "treatment": [
+      "Strict lifelong gluten-free diet",
+      "Vitamin and mineral supplements",
+      "Dermatitis herpetiformis medication"
+    ],
+    "warning_signs": [
+      "Severe malnutrition",
+      "Bone weakening (Osteoporosis)",
+      "Infertility or miscarriage",
+      "Neurological problems"
+    ],
+    "prevention": [
+      "No known prevention; managed through diet after diagnosis",
+      "Screening for first-degree relatives"
+    ],
+    "source": "https://celiac.org/about-celiac-disease/what-is-celiac-disease/"
+  },
+  {
+    "disease": "Chronic Obstructive Pulmonary Disease (COPD)",
+    "summary": "A chronic inflammatory lung disease that causes obstructed airflow from the lungs.",
+    "symptoms": [
+      "Shortness of breath, especially during activity",
+      "Wheezing",
+      "Chest tightness",
+      "Chronic cough with mucus"
+    ],
+    "treatment": [
+      "Bronchodilators",
+      "Inhaled steroids",
+      "Oxygen therapy",
+      "Pulmonary rehabilitation"
+    ],
+    "warning_signs": [
+      "Blue fingernails or lips",
+      "Inability to catch breath or speak",
+      "Confusion",
+      "Rapid heartbeat"
+    ],
+    "prevention": [
+      "Don't smoke",
+      "Avoid secondhand smoke",
+      "Protect yourself from dust and fumes at work"
+    ],
+    "source": "https://www.who.int/news-room/fact-sheets/detail/chronic-obstructive-pulmonary-disease-(copd)"
+  },
+  {
+    "disease": "Tonsillitis",
+    "summary": "Inflammation of the tonsils, typically caused by a viral or bacterial infection (such as Strep throat).",
+    "symptoms": [
+      "Swollen, red tonsils",
+      "White or yellow coating/patches on tonsils",
+      "Sore throat",
+      "Difficult or painful swallowing",
+      "Swollen lymph nodes in the neck"
+    ],
+    "treatment": [
+      "Antibiotics (if bacterial)",
+      "Hydration and rest",
+      "Saltwater gargle",
+      "Tonsillectomy (surgery) for chronic or recurrent cases"
+    ],
+    "warning_signs": [
+      "Inability to swallow fluids",
+      "Drooling (due to inability to swallow)",
+      "Severe difficulty breathing",
+      "Muffled 'hot potato' voice"
+    ],
+    "prevention": [
+      "Frequent handwashing",
+      "Avoid sharing food, glasses, or water bottles",
+      "Replace toothbrush after a strep diagnosis"
+    ],
+    "source": "https://www.mayoclinic.org/diseases-conditions/tonsillitis/symptoms-causes/syc-20378479"
+  },
+  {
+    "disease": "Peritonsillar Abscess",
+    "summary": "A complication of tonsillitis where a collection of pus forms near the tonsils, pushing the tonsil toward the center of the throat.",
+    "symptoms": [
+      "Severe throat pain (usually one-sided)",
+      "Fever and chills",
+      "Difficulty opening the mouth (trismus)",
+      "Muffled voice"
+    ],
+    "treatment": [
+      "Drainage of the abscess by a doctor",
+      "Intravenous or oral antibiotics",
+      "Pain management",
+      "Steroids to reduce swelling"
+    ],
+    "warning_signs": [
+      "Airway obstruction",
+      "Dehydration from inability to drink",
+      "Spreading infection to the neck or chest"
+    ],
+    "prevention": [
+      "Prompt treatment of tonsillitis",
+      "Maintaining oral hygiene",
+      "Quitting smoking"
+    ],
+    "source": "https://medlineplus.gov/ency/article/000986.htm"
+  },
+  {
+    "disease": "Tonsil Stones (Tonsilloliths)",
+    "summary": "Small, hard white or yellow deposits that form in the crevices (crypts) of the tonsils.",
+    "symptoms": [
+      "Bad breath (Halitosis)",
+      "Sore throat",
+      "Sensation of something stuck in the throat",
+      "Visible white debris on tonsils"
+    ],
+    "treatment": [
+      "Vigorous saltwater gargling",
+      "Manual removal (if safe and advised)",
+      "Laser tonsil cryptolysis",
+      "Antibiotics (if infected)"
+    ],
+    "warning_signs": [
+      "Significant swelling of the tonsil",
+      "Difficulty swallowing",
+      "Persistent ear pain"
+    ],
+    "prevention": [
+      "Good oral hygiene (brushing/flossing)",
+      "Gargling regularly after meals",
+      "Staying hydrated"
+    ],
+    "source": "https://my.clevelandclinic.org/health/diseases/21505-tonsil-stones"
+  },
+  {
+    "disease": "Chronic Kidney Disease (CKD)",
+    "summary": "A long-term condition where the kidneys don't work as well as they should, often worsening over time.",
+    "symptoms": [
+      "Nausea and vomiting",
+      "Fatigue and weakness",
+      "Changes in urination frequency",
+      "Swollen feet and ankles"
+    ],
+    "treatment": [
+      "Managing blood pressure and diabetes",
+      "Dietary changes (low protein/salt)",
+      "Dialysis (in late stages)",
+      "Kidney transplant"
+    ],
+    "warning_signs": [
+      "Fluid retention (Edema)",
+      "Sudden shortness of breath",
+      "Chest pain (fluid buildup around heart)",
+      "High potassium levels"
+    ],
+    "prevention": [
+      "Control blood sugar and blood pressure",
+      "Stay hydrated",
+      "Limit OTC painkiller use (NSAIDs)",
+      "Reduce salt intake"
+    ],
+    "source": "https://www.kidney.org/atoz/content/about-chronic-kidney-disease"
+  },
+  {
+    "disease": "Osteoporosis",
+    "summary": "A condition that weakens bones, making them fragile and more likely to break.",
+    "symptoms": [
+      "Back pain (caused by fractured vertebra)",
+      "Loss of height over time",
+      "Stooped posture",
+      "Bones that break easily"
+    ],
+    "treatment": [
+      "Bisphosphonates",
+      "Hormone-related therapy",
+      "Calcium and Vitamin D supplements",
+      "Weight-bearing exercise"
+    ],
+    "warning_signs": [
+      "Sudden sharp back pain",
+      "Fracture from a minor fall",
+      "Visible hump in the upper back"
+    ],
+    "prevention": [
+      "Adequate calcium intake",
+      "Weight-bearing exercise (walking, jogging)",
+      "Avoiding excessive alcohol",
+      "Quitting smoking"
+    ],
+    "source": "https://www.niams.nih.gov/health-topics/osteoporosis"
+  },
+  {
+    "disease": "Eczema (Atopic Dermatitis)",
+    "summary": "A condition that makes your skin red and itchy, common in children but can occur at any age.",
+    "symptoms": [
+      "Dry, scaly skin",
+      "Itching, which may be severe",
+      "Red to brownish-gray patches",
+      "Small, raised bumps"
+    ],
+    "treatment": [
+      "Moisturizing regularly",
+      "Corticosteroid creams",
+      "Topical calcineurin inhibitors",
+      "Phototherapy"
+    ],
+    "warning_signs": [
+      "Signs of infection (pus, yellow crusts)",
+      "Skin is painful to the touch",
+      "Sleep loss due to itching"
+    ],
+    "prevention": [
+      "Identify and avoid triggers (soaps, sweat)",
+      "Short, warm showers (not hot)",
+      "Use 'fragrance-free' products"
+    ],
+    "source": "https://www.nationaleczema.org/eczema/"
+  },
+  {
+    "disease": "Gout",
+    "summary": "A form of inflammatory arthritis characterized by sudden, severe attacks of pain and redness in joints.",
+    "symptoms": [
+      "Intense joint pain (often big toe)",
+      "Lingering discomfort",
+      "Inflammation and redness",
+      "Limited range of motion"
+    ],
+    "treatment": [
+      "NSAIDs or Colchicine",
+      "Corticosteroids",
+      "Urate-lowering therapy (Allopurinol)",
+      "Ice application"
+    ],
+    "warning_signs": [
+      "Repeated attacks (chronic gout)",
+      "Joint damage/deformity",
+      "Kidney stones"
+    ],
+    "prevention": [
+      "Limit purine-rich foods (red meat, seafood)",
+      "Avoid sugary drinks and alcohol",
+      "Drink plenty of water",
+      "Maintain a healthy weight"
+    ],
+    "source": "https://www.arthritis.org/diseases/gout"
+  }
+]
