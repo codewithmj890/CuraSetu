@@ -141,11 +141,12 @@ CuraSetu 2.0 uses a sophisticated multi-layered confidence scoring system:
 2. **Regional Weighting**: India-focused with monsoon season boost (+15% for dengue/malaria/typhoid during June-Sept)
 3. **Symptom Role Weighting**: Primary symptom match (+30%), secondary match (+10%), co-occurrence pairs (+15%), negative evidence penalty (-25%)
 4. **Confidence Separation**: Enforces minimum 12% gap between top two conditions for clear diagnosis
-5. **Clinical Reasoning**: Generates transparent explanations for disease ranking and uncertainty
+5. **Normalized Distribution**: All displayed confidence values are normalized to sum to exactly 100%, representing relative likelihood
+6. **Clinical Reasoning**: Generates transparent explanations for disease ranking and uncertainty
 
-**Confidence Caps**: 90% absolute max, 85% without complete info, 60% with contradictions, 25% minimum display threshold
+**Confidence Display**: Normalized probability distribution (always sums to 100%), filtered at 15% minimum threshold
 
-**Note**: Confidence scores are heuristic estimates, not probabilistic diagnoses.
+**Note**: Confidence scores represent relative likelihood across candidate conditions, not absolute diagnostic certainty.
 
 **Response Structure**: Ranked conditions → Ranking explanation → Uncertainty explanation → Disease details → "What this is NOT" → Treatment/warnings/prevention → Follow-up questions → Reassurance
 

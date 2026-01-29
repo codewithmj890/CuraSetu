@@ -120,20 +120,60 @@ class GeminiService:
         }
         return colors.get(severity, '#2d2d2d')
     
+    def detect_intent(self, user_input):
+        """Detect user intent: EDUCATIONAL or SYMPTOM_ANALYSIS"""
+        input_lower = user_input.lower()
+        
+        # Educational intent patterns
+        educational_patterns = [
+            'symptoms of', 'what is', 'causes of', 'treatment of', 
+            'prevention of', 'define', 'meaning of', 'tell me about',
+            'information about', 'explain', 'describe'
+        ]
+        
+        # Symptom analysis patterns
+        symptom_patterns = [
+            'i have', 'i am feeling', 'my ', 'experiencing',
+            'suffering from', 'dealing with'
+        ]
+        
+        # Check educational patterns first
+        if any(pattern in input_lower for pattern in educational_patterns):
+            print(f"Intent: EDUCATIONAL")
+            return 'EDUCATIONAL'
+        
+        # Check symptom patterns
+        if any(pattern in input_lower for pattern in symptom_patterns):
+            print(f"Intent: SYMPTOM_ANALYSIS")
+            return 'SYMPTOM_ANALYSIS'
+        
+        # Default to symptom analysis for safety
+        print(f"Intent: SYMPTOM_ANALYSIS (default)")
+        return 'SYMPTOM_ANALYSIS'
+    
     def get_rag_health_advice(self, symptoms):
         """Get health advice using RAG (Retrieval-Augmented Generation)"""
         try:
+            # Detect intent before processing
+            intent = self.detect_intent(symptoms)
+            
             # Retrieve relevant medical chunks
             retrieved_chunks = self.retriever.retrieve(symptoms, top_k=5)
             
             if not retrieved_chunks:
                 return self.get_fallback_response()
             
-            # Format retrieved knowledge for display
-            return self.format_rag_response(retrieved_chunks, symptoms)
+            # Route to appropriate formatter based on intent
+            if intent == 'EDUCATIONAL':
+                return self.format_educational_response(retrieved_chunks, symptoms)
+            else:
+                return self.format_rag_response(retrieved_chunks, symptoms)
             
+        except AttributeError as e:
+            print(f"ERROR: RAG method missing - {e}")
+            return self.get_fallback_response()
         except Exception as e:
-            print(f"RAG retrieval failed: {e}")
+            print(f"ERROR: RAG retrieval failed - {e}")
             return self.get_fallback_response()
     
     def calculate_confidence(self, chunk_score, rank, total_chunks):
@@ -434,6 +474,113 @@ class GeminiService:
         
         return questions[:3]  # Max 3 questions
     
+    def normalize_confidence_scores(self, sorted_diseases):
+        """Normalize confidence scores to sum to exactly 100%"""
+        if not sorted_diseases:
+            return sorted_diseases
+        
+        # Calculate total raw score
+        total_score = sum(disease_info['confidence'] for _, disease_info in sorted_diseases)
+        
+        if total_score == 0:
+            return sorted_diseases
+        
+        # Normalize each score to percentage
+        normalized_diseases = []
+        rounded_sum = 0
+        
+        for disease_name, disease_info in sorted_diseases:
+            # Calculate normalized percentage
+            normalized_pct = (disease_info['confidence'] / total_score) * 100
+            rounded_pct = round(normalized_pct)
+            
+            # Store both raw and normalized confidence
+            disease_info['raw_confidence'] = disease_info['confidence']
+            disease_info['normalized_confidence'] = rounded_pct
+            
+            normalized_diseases.append((disease_name, disease_info))
+            rounded_sum += rounded_pct
+        
+        # Adjust top disease to ensure sum equals exactly 100%
+        if rounded_sum != 100 and normalized_diseases:
+            adjustment = 100 - rounded_sum
+            normalized_diseases[0][1]['normalized_confidence'] += adjustment
+        
+        # Filter diseases below 15% normalized threshold
+        normalized_diseases = [(name, info) for name, info in normalized_diseases 
+                               if info['normalized_confidence'] >= 15]
+        
+        return normalized_diseases
+    
+    def format_educational_response(self, chunks, query):
+        """Format educational medical information without confidence scoring"""
+        # Group chunks by disease
+        diseases = {}
+        for chunk in chunks:
+            disease_name = chunk['metadata']['disease_name']
+            section = chunk['metadata']['section']
+            
+            if disease_name not in diseases:
+                diseases[disease_name] = {
+                    'source': chunk['metadata']['source'],
+                    'sections': {}
+                }
+            
+            diseases[disease_name]['sections'][section] = chunk['text'].replace(f"{disease_name} - {section}:", "").strip()
+        
+        # Use first disease for educational content
+        if not diseases:
+            return self.get_fallback_response()
+        
+        disease_name = list(diseases.keys())[0]
+        disease_info = diseases[disease_name]
+        sections = disease_info['sections']
+        
+        # Build educational response
+        response = f"<div style='margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border);'>"
+        response += f"<p style='color: var(--text-primary); font-size: 1.1em; font-weight: 600; margin-bottom: 6px;'>{disease_name}</p>"
+        response += "</div>"
+        
+        # Summary
+        if 'summary' in sections:
+            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>{sections['summary']}</p>"
+        
+        # Common symptoms
+        if 'symptoms' in sections:
+            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>Common Symptoms:</strong></p>"
+            symptoms_list = [s.strip() for s in sections['symptoms'].split(',')]
+            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
+            for symptom in symptoms_list:
+                if symptom:
+                    response += f"<li>{symptom}</li>"
+            response += "</ul>"
+        
+        # Warning signs
+        if 'warning_signs' in sections:
+            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>When to Seek Medical Care:</strong></p>"
+            warning_list = [w.strip() for w in sections['warning_signs'].split(',')]
+            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
+            for warning in warning_list:
+                if warning:
+                    response += f"<li>{warning}</li>"
+            response += "</ul>"
+        
+        # Treatment
+        if 'treatment' in sections:
+            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>Typical Management:</strong></p>"
+            treatment_list = [t.strip() for t in sections['treatment'].split(',')]
+            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
+            for treatment in treatment_list:
+                if treatment:
+                    response += f"<li>{treatment}</li>"
+            response += "</ul>"
+        
+        # Source
+        if 'source' in disease_info:
+            response += f"<p style='color: var(--text-secondary); font-size: 0.85em; line-height: 1.6; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);'>Source: {disease_info['source']}</p>"
+        
+        return f"<div style='margin-bottom: 24px;'>{response}</div>"
+    
     def format_rag_response(self, chunks, symptoms):
         """Format RAG retrieved chunks into humanized medical advice with multi-disease ranking"""
         # Analyze symptom quality for confidence adjustment
@@ -479,7 +626,7 @@ class GeminiService:
             max_cap = 0.85 if uncertainty_reasons else 0.90
             disease_info['confidence'] = min(max(disease_info['confidence'], 0.0), max_cap)
         
-        # Filter diseases above 25% threshold
+        # Filter diseases above 25% raw threshold (before normalization)
         diseases = {k: v for k, v in diseases.items() if v['confidence'] >= 0.25}
         
         # Sort diseases by confidence
@@ -487,6 +634,9 @@ class GeminiService:
         
         # Enforce confidence separation
         sorted_diseases = self.enforce_confidence_separation(sorted_diseases)
+        
+        # Normalize confidence scores to sum to 100%
+        sorted_diseases = self.normalize_confidence_scores(sorted_diseases)
         
         # Generate ranking explanation
         ranking_explanation = self.generate_ranking_explanation(sorted_diseases, symptoms)
@@ -497,12 +647,14 @@ class GeminiService:
         # Show ranked conditions if multiple diseases found
         if len(sorted_diseases) > 1:
             html_response += "<div style='margin-bottom: 20px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border: 1px solid var(--border);'>"
-            html_response += "<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 10px;'>Possible Conditions:</p>"
+            html_response += "<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 10px;'>Possible Conditions (Relative Likelihood):</p>"
             html_response += "<ul style='color: var(--text-primary); line-height: 1.8; margin: 0; padding-left: 24px;'>"
             for disease_name, disease_info in sorted_diseases[:3]:  # Max 3 conditions
-                conf_pct = int(disease_info['confidence'] * 100)
-                html_response += f"<li>{disease_name} — Confidence: {conf_pct}%</li>"
-            html_response += "</ul></div>"
+                conf_pct = disease_info['normalized_confidence']
+                html_response += f"<li>{disease_name} — {conf_pct}%</li>"
+            html_response += "</ul>"
+            html_response += "<p style='color: var(--text-secondary); font-size: 0.85em; margin: 8px 0 0 0; line-height: 1.4;'>These percentages reflect how likely each condition is relative to the others based on your symptoms. They are not a medical diagnosis.</p>"
+            html_response += "</div>"
         
         # Add ranking explanation if available
         if ranking_explanation:
@@ -511,8 +663,8 @@ class GeminiService:
             html_response += f"<p style='color: var(--text-secondary); margin: 0; line-height: 1.6;'>{ranking_explanation}</p>"
             html_response += "</div>"
         
-        # Add uncertainty explanation if reasons exist
-        if uncertainty_reasons:
+        # Add uncertainty explanation only if confidence < 85
+        if uncertainty_reasons and (not sorted_diseases or sorted_diseases[0][1].get('normalized_confidence', 0) < 85):
             html_response += self.format_uncertainty_explanation(uncertainty_reasons)
         
         # Primary disease explanation
@@ -527,10 +679,12 @@ class GeminiService:
     def format_humanized_response(self, disease_name, disease_info, symptoms="", has_comorbidity=False):
         """Format disease information in calm, empathetic medical tone"""
         sections = disease_info['sections']
-        confidence = disease_info['confidence']
         
-        # Convert confidence to percentage
-        confidence_pct = int(confidence * 100)
+        # Use normalized confidence if available, otherwise raw confidence
+        if 'normalized_confidence' in disease_info:
+            confidence_pct = disease_info['normalized_confidence']
+        else:
+            confidence_pct = int(disease_info['confidence'] * 100)
         
         # MANDATORY HEADER: Disease name and confidence percentage
         response = f"<div style='margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border);'>"
