@@ -1,0 +1,300 @@
+{
+  "version": "5.1_LAYMAN_SAFE",
+  "principle": "High-recall emergency triage. Over-triggering preferred to missed emergencies.",
+  "rules": [
+
+    {
+      "id": "ACUTE_CORONARY_SYNDROME",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Heart Attack",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "chest pain",
+        "chest pressure",
+        "heavy chest",
+        "tight chest",
+        "crushing pain",
+        "left arm pain",
+        "pain to left arm",
+        "radiating pain",
+        "jaw pain",
+        "neck pain",
+        "sweating",
+        "cold sweats",
+        "nausea",
+        "vomiting",
+        "shortness of breath"
+      ],
+      "severity_modifiers": ["severe", "crushing", "sudden", "sharp", "unbearable", "very bad", "extremely", "bad", "badly"],
+      "message": "Chest pain with associated symptoms may indicate a heart attack. This is a medical emergency."
+    },
+
+    {
+      "id": "AORTIC_DISSECTION",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Aortic Dissection",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "tearing chest pain",
+        "sudden chest pain",
+        "severe chest pain",
+        "back pain",
+        "between shoulder blades",
+        "blood pressure difference"
+      ],
+      "message": "Sudden severe chest or back pain may indicate a life-threatening aortic condition."
+    },
+
+    {
+      "id": "STROKE",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Stroke",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "slurred speech",
+        "cannot speak",
+        "speech problem",
+        "face drooping",
+        "facial drooping",
+        "face droopy",
+        "face feels droopy",
+        "face numb",
+        "one side weak",
+        "arm weakness",
+        "leg weakness",
+        "sudden numbness",
+        "sudden confusion",
+        "sudden weakness",
+        "sudden vision loss",
+        "vision blurred suddenly",
+        "mouth crooked",
+        "smile uneven"
+      ],
+      "message": "Sudden neurological symptoms may indicate a stroke. Immediate medical attention is required.",
+      "severity_modifiers": ["suddenly", "sudden", "all of a sudden", "out of nowhere"]
+    },
+
+    {
+      "id": "BRAIN_HEMORRHAGE",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Brain Hemorrhage",
+      "trigger_type": "ANY_1",
+      "keywords": [
+        "worst headache",
+        "worst headache ever",
+        "worst headache of my life",
+        "thunderclap headache",
+        "headache with vomiting",
+        "headache with confusion"
+      ],
+      "severity_modifiers": ["sudden", "suddenly", "never felt before", "came suddenly", "came out of nowhere", "worst ever"],
+      "message": "A sudden severe headache may indicate bleeding in the brain. This is a medical emergency."
+    },
+
+    {
+      "id": "SEIZURE_STATUS",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Active Seizure / Status Epilepticus",
+      "trigger_type": "ANY_1",
+      "keywords": [
+        "seizure",
+        "fits",
+        "convulsions",
+        "unconscious",
+        "not waking up",
+        "collapsed",
+        "fell down unconscious",
+        "started shaking",
+        "shaking uncontrollably",
+        "body shaking",
+        "shaking and not waking",
+        "fainted and shaking",
+        "cannot wake up",
+        "wont wake up",
+        "not responding"
+      ],
+      "message": "Seizures or loss of consciousness require immediate emergency care."
+    },
+
+    {
+      "id": "RESPIRATORY_FAILURE",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Severe Respiratory Distress",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "shortness of breath",
+        "difficulty breathing",
+        "cannot breathe",
+        "hard to breathe",
+        "blue lips",
+        "bluish lips",
+        "cyanosis",
+        "gasping",
+        "lips turning blue",
+        "lips look blue",
+        "fingertips blue",
+        "struggling to breathe"
+      ],
+      "message": "Severe breathing difficulty with oxygen deprivation signs is a medical emergency."
+    },
+
+    {
+      "id": "PULMONARY_EMBOLISM",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Pulmonary Embolism",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "sudden breathlessness",
+        "chest pain on breathing",
+        "sharp chest pain",
+        "cough blood",
+        "leg swelling",
+        "recent surgery"
+      ],
+      "message": "Sudden chest pain with breathing difficulty may indicate a blood clot in the lungs."
+    },
+
+    {
+      "id": "SEPSIS",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Sepsis",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "high fever",
+        "very weak",
+        "extremely weak",
+        "confusion",
+        "confused",
+        "fast heartbeat",
+        "low blood pressure",
+        "chills"
+      ],
+      "message": "Severe infection affecting the whole body may be present. Immediate care is required."
+    },
+
+    {
+      "id": "MENINGITIS",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Meningitis",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "fever",
+        "neck stiffness",
+        "severe headache",
+        "sensitivity to light",
+        "confusion"
+      ],
+      "message": "Symptoms may indicate meningitis, a life-threatening infection of the brain coverings."
+    },
+
+    {
+      "id": "HEMOPTYSIS",
+      "level": "URGENT",
+      "disease": "Possible Hemoptysis (Coughing Blood)",
+      "trigger_type": "ANY_1",
+      "keywords": [
+        "coughing blood",
+        "cough blood",
+        "blood in cough",
+        "blood with cough",
+        "blood when coughing",
+        "blood in sputum",
+        "blood in phlegm",
+        "there is blood",
+        "blood came out",
+        "spit blood",
+        "spitting blood",
+        "hemoptysis"
+      ],
+      "message": "Coughing up blood requires urgent medical evaluation."
+    },
+
+    {
+      "id": "DENGUE_CHIKUNGUNYA",
+      "level": "URGENT",
+      "disease": "Possible Dengue or Chikungunya",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "high fever",
+        "very high fever",
+        "joint pain",
+        "body pain",
+        "severe body pain",
+        "terrible body pain",
+        "muscle pain",
+        "rash",
+        "red rash",
+        "red rashes",
+        "skin rash",
+        "spots on skin",
+        "eye pain",
+        "pain behind eyes"
+      ],
+      "message": "High fever with body pain and rash may indicate dengue or chikungunya."
+    },
+
+    {
+      "id": "TUBERCULOSIS",
+      "level": "URGENT",
+      "disease": "Possible Tuberculosis (TB)",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "chronic cough",
+        "cough for weeks",
+        "night sweats",
+        "weight loss",
+        "losing weight",
+        "blood in sputum",
+        "cough blood"
+      ],
+      "message": "Chronic cough with systemic symptoms may indicate tuberculosis."
+    },
+
+    {
+      "id": "CARBON_MONOXIDE",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Carbon Monoxide Poisoning",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "headache",
+        "dizziness",
+        "nausea",
+        "confusion",
+        "gas",
+        "generator",
+        "heater"
+      ],
+      "message": "Symptoms may indicate carbon monoxide poisoning. Leave the area and seek emergency care."
+    },
+
+    {
+      "id": "POISONING",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Poisoning / Overdose",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "overdose",
+        "poison",
+        "unknown substance",
+        "too many pills",
+        "chemical ingestion"
+      ],
+      "message": "Possible poisoning detected. Immediate emergency care is required."
+    },
+
+    {
+      "id": "ECTOPIC_PREGNANCY",
+      "level": "IMMEDIATE_EMERGENCY",
+      "disease": "Possible Ectopic Pregnancy",
+      "trigger_type": "ANY_2",
+      "keywords": [
+        "pregnant",
+        "severe abdominal pain",
+        "shoulder pain",
+        "vaginal bleeding",
+        "fainting"
+      ],
+      "message": "Symptoms may indicate a dangerous pregnancy complication."
+    }
+  ]
+}

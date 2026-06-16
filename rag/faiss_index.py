@@ -26,4 +26,10 @@ class FaissStore:
     def search(self, query_vector, top_k=5):
         """Search for similar medical chunks"""
         distances, indices = self.index.search(query_vector, top_k)
-        return [self.metadata[i] for i in indices[0] if i < len(self.metadata)]
+        results = []
+        for i, idx in enumerate(indices[0]):
+            if idx < len(self.metadata):
+                result = self.metadata[idx].copy()
+                result['score'] = float(distances[0][i])
+                results.append(result)
+        return results

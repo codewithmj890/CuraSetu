@@ -2,28 +2,34 @@ import numpy as np
 from rag.embedding_model import EmbeddingModel
 from rag.faiss_index import FaissStore
 
+
 class MedicalRetriever:
-    """Retrieves relevant medical knowledge chunks for user queries"""
-    
+    """
+    Retrieves clinically relevant medical knowledge chunks
+    with explainable metadata.
+    """
+
     def __init__(self):
-        """Initialize embedding model and FAISS store"""
-        self.model = EmbeddingModel.get_model()
+        self.model = EmbeddingModel()
         self.store = FaissStore()
 
-    def retrieve(self, query, top_k=5):
+    def retrieve(self, query: str, top_k: int = 5):
         """
-        Retrieve top-k most relevant medical chunks for a query
-        
-        Args:
-            query (str): User's symptom description
-            top_k (int): Number of chunks to retrieve
-            
-        Returns:
-            list: List of medical knowledge chunks with metadata
+        Retrieve top-k relevant medical chunks.
+
+        Returns enriched metadata for reasoning.
         """
-        # Generate embedding for user query
-        query_embedding = self.model.encode([query])
+        # Embed user query
+        query_embedding = self.model.embed_text(query)
         query_embedding = np.array(query_embedding).astype("float32")
-        
-        # Search FAISS index for similar chunks
-        return self.store.search(query_embedding, top_k)
+
+        # FAISS search
+        results = self.store.search(query_embedding, top_k)
+
+        # Safety filter
+        cleaned = []
+        for r in results:
+            if "text" in r and len(r["text"].strip()) > 10:
+                cleaned.append(r)
+
+        return cleaned

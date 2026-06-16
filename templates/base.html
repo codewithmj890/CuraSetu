@@ -1045,6 +1045,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/performance.js' %}"></script>
     <script>
+        // Performance utilities
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        function debounce(func, delay) {
+            let timeoutId;
+            return function() {
+                const args = arguments;
+                const context = this;
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => func.apply(context, args), delay);
+            }
+        }
+
         // Theme Management
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -1091,10 +1115,24 @@
             const chatMessages = document.getElementById('chatMessages');
             if (chatMessages) {
                 chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Throttled scroll handler
+                chatMessages.addEventListener('scroll', throttle(function() {
+                    requestAnimationFrame(() => {
+                        // Scroll-based logic here if needed
+                    });
+                }, 100), { passive: true });
             }
 
             // Convert tables to content blocks
             convertTablesToContentBlocks();
+            
+            // Throttled resize handler
+            window.addEventListener('resize', throttle(function() {
+                requestAnimationFrame(() => {
+                    // Resize-based logic here if needed
+                });
+            }, 150), { passive: true });
         });
 
         // Convert HTML tables to theme-aware content blocks

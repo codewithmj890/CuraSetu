@@ -1,786 +1,610 @@
-import os
+# services.py — CLEAN MEDICAL REASONING ENGINE (STATE SAFE)
+
 import json
-from django.conf import settings
+from django.core.cache import cache
+
 try:
     from rag.retriever import MedicalRetriever
     RAG_AVAILABLE = True
 except ImportError:
     RAG_AVAILABLE = False
 
-class GeminiService:
+from .followup_engine import FollowUpEngine
+from .triage_engine import TriageEngine
+
+
+# ─────────────────────────────────────────────
+# STATE OBJECT (PERSISTED PER CONVERSATION)
+# ─────────────────────────────────────────────
+
+class DiagnosisState:
     def __init__(self):
-        self.disease_data = self.load_disease_data()
-        # Initialize RAG retriever if available
+        self.locked_disease = None
+        self.confidence = 0
+        self.resolved_slots = {}  # {disease: {slot: answer}}
+        self.pending_question = None
+        self.original_symptoms = ""
+        self.cached_sections = {}
+        self.high_risk = False
+        self.active_system = None
+
+
+# ─────────────────────────────────────────────
+# MAIN SERVICE
+# ─────────────────────────────────────────────
+
+class GeminiService:
+
+    # Minimum symptom signals required for diagnosis attempt.
+    # If none of these are present, ask the user to describe more.
+    SYMPTOM_SIGNALS = [
+        "pain", "ache", "aching", "hurt", "hurting",
+        "fever", "temperature", "cough", "cold",
+        "bleed", "bleeding", "blood",
+        "pimple", "pimples", "acne", "blackhead", "whitehead", "breakout",
+        "rash", "itch", "itching", "swelling", "swollen",
+        "dizzy", "dizziness", "faint", "fainting",
+        "nausea", "vomit", "vomiting",
+        "sore", "burning", "tingling",
+        "breath", "breathing", "breathless",
+        "weakness", "weak", "fatigue", "tired",
+        "headache", "migraine",
+        "chest", "stomach", "abdomen", "throat",
+        "discharge", "infection", "wound",
+        "collapse", "collapsed", "unconscious", "shaking",
+    ]
+
+    # Phrases that are vague enough to warrant asking for more detail
+    # even if they contain a SYMPTOM_SIGNAL word.
+    VAGUE_PHRASES = [
+        "feel uneasy",
+        "something feels wrong",
+        "something is wrong",
+        "not feeling well",
+        "feeling off",
+        "feel off",
+        "don't feel good",
+        "dont feel good",
+        "feel bad",
+        "feeling bad",
+        "something wrong",
+        "feels wrong",
+        "feel strange",
+        "feeling strange",
+        "feel weird",
+        "feeling weird",
+    ]
+
+    def __init__(self):
+        self.followup = FollowUpEngine()
+        self.triage = TriageEngine()
+        self.disease_sources = self._load_disease_sources()
+
         if RAG_AVAILABLE:
-            try:
-                self.retriever = MedicalRetriever()
-                self.rag_enabled = True
-            except Exception as e:
-                print(f"RAG initialization failed: {e}")
-                self.rag_enabled = False
+            self.retriever = MedicalRetriever()
+            self.rag_enabled = True
         else:
             self.rag_enabled = False
-    
-    def load_disease_data(self):
-        """Load disease data from JSON file"""
+
+    def _load_disease_sources(self):
+        """
+        Build a lookup dict  {disease_name_lower: (display_name, source_url)}
+        from disease_data.json. Only the first entry per disease name is kept.
+        """
         try:
-            json_path = os.path.join(settings.BASE_DIR, 'disease_data.json')
-            with open(json_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-                return data.get('diseases', data) if isinstance(data, dict) else data
+            import os
+            from django.conf import settings
+            path = os.path.join(settings.BASE_DIR, "disease_data.json")
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            lookup = {}
+            for entry in data:
+                name = entry.get("disease", "")
+                source = entry.get("source", "")
+                key = name.lower().strip()
+                if key and source and key not in lookup:
+                    lookup[key] = (name, source)
+            return lookup
         except Exception as e:
-            print(f"Error loading disease data: {e}")
-            return []
-    
-    def find_matching_disease(self, symptoms):
-        """Find matching disease based on symptoms"""
-        symptoms_lower = symptoms.lower()
-        best_match = None
-        max_matches = 0
-        
-        for disease in self.disease_data:
-            matches = 0
-            # Check symptoms
-            for symptom in disease['symptoms']:
-                if any(word in symptoms_lower for word in symptom.lower().split()):
-                    matches += 1
-            
-            # Check disease name (handle both old and new format)
-            disease_name = disease.get('disease_name', disease.get('disease', ''))
-            if any(word in symptoms_lower for word in disease_name.lower().split()):
-                matches += 2
-            
-            if matches > max_matches:
-                max_matches = matches
-                best_match = disease
-        
-        return best_match if max_matches > 0 else None
-    
-    def format_disease_response(self, disease_info):
-        """Format disease information in humanized medical tone"""
-        disease_name = disease_info.get('disease_name', disease_info.get('disease', 'Unknown'))
-        
-        # Calculate confidence percentage (70% for legacy matching)
-        confidence_pct = 70
-        
-        # MANDATORY HEADER: Disease name and confidence
-        response = f"<div style='margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border);'>"
-        response += f"<p style='color: var(--text-primary); font-size: 1.1em; font-weight: 600; margin-bottom: 6px;'>Condition: {disease_name}</p>"
-        response += f"<p style='color: var(--text-secondary); font-size: 0.95em; margin-bottom: 0;'>Confidence: {confidence_pct}%</p>"
-        response += "</div>"
-        
-        # Opening with empathy
-        response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>Based on what you've shared, {disease_name.lower()} is a possible explanation for your symptoms.</p>"
-        
-        # Summary
-        if 'summary' in disease_info:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>{disease_info['summary']}</p>"
-        
-        # Symptoms
-        if 'symptoms' in disease_info and disease_info['symptoms']:
-            symptoms_text = ', '.join(disease_info['symptoms'])
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>People with this condition commonly experience {symptoms_text.lower()}.</p>"
-        
-        # Treatment
-        if 'treatment' in disease_info and disease_info['treatment']:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>Management typically includes:</strong></p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for item in disease_info['treatment']:
-                response += f"<li>{item}</li>"
-            response += "</ul>"
-        
-        # Warning signs
-        if 'warning_signs' in disease_info and disease_info['warning_signs']:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>You should consider seeking medical attention if:</strong></p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for item in disease_info['warning_signs']:
-                response += f"<li>{item}</li>"
-            response += "</ul>"
-        
-        # Prevention
-        if 'prevention' in disease_info and disease_info['prevention']:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>To help prevent this:</strong></p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for item in disease_info['prevention']:
-                response += f"<li>{item}</li>"
-            response += "</ul>"
-        
-        # Soft disclaimer
-        response += f"<p style='color: var(--text-secondary); font-size: 0.9em; line-height: 1.6; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);'>If symptoms worsen or don't improve, it would be a good idea to speak with a healthcare professional who can examine you in person.</p>"
-        
-        return f"<div style='margin-bottom: 24px;'>{response}</div>"
-    
-    def get_severity_color(self, severity):
-        """Get color for severity level"""
-        colors = {
-            'Low': '#2d2d2d',
-            'Medium': '#444444', 
-            'High': '#666666',
-            'Critical': '#888888'
-        }
-        return colors.get(severity, '#2d2d2d')
-    
-    def detect_intent(self, user_input):
-        """Detect user intent: EDUCATIONAL or SYMPTOM_ANALYSIS"""
-        input_lower = user_input.lower()
-        
-        # Educational intent patterns
-        educational_patterns = [
-            'symptoms of', 'what is', 'causes of', 'treatment of', 
-            'prevention of', 'define', 'meaning of', 'tell me about',
-            'information about', 'explain', 'describe'
+            print(f"[GeminiService] Could not load disease_data.json: {e}")
+            return {}
+
+    # ─────────────────────────────────────────
+    # ENTRY POINT
+    # ─────────────────────────────────────────
+
+    def get_health_advice(self, user_input, conversation_id):
+        text_lower = user_input.strip().lower()
+
+        # EDUCATIONAL CHECK FIRST — single disease names must bypass word-count guard
+        if self._is_educational(user_input):
+            self._reset_state(conversation_id)
+            return self._render_educational(user_input)
+
+        # GUARD 1: Reject garbage / trivially short / keyword-only input
+        if (
+            not any(c.isalnum() for c in user_input)
+            or len(user_input.split()) < 3
+            or text_lower in ["help", "???", "test"]
+        ):
+            self._reset_state(conversation_id)
+            return "<p style='color: var(--text-primary); line-height: 1.6;'>Please describe your symptoms in a few words so I can help you.</p>"
+
+        # GUARD 2: ABSOLUTE TRIAGE OVERRIDE (BEFORE EVERYTHING)
+        triage_result = self.triage.assess(user_input)
+        if triage_result:
+            self._reset_state(conversation_id)
+            return self._render_emergency(triage_result)
+
+        # GUARD 1.5: Vague input with no actionable symptom signal → ask for detail
+        # Runs AFTER triage so emergencies phrased vaguely still get caught above.
+        if self._is_vague_input(text_lower):
+            self._reset_state(conversation_id)
+            return "<p style='color: var(--text-primary); line-height: 1.6;'>Could you describe your symptoms in a bit more detail? For example, where does it hurt, or what exactly feels wrong?</p>"
+
+        state = self._load_state(conversation_id)
+
+        # 3. Follow-up answer (STRICT)
+        if self._is_followup_payload(user_input):
+            return self._handle_followup(user_input, state, conversation_id)
+
+        # 4. NEW COMPLAINT DETECTION (CRITICAL)
+        if state.locked_disease and self._is_new_complaint(user_input, state):
+            self._reset_state(conversation_id)
+            return self.get_health_advice(user_input, conversation_id)
+
+        # 5. Educational query (NO STATE)
+        if self._is_educational(user_input):
+            self._reset_state(conversation_id)
+            return self._render_educational(user_input)
+
+        # 6. If diagnosis locked → refine only
+        if state.locked_disease:
+            return self._refine(state, conversation_id)
+
+        # 7. New diagnosis
+        return self._diagnose(user_input, state, conversation_id)
+
+    # ─────────────────────────────────────────
+    # VAGUE INPUT DETECTION
+    # ─────────────────────────────────────────
+
+    def _is_vague_input(self, text_lower):
+        """
+        Returns True if the input matches a known vague phrase OR
+        contains no recognisable symptom signal at all.
+
+        Runs AFTER triage — emergency inputs are already handled by then.
+        """
+        # Explicit vague phrase list takes priority
+        if any(phrase in text_lower for phrase in self.VAGUE_PHRASES):
+            return True
+
+        # No symptom signal found in the entire input
+        return not any(signal in text_lower for signal in self.SYMPTOM_SIGNALS)
+
+    # ─────────────────────────────────────────
+    # STATE MANAGEMENT
+    # ─────────────────────────────────────────
+
+    def _load_state(self, cid):
+        state = cache.get(f"diag:{cid}")
+        if not state:
+            state = DiagnosisState()
+        return state
+
+    def _save_state(self, cid, state):
+        cache.set(f"diag:{cid}", state, timeout=3600)
+
+    def _reset_state(self, cid):
+        cache.delete(f"diag:{cid}")
+
+    # ─────────────────────────────────────────
+    # INTENT DETECTION
+    # ─────────────────────────────────────────
+
+    def _is_new_complaint(self, user_input, state):
+        """Detect if user switched to unrelated symptoms (body system based)"""
+        if not state.locked_disease or not state.active_system:
+            return False
+        new_system = self._detect_body_system(user_input)
+        return new_system != state.active_system
+
+    def _is_educational(self, text):
+        if len(text.split()) > 3:
+            return False
+        return text.strip().lower() in [
+            "tuberculosis", "tb", "diabetes", "asthma",
+            "hypertension", "dengue", "malaria", "typhoid",
+            "heart attack", "stroke", "cancer"
         ]
-        
-        # Symptom analysis patterns
-        symptom_patterns = [
-            'i have', 'i am feeling', 'my ', 'experiencing',
-            'suffering from', 'dealing with'
-        ]
-        
-        # Check educational patterns first
-        if any(pattern in input_lower for pattern in educational_patterns):
-            print(f"Intent: EDUCATIONAL")
-            return 'EDUCATIONAL'
-        
-        # Check symptom patterns
-        if any(pattern in input_lower for pattern in symptom_patterns):
-            print(f"Intent: SYMPTOM_ANALYSIS")
-            return 'SYMPTOM_ANALYSIS'
-        
-        # Default to symptom analysis for safety
-        print(f"Intent: SYMPTOM_ANALYSIS (default)")
-        return 'SYMPTOM_ANALYSIS'
-    
-    def get_rag_health_advice(self, symptoms):
-        """Get health advice using RAG (Retrieval-Augmented Generation)"""
+
+    def _is_followup_payload(self, text):
         try:
-            # Detect intent before processing
-            intent = self.detect_intent(symptoms)
-            
-            # Retrieve relevant medical chunks
-            retrieved_chunks = self.retriever.retrieve(symptoms, top_k=5)
-            
-            if not retrieved_chunks:
-                return self.get_fallback_response()
-            
-            # Route to appropriate formatter based on intent
-            if intent == 'EDUCATIONAL':
-                return self.format_educational_response(retrieved_chunks, symptoms)
-            else:
-                return self.format_rag_response(retrieved_chunks, symptoms)
-            
-        except AttributeError as e:
-            print(f"ERROR: RAG method missing - {e}")
-            return self.get_fallback_response()
-        except Exception as e:
-            print(f"ERROR: RAG retrieval failed - {e}")
-            return self.get_fallback_response()
-    
-    def calculate_confidence(self, chunk_score, rank, total_chunks):
-        """Calculate confidence score based on retrieval strength"""
-        # Normalize score (0.0 to 1.0)
-        base_score = min(chunk_score / 100.0, 1.0) if chunk_score > 1 else chunk_score
-        # Apply rank penalty (first result gets highest weight)
-        rank_weight = 1.0 - (rank * 0.1)
-        confidence = base_score * max(rank_weight, 0.5)
-        return round(min(confidence, 0.99), 2)
-    
-    def apply_symptom_role_weighting(self, disease_name, symptoms, sections):
-        """Apply primary/secondary symptom weighting and negative evidence penalties"""
-        symptoms_lower = symptoms.lower()
-        disease_lower = disease_name.lower()
-        
-        # Primary symptom definitions (hallmark symptoms)
-        primary_symptoms = {
-            'diarrhea': ['loose stool', 'watery stool', 'diarrhea', 'urgency'],
-            'gastritis': ['burning', 'acidity', 'acid reflux', 'heartburn', 'post-meal'],
-            'tonsillitis': ['throat pain', 'sore throat', 'swollen tonsils', 'difficulty swallowing'],
-            'cold': ['runny nose', 'congestion', 'sneezing', 'nasal'],
-            'fever': ['fever', 'high temperature', 'chills'],
-            'headache': ['headache', 'head pain', 'migraine'],
-            'food poisoning': ['vomiting', 'nausea', 'contaminated food']
+            data = json.loads(text)
+            return data.get("type") == "FOLLOWUP_ANSWER"
+        except:
+            return False
+
+    # ─────────────────────────────────────────
+    # DIAGNOSIS
+    # ─────────────────────────────────────────
+
+    def _diagnose(self, text, state, cid):
+        if not self.rag_enabled:
+            return self._fallback()
+
+        chunks = self.retriever.retrieve(text, top_k=5)
+        diseases = {}
+
+        for c in chunks:
+            d = c["metadata"]["disease_name"]
+            diseases.setdefault(d, 0)
+            diseases[d] += c.get("score", 0.3)
+
+        if not diseases:
+            return self._fallback()
+
+        RED_FLAG_TERMS = [
+            "chest pain", "sweating", "shortness of breath",
+            "left arm", "face droop", "slurred speech",
+            "worst headache", "blood in cough", "blue lips"
+        ]
+        has_red_flags = any(term in text.lower() for term in RED_FLAG_TERMS)
+        if has_red_flags:
+            EXCLUDED_DISEASES = ["Panic Disorder", "Anxiety", "Generalized Anxiety Disorder"]
+            diseases = {k: v for k, v in diseases.items() if k not in EXCLUDED_DISEASES}
+
+        if not diseases:
+            return self._fallback()
+
+        ranked = sorted(diseases.items(), key=lambda x: x[1], reverse=True)
+        primary, score = ranked[0]
+
+        BANNED_DIAGNOSES = {"cough", "fever", "pain", "headache", "fatigue", "nausea"}
+        if primary.lower() in BANNED_DIAGNOSES:
+            triage_result = self.triage.assess(text)
+            if triage_result:
+                self._reset_state(cid)
+                return self._render_emergency(triage_result)
+            return self._fallback()
+
+        confidence = min(int((score / sum(diseases.values())) * 100), 70)
+
+        state.locked_disease = primary
+        state.confidence = confidence
+        state.original_symptoms = text
+        state.active_system = self._detect_body_system(text)
+
+        if primary not in state.resolved_slots:
+            state.resolved_slots[primary] = {}
+        state.resolved_slots[primary] = self.followup.extract_resolved_slots(text, state.active_system)
+
+        state.cached_sections = {
+            c["metadata"]["section"]: c["text"]
+            for c in chunks if c["metadata"]["disease_name"] == primary
         }
-        
-        # Co-occurrence pairs that boost confidence
-        co_occurrence_boost = 0
-        if 'stomach pain' in symptoms_lower or 'abdominal pain' in symptoms_lower:
-            if 'diarrhea' in symptoms_lower or 'loose stool' in symptoms_lower:
-                if any(term in disease_lower for term in ['diarrhea', 'food poisoning', 'gastroenteritis']):
-                    co_occurrence_boost = 0.15
-            elif 'acidity' in symptoms_lower or 'burning' in symptoms_lower:
-                if any(term in disease_lower for term in ['gastritis', 'indigestion', 'acidity']):
-                    co_occurrence_boost = 0.15
-        
-        # Primary symptom matching
-        primary_match_score = 0
-        secondary_match_score = 0
-        
-        for disease_key, primary_list in primary_symptoms.items():
-            if disease_key in disease_lower:
-                matched_primary = sum(1 for symptom in primary_list if symptom in symptoms_lower)
-                if matched_primary > 0:
-                    primary_match_score = 0.30  # +30 points for primary match
-                else:
-                    # Negative evidence penalty: hallmark symptom missing
-                    if len(primary_list) > 0:
-                        primary_match_score = -0.25  # -25 points penalty
-                break
-        
-        # Secondary symptoms (general symptoms)
-        secondary_symptoms = ['pain', 'discomfort', 'tired', 'fatigue', 'weakness']
-        matched_secondary = sum(1 for symptom in secondary_symptoms if symptom in symptoms_lower)
-        if matched_secondary > 0:
-            secondary_match_score = 0.10  # +10 points for secondary match
-        
-        total_adjustment = primary_match_score + secondary_match_score + co_occurrence_boost
-        return total_adjustment
-    
-    def enforce_confidence_separation(self, sorted_diseases):
-        """Enforce meaningful separation between top-ranked conditions"""
-        if len(sorted_diseases) < 2:
-            return sorted_diseases
-        
-        top_conf = sorted_diseases[0][1]['confidence']
-        second_conf = sorted_diseases[1][1]['confidence']
-        
-        # Require at least 12% separation
-        min_separation = 0.12
-        current_separation = top_conf - second_conf
-        
-        if current_separation < min_separation:
-            # Reduce secondary scores proportionally
-            reduction_factor = 0.85
-            for i in range(1, len(sorted_diseases)):
-                sorted_diseases[i][1]['confidence'] *= reduction_factor
-        
-        return sorted_diseases
-    
-    def generate_ranking_explanation(self, sorted_diseases, symptoms):
-        """Generate clinical reasoning explanation for ranking"""
-        if len(sorted_diseases) < 2:
-            return None
-        
-        top_disease = sorted_diseases[0][0]
-        symptoms_lower = symptoms.lower()
-        
-        # Identify key symptom that drove ranking
-        key_symptoms = {
-            'diarrhea': 'loose stools',
-            'gastritis': 'acidity or burning sensation',
-            'tonsillitis': 'throat pain and swelling',
-            'cold': 'nasal congestion',
-            'fever': 'elevated temperature'
+
+        self._save_state(cid, state)
+        return self._render(state)
+
+    # ─────────────────────────────────────────
+    # FOLLOW-UP HANDLING
+    # ─────────────────────────────────────────
+
+    def _handle_followup(self, payload, state, cid):
+        data = json.loads(payload)
+        qid = data["question_id"]
+        ans = data["answer"]
+
+        if state.locked_disease not in state.resolved_slots:
+            state.resolved_slots[state.locked_disease] = {}
+
+        state.resolved_slots[state.locked_disease][qid] = ans
+        state.pending_question = None
+        state.original_symptoms += f", {qid.replace('_', ' ')}: {ans}"
+
+        CONFIDENCE_RULES = {
+            'white_patches': {'Yes': 15, 'No': -5, 'Not sure': 0},
+            'duration': {'1-2 days': 5, '3-5 days': 8, 'More than 5 days': -5},
+            'painful': {'Yes': 5, 'No': -2},
+            'itching': {'Yes, severe': -8, 'Yes, mild': 0, 'No': 5},
+            'difficulty_swallowing': {'Mild': 5, 'Moderate': 8, 'Severe': 10},
+            'cough_type': {'Dry': 5, 'With phlegm': 8, 'Both': 3}
         }
-        
-        explanation = None
-        for disease_key, symptom_desc in key_symptoms.items():
-            if disease_key in top_disease.lower():
-                explanation = f"{top_disease} ranks higher because {symptom_desc} strongly indicates this condition."
-                break
-        
-        # Add why others ranked lower
-        if len(sorted_diseases) > 1:
-            lower_disease = sorted_diseases[-1][0]
-            for disease_key, symptom_desc in key_symptoms.items():
-                if disease_key in lower_disease.lower():
-                    explanation += f" {lower_disease} is ranked lower because key symptoms like {symptom_desc} were not mentioned."
-                    break
-        
-        return explanation
-    
-    def analyze_symptom_quality(self, symptoms):
-        """Analyze symptom description quality and return confidence modifier"""
-        symptoms_lower = symptoms.lower()
-        words = symptoms_lower.split()
-        
-        # Base quality score
-        quality_score = 1.0
-        uncertainty_reasons = []
-        
-        # Age detection and modifier
-        age_modifier = 1.0
-        age_keywords = {'child': 0.95, 'kid': 0.95, 'baby': 0.9, 'infant': 0.9, 'elderly': 1.05, 'senior': 1.05, 'old': 1.05}
-        for keyword, modifier in age_keywords.items():
-            if keyword in symptoms_lower:
-                age_modifier = modifier
-                break
-        quality_score *= age_modifier
-        
-        # Comorbidity detection
-        comorbidity_keywords = ['diabetes', 'diabetic', 'asthma', 'asthmatic', 'hypertension', 'blood pressure', 'heart disease', 'immunocompromised']
-        has_comorbidity = any(kw in symptoms_lower for kw in comorbidity_keywords)
-        if has_comorbidity:
-            quality_score *= 1.08  # 8% boost for comorbidity context
-        
-        # Severity analysis
-        severity_keywords = {
-            'mild': 1.0,
-            'slight': 1.0,
-            'moderate': 1.15,
-            'severe': 1.25,
-            'intense': 1.25,
-            'extreme': 1.3,
-            'unbearable': 1.3
-        }
-        
-        severity_found = False
-        severity_boost = 1.0
-        for keyword, boost in severity_keywords.items():
-            if keyword in symptoms_lower:
-                severity_found = True
-                severity_boost = max(severity_boost, boost)
-        
-        if severity_found:
-            quality_score *= severity_boost
-            if severity_boost == 1.0:
-                quality_score = min(quality_score, 0.65)
+
+        delta = CONFIDENCE_RULES.get(qid, {}).get(ans, 5)
+
+        if qid == "duration" and ans == "More than 5 days":
+            if "Viral" in state.locked_disease or "Fever" in state.locked_disease:
+                if not hasattr(state, 'flags'):
+                    state.flags = set()
+                state.flags.add("PROLONGED_SYMPTOMS")
+
+        if "Acne" in state.locked_disease and qid == "itching" and ans == "Yes, severe":
+            state.confidence = min(state.confidence, 60)
         else:
-            quality_score *= 0.90
-            uncertainty_reasons.append("symptom severity")
-        
-        # Single symptom penalty
-        if len(words) <= 3:
-            quality_score *= 0.75
-            uncertainty_reasons.append("limited symptom details")
-        
-        # Duration analysis
-        duration_keywords = {
-            'hour': 'acute', 'hours': 'acute', 'day': 'acute', 'days': 'acute',
-            'week': 'subacute', 'weeks': 'subacute',
-            'month': 'chronic', 'months': 'chronic', 'year': 'chronic'
-        }
-        
-        duration_found = False
-        for keyword in duration_keywords:
-            if keyword in symptoms_lower:
-                duration_found = True
-                break
-        
-        if not duration_found:
-            quality_score *= 0.88
-            uncertainty_reasons.append("symptom duration")
-        
-        # Contradiction detection
-        contradictions = []
-        if ('sudden' in symptoms_lower or 'acute' in symptoms_lower) and any(w in symptoms_lower for w in ['month', 'months', 'year', 'chronic']):
-            contradictions.append("sudden onset with long duration")
-        if ('severe' in symptoms_lower or 'extreme' in symptoms_lower) and ('normal' in symptoms_lower or 'functioning' in symptoms_lower):
-            contradictions.append("severe symptoms with normal functioning")
-        
-        if contradictions:
-            quality_score *= 0.70  # 30% penalty for contradictions
-            quality_score = min(quality_score, 0.60)  # Cap at 60%
-            uncertainty_reasons.append("conflicting symptom patterns")
-        
-        # Progression keywords
-        if any(word in symptoms_lower for word in ['worsening', 'worse', 'getting worse', 'deteriorating']):
-            quality_score *= 1.1
-        elif any(word in symptoms_lower for word in ['improving', 'better', 'getting better']):
-            quality_score *= 0.85
-        
-        return min(quality_score, 1.5), uncertainty_reasons, has_comorbidity
-    
-    def apply_regional_weighting(self, disease_name, base_confidence):
-        """Apply regional disease prevalence weighting (India-focused)"""
-        # Default region: India
-        import datetime
-        current_month = datetime.datetime.now().month
-        
-        # Monsoon season in India (June-September)
-        is_monsoon = current_month in [6, 7, 8, 9]
-        
-        disease_lower = disease_name.lower()
-        
-        # Monsoon-related diseases (boost during monsoon)
-        if is_monsoon:
-            if any(term in disease_lower for term in ['dengue', 'malaria', 'typhoid', 'cholera', 'leptospirosis']):
-                return base_confidence * 1.15  # 15% boost
-        
-        # Common year-round conditions in India
-        if any(term in disease_lower for term in ['cold', 'flu', 'fever', 'throat', 'tonsil', 'gastro']):
-            return base_confidence * 1.05  # 5% boost for common conditions
-        
-        return base_confidence
-    
-    def generate_unlikely_conditions(self, disease_name, confidence_pct):
-        """Generate 'what this is not' reassurance based on primary condition"""
-        disease_lower = disease_name.lower()
-        
-        # Only provide reassurance if confidence is reasonable
-        if confidence_pct < 50:
-            return None
-        
-        unlikely_statements = []
-        
-        # Throat/tonsil conditions
-        if 'throat' in disease_lower or 'tonsil' in disease_lower:
-            unlikely_statements.append("Based on what you've described, this does not currently suggest a serious airway emergency or deep neck infection.")
-        
-        # Respiratory conditions
-        elif 'cold' in disease_lower or 'flu' in disease_lower or 'cough' in disease_lower:
-            unlikely_statements.append("At this stage, there are no strong signs pointing toward pneumonia or a more severe respiratory condition.")
-        
-        # Headache conditions
-        elif 'headache' in disease_lower or 'migraine' in disease_lower:
-            unlikely_statements.append("Your symptoms do not currently suggest a neurological emergency or serious brain condition.")
-        
-        # Fever conditions
-        elif 'fever' in disease_lower:
-            unlikely_statements.append("There are no immediate signs of a life-threatening infection at this point.")
-        
-        # Gastrointestinal conditions
-        elif 'gastro' in disease_lower or 'stomach' in disease_lower or 'diarrhea' in disease_lower:
-            unlikely_statements.append("Based on your description, this does not appear to be a surgical emergency or severe inflammatory condition.")
-        
-        return unlikely_statements[0] if unlikely_statements else None
-    
-    def format_uncertainty_explanation(self, uncertainty_reasons):
-        """Format transparent uncertainty explanation"""
-        if not uncertainty_reasons:
-            return ""
-        
-        reasons_text = ", ".join(uncertainty_reasons)
-        if len(uncertainty_reasons) == 1:
-            explanation = f"The confidence is moderate because {reasons_text} information is not yet clear."
+            state.confidence = max(0, min(state.confidence + delta, 90))
+
+        self._save_state(cid, state)
+        return self._render(state)
+
+    # ─────────────────────────────────────────
+    # REFINEMENT (NO RAG)
+    # ─────────────────────────────────────────
+
+    def _refine(self, state, cid):
+        self._save_state(cid, state)
+        return self._render(state)
+
+    # ─────────────────────────────────────────
+    # RENDERING
+    # ─────────────────────────────────────────
+
+    def _render(self, state):
+        confidence_label = self._get_confidence_label(state.confidence)
+        symptoms = self._extract_symptoms(state.original_symptoms)
+
+        next_q = self.followup.get_next_question(
+            state.locked_disease,
+            state.resolved_slots.get(state.locked_disease, {})
+        )
+        is_complete = self._is_followup_complete(state)
+        show_followup = next_q and state.confidence < 85 and not is_complete
+
+        html = self._render_primary_condition(state.locked_disease, state.confidence, confidence_label)
+        html += self._render_reasoning(symptoms, state.locked_disease, "FOLLOWUP" if state.resolved_slots.get(state.locked_disease) else "DIAGNOSTIC")
+        html += self._render_disease_remedies(state.locked_disease)
+
+        if hasattr(state, 'flags') and 'PROLONGED_SYMPTOMS' in state.flags:
+            html += self._render_escalation_warning()
+
+        if show_followup:
+            html += self._render_followup_card(next_q)
         else:
-            explanation = f"The confidence is moderate because details such as {reasons_text} are not yet clear."
-        
-        html = "<div style='margin-bottom: 20px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border-left: 3px solid var(--warning);'>"
-        html += f"<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 6px;'>Why confidence is not higher:</p>"
-        html += f"<p style='color: var(--text-secondary); margin: 0; line-height: 1.6;'>{explanation} A clearer picture would help narrow this down further.</p>"
+            html += self._render_reassurance()
+
+        return html
+
+    def _render_primary_condition(self, disease, confidence, label):
+        return f"""
+        <div style='margin-bottom: 20px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border: 1px solid var(--border);'>
+            <p style='color: var(--text-primary); font-weight: 600; margin-bottom: 6px;'>Most likely condition: {disease}</p>
+            <p style='color: var(--text-secondary); font-size: 0.95em; margin: 0;'>Confidence: {label} ({confidence}%)</p>
+        </div>
+        """
+
+    def _render_reasoning(self, symptoms, disease, mode):
+        symptom_phrase = ", ".join(symptoms) if symptoms else "your symptoms"
+        return f"""
+        <p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>Based on the combination of {symptom_phrase}, this appears to be {disease.lower()}.</p>
+        """
+
+    # ─────────────────────────────────────────
+    # UI BLOCKS
+    # ─────────────────────────────────────────
+
+    def _extract_resolved_slots(self, text):
+        return self.followup.extract_resolved_slots(text)
+
+    def _detect_body_system(self, text):
+        t = text.lower()
+        if any(term in t for term in ['pimple', 'acne', 'skin', 'rash']):
+            return 'DERMATOLOGY'
+        if any(term in t for term in ['throat', 'tonsil', 'ear', 'nose']):
+            return 'ENT'
+        if any(term in t for term in ['cough', 'breathing', 'chest']):
+            return 'RESPIRATORY'
+        if any(term in t for term in ['stomach', 'abdomen', 'belly']):
+            return 'GASTROINTESTINAL'
+        if 'fever' in t and 'joint' in t:
+            return 'SYSTEMIC'
+        return 'GENERAL'
+
+    def _extract_symptoms(self, text):
+        symptoms = []
+        t = text.lower()
+        if "fever" in t:                               symptoms.append("fever")
+        if "cough" in t:                               symptoms.append("cough")
+        if "headache" in t:                            symptoms.append("headache")
+        if "throat" in t or "tonsil" in t:            symptoms.append("sore throat")
+        if "nose" in t or "runny" in t or "running" in t: symptoms.append("runny nose")
+        if "joint" in t:                               symptoms.append("joint pain")
+        if "rash" in t:                                symptoms.append("rash")
+        if "pimple" in t or "acne" in t:              symptoms.append("skin breakouts")
+        return symptoms
+
+    def _get_confidence_label(self, confidence):
+        if confidence < 40:   return "Possible"
+        elif confidence < 70: return "Likely"
+        else:                 return "Very likely"
+
+    def _is_followup_complete(self, state):
+        if any(term in state.locked_disease for term in ["Tuberculosis", "TB", "Cancer", "Stroke", "Heart Attack"]):
+            return True
+        AUTO_SLOTS = {'fever', 'cough', 'painful', 'itching', 'vomiting', 'breathing', 'swelling', 'chills'}
+        disease_slots = state.resolved_slots.get(state.locked_disease, {})
+        answered_count = sum(1 for k in disease_slots.keys() if k not in AUTO_SLOTS)
+        return answered_count >= 2
+
+    def _render_disease_remedies(self, disease):
+        remedies = []
+        recovery_text = "Most mild infections improve within 3-5 days."
+
+        if "Acne" in disease:
+            remedies = [
+                "Cleanse face twice daily with gentle cleanser",
+                "Avoid touching or picking at affected areas",
+                "Use oil-free, non-comedogenic products",
+                "Consider benzoyl peroxide or salicylic acid (2.5%)"
+            ]
+            recovery_text = "Visible improvement usually takes 4-8 weeks with consistent care."
+        elif "Viral" in disease or "Fever" in disease:
+            remedies = [
+                "Rest and get adequate sleep",
+                "Drink plenty of warm fluids (water, herbal tea)",
+                "Steam inhalation to ease congestion",
+                "Paracetamol for fever (follow package instructions)"
+            ]
+            recovery_text = "Symptoms usually improve within 3-5 days."
+        elif "Throat" in disease or "Tonsil" in disease or "Pharyngitis" in disease:
+            remedies = [
+                "Gargle with warm salt water 2-3 times daily",
+                "Drink warm fluids (soup, tea, warm water)",
+                "Rest your voice and get adequate sleep",
+                "Avoid cold drinks and smoking",
+                "Paracetamol for pain or fever (as directed)"
+            ]
+            recovery_text = "Most mild throat infections improve within 3-5 days."
+        else:
+            remedies = [
+                "Rest and hydrate well",
+                "Avoid irritants",
+                "Paracetamol for pain/fever (if needed)"
+            ]
+
+        html = "<div style='margin: 20px 0; padding: 14px; background: var(--bg-glass); border-radius: 12px; border-left: 3px solid var(--success);'>"
+        html += "<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 10px;'>What you can do at home:</p>"
+        html += "<ul style='color: var(--text-primary); line-height: 1.8; margin: 0; padding-left: 24px;'>"
+        for remedy in remedies:
+            html += f"<li>{remedy}</li>"
+        html += "</ul>"
+        html += f"<p style='margin-top: 10px; font-size: 0.9em; color: var(--text-secondary);'>{recovery_text}</p>"
         html += "</div>"
         return html
-    
-    def generate_followup_questions(self, disease_name, confidence_pct, sections):
-        """Generate relevant follow-up questions based on disease and confidence"""
-        if confidence_pct > 85:
-            return None
-        
-        questions = []
-        
-        # Generic questions based on common medical assessment
-        if 'fever' not in str(sections).lower():
-            questions.append("Have you noticed a fever?")
-        
-        questions.append("How long have these symptoms been present?")
-        
-        # Disease-specific questions
-        if 'throat' in disease_name.lower() or 'tonsil' in disease_name.lower():
-            questions.append("Is swallowing becoming more painful?")
-        elif 'cold' in disease_name.lower() or 'flu' in disease_name.lower():
-            questions.append("Are you experiencing body aches or fatigue?")
-        elif 'headache' in disease_name.lower():
-            questions.append("Is the pain on one side or both sides of your head?")
-        
-        return questions[:3]  # Max 3 questions
-    
-    def normalize_confidence_scores(self, sorted_diseases):
-        """Normalize confidence scores to sum to exactly 100%"""
-        if not sorted_diseases:
-            return sorted_diseases
-        
-        # Calculate total raw score
-        total_score = sum(disease_info['confidence'] for _, disease_info in sorted_diseases)
-        
-        if total_score == 0:
-            return sorted_diseases
-        
-        # Normalize each score to percentage
-        normalized_diseases = []
-        rounded_sum = 0
-        
-        for disease_name, disease_info in sorted_diseases:
-            # Calculate normalized percentage
-            normalized_pct = (disease_info['confidence'] / total_score) * 100
-            rounded_pct = round(normalized_pct)
-            
-            # Store both raw and normalized confidence
-            disease_info['raw_confidence'] = disease_info['confidence']
-            disease_info['normalized_confidence'] = rounded_pct
-            
-            normalized_diseases.append((disease_name, disease_info))
-            rounded_sum += rounded_pct
-        
-        # Adjust top disease to ensure sum equals exactly 100%
-        if rounded_sum != 100 and normalized_diseases:
-            adjustment = 100 - rounded_sum
-            normalized_diseases[0][1]['normalized_confidence'] += adjustment
-        
-        # Filter diseases below 15% normalized threshold
-        normalized_diseases = [(name, info) for name, info in normalized_diseases 
-                               if info['normalized_confidence'] >= 15]
-        
-        return normalized_diseases
-    
-    def format_educational_response(self, chunks, query):
-        """Format educational medical information without confidence scoring"""
-        # Group chunks by disease
-        diseases = {}
-        for chunk in chunks:
-            disease_name = chunk['metadata']['disease_name']
-            section = chunk['metadata']['section']
-            
-            if disease_name not in diseases:
-                diseases[disease_name] = {
-                    'source': chunk['metadata']['source'],
-                    'sections': {}
-                }
-            
-            diseases[disease_name]['sections'][section] = chunk['text'].replace(f"{disease_name} - {section}:", "").strip()
-        
-        # Use first disease for educational content
-        if not diseases:
-            return self.get_fallback_response()
-        
-        disease_name = list(diseases.keys())[0]
-        disease_info = diseases[disease_name]
-        sections = disease_info['sections']
-        
-        # Build educational response
-        response = f"<div style='margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border);'>"
-        response += f"<p style='color: var(--text-primary); font-size: 1.1em; font-weight: 600; margin-bottom: 6px;'>{disease_name}</p>"
-        response += "</div>"
-        
-        # Summary
-        if 'summary' in sections:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>{sections['summary']}</p>"
-        
-        # Common symptoms
-        if 'symptoms' in sections:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>Common Symptoms:</strong></p>"
-            symptoms_list = [s.strip() for s in sections['symptoms'].split(',')]
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for symptom in symptoms_list:
-                if symptom:
-                    response += f"<li>{symptom}</li>"
-            response += "</ul>"
-        
-        # Warning signs
-        if 'warning_signs' in sections:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>When to Seek Medical Care:</strong></p>"
-            warning_list = [w.strip() for w in sections['warning_signs'].split(',')]
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for warning in warning_list:
-                if warning:
-                    response += f"<li>{warning}</li>"
-            response += "</ul>"
-        
-        # Treatment
-        if 'treatment' in sections:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>Typical Management:</strong></p>"
-            treatment_list = [t.strip() for t in sections['treatment'].split(',')]
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for treatment in treatment_list:
-                if treatment:
-                    response += f"<li>{treatment}</li>"
-            response += "</ul>"
-        
-        # Source
-        if 'source' in disease_info:
-            response += f"<p style='color: var(--text-secondary); font-size: 0.85em; line-height: 1.6; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);'>Source: {disease_info['source']}</p>"
-        
-        return f"<div style='margin-bottom: 24px;'>{response}</div>"
-    
-    def format_rag_response(self, chunks, symptoms):
-        """Format RAG retrieved chunks into humanized medical advice with multi-disease ranking"""
-        # Analyze symptom quality for confidence adjustment
-        quality_modifier, uncertainty_reasons, has_comorbidity = self.analyze_symptom_quality(symptoms)
-        
-        # Group chunks by disease and section
-        diseases = {}
-        for idx, chunk in enumerate(chunks):
-            disease_name = chunk['metadata']['disease_name']
-            section = chunk['metadata']['section']
-            
-            if disease_name not in diseases:
-                # Calculate confidence with quality adjustment
-                base_confidence = self.calculate_confidence(
-                    chunk.get('score', 0.8), 
-                    idx, 
-                    len(chunks)
-                )
-                adjusted_confidence = base_confidence * quality_modifier
-                
-                # Apply regional weighting
-                regional_confidence = self.apply_regional_weighting(disease_name, adjusted_confidence)
-                
-                # Apply comorbidity modifier
-                if has_comorbidity:
-                    regional_confidence *= 1.05
-                
-                diseases[disease_name] = {
-                    'source': chunk['metadata']['source'],
-                    'sections': {},
-                    'confidence': regional_confidence,
-                    'rank': idx
-                }
-            
-            diseases[disease_name]['sections'][section] = chunk['text'].replace(f"{disease_name} - {section}:", "").strip()
-        
-        # Apply symptom role weighting and negative evidence penalties
-        for disease_name, disease_info in diseases.items():
-            symptom_adjustment = self.apply_symptom_role_weighting(disease_name, symptoms, disease_info['sections'])
-            disease_info['confidence'] += symptom_adjustment
-            
-            # Cap at 90% maximum, or 85% if incomplete info
-            max_cap = 0.85 if uncertainty_reasons else 0.90
-            disease_info['confidence'] = min(max(disease_info['confidence'], 0.0), max_cap)
-        
-        # Filter diseases above 25% raw threshold (before normalization)
-        diseases = {k: v for k, v in diseases.items() if v['confidence'] >= 0.25}
-        
-        # Sort diseases by confidence
-        sorted_diseases = sorted(diseases.items(), key=lambda x: x[1]['confidence'], reverse=True)
-        
-        # Enforce confidence separation
-        sorted_diseases = self.enforce_confidence_separation(sorted_diseases)
-        
-        # Normalize confidence scores to sum to 100%
-        sorted_diseases = self.normalize_confidence_scores(sorted_diseases)
-        
-        # Generate ranking explanation
-        ranking_explanation = self.generate_ranking_explanation(sorted_diseases, symptoms)
-        
-        # Build response with multi-disease ranking
-        html_response = ""
-        
-        # Show ranked conditions if multiple diseases found
-        if len(sorted_diseases) > 1:
-            html_response += "<div style='margin-bottom: 20px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border: 1px solid var(--border);'>"
-            html_response += "<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 10px;'>Possible Conditions (Relative Likelihood):</p>"
-            html_response += "<ul style='color: var(--text-primary); line-height: 1.8; margin: 0; padding-left: 24px;'>"
-            for disease_name, disease_info in sorted_diseases[:3]:  # Max 3 conditions
-                conf_pct = disease_info['normalized_confidence']
-                html_response += f"<li>{disease_name} — {conf_pct}%</li>"
-            html_response += "</ul>"
-            html_response += "<p style='color: var(--text-secondary); font-size: 0.85em; margin: 8px 0 0 0; line-height: 1.4;'>These percentages reflect how likely each condition is relative to the others based on your symptoms. They are not a medical diagnosis.</p>"
-            html_response += "</div>"
-        
-        # Add ranking explanation if available
-        if ranking_explanation:
-            html_response += "<div style='margin-bottom: 20px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border-left: 3px solid var(--accent);'>"
-            html_response += f"<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 6px;'>Why this ranking:</p>"
-            html_response += f"<p style='color: var(--text-secondary); margin: 0; line-height: 1.6;'>{ranking_explanation}</p>"
-            html_response += "</div>"
-        
-        # Add uncertainty explanation only if confidence < 85
-        if uncertainty_reasons and (not sorted_diseases or sorted_diseases[0][1].get('normalized_confidence', 0) < 85):
-            html_response += self.format_uncertainty_explanation(uncertainty_reasons)
-        
-        # Primary disease explanation
-        primary_disease = sorted_diseases[0]
-        html_response += self.format_humanized_response(primary_disease[0], primary_disease[1], symptoms, has_comorbidity)
-        
-        if not html_response:
-            return self.get_fallback_response()
-            
-        return html_response
-    
-    def format_humanized_response(self, disease_name, disease_info, symptoms="", has_comorbidity=False):
-        """Format disease information in calm, empathetic medical tone"""
-        sections = disease_info['sections']
-        
-        # Use normalized confidence if available, otherwise raw confidence
-        if 'normalized_confidence' in disease_info:
-            confidence_pct = disease_info['normalized_confidence']
+
+    def _render_escalation_warning(self):
+        return f"""
+        <div style='margin: 20px 0; padding: 14px; background: #fff3cd; border-radius: 12px; border-left: 3px solid #ff9800;'>
+            <p style='color: #e65100; font-weight: 600; margin-bottom: 6px;'>⚠️ Prolonged Symptoms</p>
+            <p style='color: #2d3436; font-size: 0.95em; margin: 0;'>Because symptoms have lasted more than 5 days, medical evaluation is recommended to rule out complications.</p>
+        </div>
+        """
+
+    def _followup_card(self, q):
+        buttons = "".join(
+            f"<button class='answer-chip' data-question='{q['id']}' data-answer='{o}' style='padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); background: transparent; cursor: pointer; transition: 0.2s ease;'>{o}</button>"
+            for o in q["options"]
+        )
+        return f"""
+        <div style='margin: 20px 0;'>
+            <p style='color: var(--text-primary); font-weight: 600; margin-bottom: 10px;'>One more question to understand better:</p>
+            <div style='margin-bottom: 12px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border-left: 3px solid var(--accent);'>
+                <p style='color: var(--text-primary); margin-bottom: 8px;'>{q['question']}</p>
+                <div style='display: flex; gap: 10px; flex-wrap: wrap;'>
+                    {buttons}
+                </div>
+            </div>
+        </div>
+        """
+
+    def _render_followup_card(self, q):
+        return self._followup_card(q)
+
+    def _render_reassurance(self):
+        return f"""
+        <p style='color: var(--text-secondary); font-size: 0.95em; line-height: 1.6; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-style: italic;'>
+        This condition usually improves with appropriate care.
+        If symptoms worsen or persist, consult a doctor.
+        </p>
+        """
+
+    # ─────────────────────────────────────────
+    # SPECIAL RENDERS
+    # ─────────────────────────────────────────
+
+    def _render_emergency(self, triage):
+        level   = triage["level"]
+        disease = triage["disease"]
+        message = triage["message"]
+
+        if level == "IMMEDIATE_EMERGENCY":
+            color  = "#d63031"
+            bg     = "#ffe5e5"
+            border = "#ff6b6b"
+            icon   = "🚨"
+            title  = "IMMEDIATE EMERGENCY"
+            instructions = [
+                "Call emergency services (108) immediately",
+                "Do NOT wait — seek professional care now",
+                "If alone, ask someone nearby for help",
+                "Stay calm and follow dispatcher instructions"
+            ]
+            footer = "Emergency contact (India): Call 108"
         else:
-            confidence_pct = int(disease_info['confidence'] * 100)
-        
-        # MANDATORY HEADER: Disease name and confidence percentage
-        response = f"<div style='margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border);'>"
-        response += f"<p style='color: var(--text-primary); font-size: 1.1em; font-weight: 600; margin-bottom: 6px;'>Condition: {disease_name}</p>"
-        response += f"<p style='color: var(--text-secondary); font-size: 0.95em; margin-bottom: 0;'>Confidence: {confidence_pct}%</p>"
-        response += "</div>"
-        
-        # Opening with empathy
-        response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>Based on what you've shared, {disease_name.lower()} appears to be a likely explanation for your symptoms.</p>"
-        
-        # Summary/Description
-        if 'summary' in sections:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>{sections['summary']}</p>"
-        
-        # Symptoms (conversational)
-        if 'symptoms' in sections:
-            symptoms_text = sections['symptoms'].replace(',', ', ')
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>People with this condition commonly experience {symptoms_text.lower()}.</p>"
-        
-        # Treatment (gentle guidance) - deduplicated
-        if 'treatment' in sections:
-            treatment_items = list(set([t.strip() for t in sections['treatment'].split(',')]))
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>Management typically includes:</strong></p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for item in treatment_items:
-                if item:
-                    response += f"<li>{item}</li>"
-            response += "</ul>"
-        
-        # "What this is NOT" reassurance
-        unlikely_statement = self.generate_unlikely_conditions(disease_name, confidence_pct)
-        if unlikely_statement:
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding: 10px; background: var(--bg-glass); border-radius: 8px; border-left: 3px solid var(--success);'>{unlikely_statement}</p>"
-        
-        # Warning signs (calm but clear) - deduplicated
-        if 'warning_signs' in sections:
-            warning_items = list(set([w.strip() for w in sections['warning_signs'].split(',')]))
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>You should consider seeking medical attention if:</strong></p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for item in warning_items:
-                if item:
-                    response += f"<li>{item}</li>"
-            response += "</ul>"
-        
-        # Prevention (if available) - deduplicated
-        if 'prevention' in sections:
-            prevention_items = list(set([p.strip() for p in sections['prevention'].split(',')]))
-            response += f"<p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 8px;'><strong>To help prevent this:</strong></p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px; padding-left: 24px;'>"
-            for item in prevention_items:
-                if item:
-                    response += f"<li>{item}</li>"
-            response += "</ul>"
-        
-        # Follow-up questions (if confidence < 85%)
-        followup_questions = self.generate_followup_questions(disease_name, confidence_pct, sections)
-        if followup_questions:
-            response += "<div style='margin: 20px 0; padding: 12px; background: var(--bg-glass); border-radius: 12px; border-left: 3px solid var(--accent);'>"
-            response += "<p style='color: var(--text-primary); font-weight: 600; margin-bottom: 10px;'>To better understand your situation, could you tell me:</p>"
-            response += "<ul style='color: var(--text-primary); line-height: 1.8; margin: 0; padding-left: 24px;'>"
-            for question in followup_questions:
-                response += f"<li>{question}</li>"
-            response += "</ul></div>"
-        
-        # Doctor-style closing reassurance (confidence-based)
-        if has_comorbidity:
-            if confidence_pct >= 75:
-                reassurance = "Given your existing health conditions, monitoring your symptoms closely is important. Most people improve with appropriate care, but if symptoms persist or worsen, seeking medical advice would be appropriate."
-            elif confidence_pct >= 50:
-                reassurance = "With your health background, it's worth keeping a close eye on how you feel. If things don't improve or you notice changes, a healthcare professional can provide personalized guidance."
-            else:
-                reassurance = "Given your medical history, it would be helpful to discuss these symptoms with a healthcare provider who can consider your full health picture."
+            color  = "#e65100"
+            bg     = "#fff3cd"
+            border = "#ff9800"
+            icon   = "⚠️"
+            title  = "URGENT MEDICAL EVALUATION REQUIRED"
+            instructions = [
+                "Visit a doctor or clinic within 24 hours",
+                "Do NOT delay seeking medical attention",
+                "Bring any relevant medical records",
+                "Avoid self-medication"
+            ]
+            footer = "If symptoms worsen suddenly, seek emergency care (India: 108)"
+
+        html = f"""
+        <div style='margin-bottom: 20px; padding: 14px; background: {bg}; border-radius: 12px; border: 2px solid {border};'>
+            <p style='color: {color}; font-weight: 700; font-size: 1.1em; margin-bottom: 8px;'>{icon} {title}</p>
+            <p style='color: #2d3436; font-size: 0.95em; margin: 0;'>{message}</p>
+        </div>
+
+        <p style='color: var(--text-primary); font-weight: 600; margin-bottom: 8px;'>Suspected condition:</p>
+        <p style='color: var(--text-primary); margin-bottom: 16px; padding: 10px; background: var(--bg-glass); border-radius: 8px;'>{disease}</p>
+
+        <div style='margin: 20px 0; padding: 14px; background: {bg}; border-radius: 12px; border-left: 3px solid {color};'>
+            <p style='color: {color}; font-weight: 600; margin-bottom: 10px;'>Required actions:</p>
+            <ul style='color: #2d3436; line-height: 1.8; margin: 0; padding-left: 24px;'>
+                {''.join(f'<li>{i}</li>' for i in instructions)}
+            </ul>
+        </div>
+
+        <p style='color: var(--text-secondary); font-size: 0.9em; line-height: 1.6; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-style: italic;'>
+        This is a safety-critical alert based on symptom patterns. Professional medical evaluation is mandatory. {footer}
+        </p>
+        """
+
+        # SAFETY ASSERTION: Emergency output must never contain forbidden terms
+        forbidden = ["home", "rest", "paracetamol", "confidence", "panic"]
+        for term in forbidden:
+            assert term not in html.lower(), f"SAFETY VIOLATION: Emergency render contains '{term}'"
+
+        return html
+
+    def _render_educational(self, topic):
+        # Look up the canonical name + source URL from disease_data.json
+        topic_lower = topic.strip().lower()
+        match = self.disease_sources.get(topic_lower)
+
+        # Fuzzy fallback: check if input is a substring of any disease key
+        if not match:
+            for key, value in self.disease_sources.items():
+                if topic_lower in key or key.startswith(topic_lower):
+                    match = value
+                    break
+
+        if match:
+            display_name, source_url = match
+            source_block = f"""
+        <div style='margin-top: 20px; padding: 12px; background: var(--bg-glass); border-radius: 10px; border: 1px solid var(--border);'>
+            <p style='color: var(--text-secondary); font-size: 0.9em; margin-bottom: 6px;'>📚 Learn more from a trusted source:</p>
+            <a href='{source_url}' target='_blank' rel='noopener noreferrer'
+               style='color: var(--accent); font-size: 0.95em; word-break: break-all;'>{source_url}</a>
+        </div>"""
         else:
-            if confidence_pct >= 75:
-                reassurance = "Most people with these symptoms improve with appropriate care. If symptoms persist or worsen, seeking in-person medical advice would be appropriate."
-            elif confidence_pct >= 50:
-                reassurance = "These symptoms can have various causes. Monitoring how you feel over the next day or two can be helpful. If things don't improve or you feel worse, a healthcare professional can provide more specific guidance."
-            else:
-                reassurance = "Your symptoms could relate to several conditions. It would be helpful to observe any changes and consider speaking with a healthcare provider who can examine you properly."
-        
-        response += f"<p style='color: var(--text-secondary); font-size: 0.95em; line-height: 1.6; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-style: italic;'>{reassurance}</p>"
-        
-        return f"<div style='margin-bottom: 24px;'>{response}</div>"
-    
-    def get_fallback_response(self):
-        """Fallback response when RAG fails"""
-        return "<p style='color: var(--text-primary); line-height: 1.6;'>I'm currently unable to provide specific medical information for your symptoms. For your safety and peace of mind, I'd recommend speaking with a healthcare professional who can properly evaluate your condition.</p>"
-    
-    def get_health_advice(self, symptoms):
-        """Get health advice using RAG if available, fallback to legacy matching"""
-        if self.rag_enabled:
-            return self.get_rag_health_advice(symptoms)
-        else:
-            # Fallback to legacy disease matching
-            matching_disease = self.find_matching_disease(symptoms)
-            if matching_disease:
-                return self.format_disease_response(matching_disease)
-            else:
-                return "<p style='color: var(--text-primary); line-height: 1.6;'>I don't have specific information about these symptoms in my current knowledge base. For your safety, I'd recommend consulting with a healthcare professional who can properly assess your condition.</p>"
+            display_name = topic
+            source_block = ""
+
+        return f"""
+        <div style='margin-bottom: 20px; padding: 12px; background: var(--bg-glass); border-radius: 12px; border: 1px solid var(--border);'>
+            <p style='color: var(--text-primary); font-weight: 600; margin-bottom: 6px;'>About {display_name}</p>
+        </div>
+        <p style='color: var(--text-primary); line-height: 1.6; margin-bottom: 12px;'>This is general information about {display_name}.</p>
+        {source_block}
+        <p style='color: var(--text-secondary); font-size: 0.95em; line-height: 1.6; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-style: italic;'>For personalized guidance, please describe your specific symptoms.</p>
+        """
+
+    def _fallback(self):
+        return "<p style='color: var(--text-primary); line-height: 1.6;'>I'm currently unable to provide specific medical information. Please consult a healthcare professional.</p>"

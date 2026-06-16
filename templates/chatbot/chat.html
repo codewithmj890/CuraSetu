@@ -654,11 +654,89 @@
         align-items: center;
         gap: 6px;
     }
+
+    /* Home Remedy & Follow-up Cards */
+    .home-remedy-card {
+        background: var(--bg-glass);
+        border-left: 3px solid var(--success);
+        padding: 14px;
+        border-radius: 12px;
+        margin: 16px 0;
+    }
+
+    .section-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+    }
+
+    .note {
+        font-size: 0.9em;
+        color: var(--text-secondary);
+        margin-top: 10px;
+    }
+
+    .followup-container {
+        margin: 18px 0;
+    }
+
+    .question-card {
+        margin-bottom: 12px;
+    }
+
+    .option-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .answer-chip {
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: transparent;
+        cursor: pointer;
+        transition: 0.2s ease;
+        color: var(--text-primary);
+        font-size: 14px;
+    }
+
+    .answer-chip:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+    }
 </style>
 {% endblock %}
 
 {% block extra_js %}
 <script>
+    // Performance utilities
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+
+    function debounce(func, delay) {
+        let timeoutId;
+        return function() {
+            const args = arguments;
+            const context = this;
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(context, args), delay);
+        }
+    }
+
     // Enhanced UI interactions
     document.addEventListener('DOMContentLoaded', function () {
         const messageInput = document.getElementById('messageInput');
@@ -942,6 +1020,7 @@
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
         const message = messageInput.value.trim();
+        const isStructured = messageInput.dataset.isStructured === 'true';
 
         if (!message) return;
 
@@ -949,6 +1028,30 @@
         messageInput.disabled = true;
         sendButton.disabled = true;
         sendButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+        // Display user message (natural language for structured, as-is for text)
+        let displayMessage = message;
+        if (isStructured) {
+            try {
+                const data = JSON.parse(message);
+                const answerMap = {
+                    "fever": "Do you have fever?",
+                    "white_patches": "Do you see white patches on your tonsils?",
+                    "duration": "How many days have you had these symptoms?",
+                    "cough_type": "Is the cough dry or producing phlegm?",
+                    "headache_location": "Is the pain on one side or both sides?",
+                    "sensitivity": "Does light or noise make it worse?",
+                    "blood": "Have you noticed any blood in vomit or stool?",
+                    "sensation": "Is the affected area painful or itchy?",
+                    "spread": "Has it spread to other areas?",
+                    "progression": "Have symptoms worsened recently?"
+                };
+                const questionText = answerMap[data.question_id] || "Question";
+                displayMessage = `${questionText} ${data.answer}`;
+            } catch (e) {
+                displayMessage = message;
+            }
+        }
 
         // Add user message with glassmorphism
         const chatMessages = document.getElementById('chatMessages');
@@ -959,12 +1062,13 @@
             <i class="fas fa-user-circle"></i>
             <span>You</span>
         </div>
-        <div class="message-content crystal">${message}</div>
+        <div class="message-content crystal">${displayMessage}</div>
     `;
         chatMessages.appendChild(userMessage);
 
-        // Clear input and smooth scroll
+        // Clear input and reset structured flag
         messageInput.value = '';
+        messageInput.dataset.isStructured = 'false';
         smoothScrollToBottom(chatMessages);
 
         // Enhanced typing indicator with glassmorphism
@@ -1108,33 +1212,120 @@
     }
 });
 
-    // Enhanced input interactions with debouncing
+    // Enhanced input interactions with debouncing (300ms)
     const messageInput = document.getElementById('messageInput');
     if (messageInput) {
-        let inputTimeout;
-        messageInput.addEventListener('input', function () {
-            clearTimeout(inputTimeout);
-            inputTimeout = setTimeout(() => {
-                const sendButton = document.getElementById('sendButton');
-                if (this.value.trim()) {
-                    sendButton.style.opacity = '1';
-                } else {
-                    sendButton.style.opacity = '0.7';
-                }
-            }, 50);
-        }, { passive: true });
+        const debouncedInputHandler = debounce(function() {
+            const sendButton = document.getElementById('sendButton');
+            if (this.value.trim()) {
+                sendButton.style.opacity = '1';
+            } else {
+                sendButton.style.opacity = '0.7';
+            }
+        }, 300);
+        
+        messageInput.addEventListener('input', debouncedInputHandler, { passive: true });
     }
 
     // Optimized mutation observer
     const observer = new MutationObserver(function (mutations) {
         requestAnimationFrame(() => {
             convertTablesToContentBlocks();
+            attachFollowupButtonHandlers();
         });
     });
 
     observer.observe(document.getElementById('chatMessages'), {
         childList: true,
         subtree: true
+    });
+
+    // Follow-up button handlers
+    function attachFollowupButtonHandlers() {
+        document.querySelectorAll('.followup-btn').forEach(btn => {
+            if (btn.dataset.attached) return;
+            btn.dataset.attached = 'true';
+            
+            btn.addEventListener('click', function() {
+                const question = this.dataset.question;
+                const messageInput = document.getElementById('messageInput');
+                const chatForm = document.getElementById('chatForm');
+                
+                // Fill input with question
+                messageInput.value = question;
+                
+                // Remove all followup containers
+                document.querySelectorAll('.followup-container').forEach(container => {
+                    container.style.opacity = '0';
+                    container.style.transform = 'translateY(-10px)';
+                    setTimeout(() => container.remove(), 200);
+                });
+                
+                // Submit form
+                setTimeout(() => {
+                    chatForm.dispatchEvent(new Event('submit'));
+                }, 250);
+            });
+            
+            // Hover effect
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.background = 'var(--bg-glass-hover)';
+                this.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.2)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.background = 'var(--bg-glass)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Answer chip handlers (clickable follow-up options)
+        document.querySelectorAll('.answer-chip').forEach(chip => {
+            if (chip.dataset.attached) return;
+            chip.dataset.attached = 'true';
+            
+            chip.addEventListener('click', function() {
+                const questionId = this.dataset.question;
+                const answer = this.dataset.answer;
+                const messageInput = document.getElementById('messageInput');
+                const chatForm = document.getElementById('chatForm');
+                
+                // Create structured payload for backend
+                const structuredPayload = JSON.stringify({
+                    type: "FOLLOWUP_ANSWER",
+                    question_id: questionId,
+                    answer: answer
+                });
+                
+                // Store in hidden input or data attribute
+                messageInput.value = structuredPayload;
+                messageInput.dataset.isStructured = 'true';
+                
+                // Visual feedback
+                this.style.background = 'var(--accent)';
+                this.style.color = 'white';
+                this.style.transform = 'scale(0.95)';
+                
+                // Remove all followup containers
+                document.querySelectorAll('.followup-container').forEach(container => {
+                    container.style.opacity = '0';
+                    container.style.transform = 'translateY(-10px)';
+                    setTimeout(() => container.remove(), 200);
+                });
+                
+                // Submit form
+                setTimeout(() => {
+                    chatForm.dispatchEvent(new Event('submit'));
+                }, 250);
+            });
+        });
+    }
+
+    // Initial attachment
+    document.addEventListener('DOMContentLoaded', function() {
+        attachFollowupButtonHandlers();
     });
 </script>
 {% endblock %}

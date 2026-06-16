@@ -1,7 +1,11 @@
 from sentence_transformers import SentenceTransformer
 
+
 class EmbeddingModel:
-    """Singleton pattern for SentenceTransformer model to prevent memory leaks"""
+    """
+    Singleton wrapper for SentenceTransformer.
+    Adds medical-aware embedding helpers.
+    """
     _model = None
 
     @classmethod
@@ -10,3 +14,11 @@ class EmbeddingModel:
         if cls._model is None:
             cls._model = SentenceTransformer("all-MiniLM-L6-v2")
         return cls._model
+
+    @classmethod
+    def embed_text(cls, text: str):
+        """
+        Embed a single piece of medical text safely.
+        """
+        model = cls.get_model()
+        return model.encode([text], normalize_embeddings=True)

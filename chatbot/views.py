@@ -52,48 +52,59 @@ def toggle_pin(request, thread_id):
         return JsonResponse({'success': True, 'is_pinned': thread.is_pinned})
     return JsonResponse({'success': False})
 
-@csrf_exempt
 @login_required
 def send_message(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        user_message = data.get('message')
-        thread_id = data.get('thread_id')
-        
-        if not thread_id:
-            thread = ChatThread.objects.create(user=request.user, title=user_message[:50])
-        else:
-            thread = get_object_or_404(ChatThread, id=thread_id, user=request.user)
-        
-        # Get AI response
-        gemini_service = GeminiService()
-        bot_response = gemini_service.get_health_advice(user_message)
-        
-        # Save message
-        chat_message = ChatMessage.objects.create(
-            thread=thread,
-            user_message=user_message,
-            bot_response=bot_response
-        )
-        
-        # Auto-rename thread from first message
-        if thread.title == "New Chat" and thread.messages.count() == 1:
-            # Extract meaningful title from first message
-            title = user_message[:50].strip()
-            # If title ends mid-word, truncate to last complete word
-            if len(user_message) > 50 and ' ' in title:
-                title = title.rsplit(' ', 1)[0] + '...'
-            thread.title = title
+        try:
+            data = json.loads(request.body)
+            user_message = data.get('message')
+            thread_id = data.get('thread_id')
+            
+            if not user_message:
+                return JsonResponse({
+                    'success': False,
+                    'bot_response': '<p>Please provide a message.</p>'
+                }, status=200)
+            
+            if not thread_id:
+                thread = ChatThread.objects.create(user=request.user, title=user_message[:50])
+            else:
+                thread = get_object_or_404(ChatThread, id=thread_id, user=request.user)
+            
+            # Get AI response with conversation_id
+            gemini_service = GeminiService()
+            bot_response = gemini_service.get_health_advice(user_message, thread.id)
+            
+            # Save message
+            chat_message = ChatMessage.objects.create(
+                thread=thread,
+                user_message=user_message,
+                bot_response=bot_response
+            )
+            
+            # Auto-rename thread from first message
+            if thread.title == "New Chat" and thread.messages.count() == 1:
+                title = user_message[:50].strip()
+                if len(user_message) > 50 and ' ' in title:
+                    title = title.rsplit(' ', 1)[0] + '...'
+                thread.title = title
+                thread.save()
+            
             thread.save()
-        
-        # Update thread timestamp
-        thread.save()
-        
-        return JsonResponse({
-            'success': True,
-            'bot_response': bot_response,
-            'thread_id': thread.id,
-            'message_id': chat_message.id
-        })
+            
+            return JsonResponse({
+                'success': True,
+                'bot_response': bot_response,
+                'thread_id': thread.id,
+                'message_id': chat_message.id
+            })
+        except Exception as e:
+            print(f"ERROR in send_message: {e}")
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({
+                'success': False,
+                'bot_response': '<p style="color: var(--text-primary); line-height: 1.6;">Something went wrong on our side. Please try again or consult a healthcare professional.</p>'
+            }, status=200)
     
-    return JsonResponse({'success': False})
+    return JsonResponse({'success': False, 'bot_response': '<p>Invalid request method.</p>'}, status=200)
